@@ -11,6 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: "bg-black text-white hover:bg-black/90",
         success: "bg-green-500 hover:bg-green-600 text-white",
+        reset: "bg-yellow-500 hover:bg-yellow-600 text-white",
         destructive: "bg-red-500 hover:bg-red-600 text-white",
       },
       size: {
