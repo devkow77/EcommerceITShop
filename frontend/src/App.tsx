@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navbar } from "./components";
+import { Navbar, ThemeToggle } from "./components";
 import { Home, Login, Register, Account } from "./pages";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
       </Routes>
+      <ThemeToggle />
     </Router>
   );
 }

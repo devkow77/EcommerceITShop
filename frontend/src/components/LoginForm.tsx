@@ -104,7 +104,11 @@ const LoginForm = () => {
             <FormItem>
               <FormLabel>Hasło</FormLabel>
               <FormControl>
-                <Input placeholder="Podaj hasło..." {...field} />
+                <Input
+                  placeholder="Podaj hasło..."
+                  type="password"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -131,7 +131,11 @@ const RegisterForm = () => {
             <FormItem>
               <FormLabel>Hasło</FormLabel>
               <FormControl>
-                <Input placeholder="Podaj hasło..." {...field} />
+                <Input
+                  placeholder="Podaj hasło..."
+                  type="password"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -144,7 +148,11 @@ const RegisterForm = () => {
             <FormItem>
               <FormLabel>Powtórz hasło</FormLabel>
               <FormControl>
-                <Input placeholder="Podaj ponownie hasło..." {...field} />
+                <Input
+                  placeholder="Podaj ponownie hasło..."
+                  type="password"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -15,8 +15,6 @@ const Profile = () => {
 
   if (loading) return null;
 
-  console.log(user);
-
   const handleLogout = async () => {
     try {
       const res = await fetch("/api/auth/logout", {
@@ -26,13 +24,14 @@ const Profile = () => {
 
       if (res.ok) {
         setUser(null);
-      } else {
-        console.error("Błąd wylogowania");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Błąd wylogowania", err);
     }
   };
+
+  const iconClass = "text-black dark:text-white";
+  const menuItemClass = "flex flex-row items-center gap-2";
 
   return (
     <NavigationMenu>
@@ -40,34 +39,40 @@ const Profile = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger className="h-full">
             <User />
-            <p className="ml-2 hidden md:block">
+            <span className="ml-2 hidden md:block">
               {user ? `Witaj ${user.name}!` : "Cześć, zaloguj się"}
-            </p>
+            </span>
           </NavigationMenuTrigger>
+
           <NavigationMenuContent>
-            <ul className="w-80 text-black">
+            <ul className="w-46 text-black md:w-60 2xl:w-80 dark:text-white">
+              {/* AUTH SECTION */}
               {user ? (
-                <div className="space-y-2 border-b border-black p-2">
-                  <NavigationMenuLink
-                    asChild
-                    className="w-full bg-red-500 px-4 py-2 text-center font-medium text-white shadow-sm hover:bg-red-600"
-                  >
-                    <button onClick={handleLogout}>Wyloguj się</button>
+                <div className="space-y-2 border-b border-black p-2 dark:border-white/20">
+                  <NavigationMenuLink asChild>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full bg-red-500 px-4 py-2 text-center font-medium text-white shadow-sm hover:bg-red-600"
+                    >
+                      Wyloguj się
+                    </button>
                   </NavigationMenuLink>
                 </div>
               ) : (
-                <div className="space-y-2 border-b border-black p-2">
+                <div className="space-y-2 border-b border-black p-2 dark:border-white/20">
                   <NavigationMenuLink
                     asChild
-                    className="bg-white px-4 py-2 text-center font-medium shadow-sm hover:bg-white"
+                    className="bg-white px-4 py-2 text-center font-medium shadow-sm hover:bg-white dark:text-black"
                   >
                     <Link to="/login">Zaloguj się</Link>
                   </NavigationMenuLink>
+
                   <div className="flex items-center gap-2 text-xs">
-                    <div className="h-px flex-1 bg-black"></div>
+                    <div className="h-px flex-1 bg-black dark:bg-white/20" />
                     <span>Nie masz konta?</span>
-                    <div className="h-px flex-1 bg-black"></div>
+                    <div className="h-px flex-1 bg-black dark:bg-white/20" />
                   </div>
+
                   <NavigationMenuLink
                     asChild
                     className="bg-black px-4 py-2 text-center font-medium text-white hover:bg-black"
@@ -76,33 +81,42 @@ const Profile = () => {
                   </NavigationMenuLink>
                 </div>
               )}
-              <div className="border-b border-black">
+
+              {/* LINKS */}
+              <div className="border-b border-black dark:border-white/20">
                 <NavigationMenuLink asChild>
-                  <Link
-                    to="/account"
-                    className="flex flex-row items-center gap-2"
-                  >
-                    <User className="text-black" /> Twoje konto
+                  <Link to="/account" className={menuItemClass}>
+                    <User className={iconClass} />
+                    Twoje konto
                   </Link>
                 </NavigationMenuLink>
+
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex flex-row items-center gap-2">
-                    <NotepadText className="text-black" /> Zamówienia
+                  <Link to="#" className={menuItemClass}>
+                    <NotepadText className={iconClass} />
+                    Zamówienia
                   </Link>
                 </NavigationMenuLink>
+
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex flex-row items-center gap-2">
-                    <RotateCcw className="text-black" /> Zwroty
+                  <Link to="#" className={menuItemClass}>
+                    <RotateCcw className={iconClass} />
+                    Zwroty
                   </Link>
                 </NavigationMenuLink>
+
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex flex-row items-center gap-2">
-                    <Heart className="text-black" /> Listy zakupowe
+                  <Link to="#" className={menuItemClass}>
+                    <Heart className={iconClass} />
+                    Listy zakupowe
                   </Link>
                 </NavigationMenuLink>
               </div>
-              <NavigationMenuLink className="flex flex-row items-center gap-2">
-                <Moon className="text-black" /> Tryb ciemny / jasny
+
+              {/* THEME */}
+              <NavigationMenuLink className={menuItemClass}>
+                <Moon className={iconClass} />
+                Tryb ciemny / jasny
               </NavigationMenuLink>
             </ul>
           </NavigationMenuContent>
