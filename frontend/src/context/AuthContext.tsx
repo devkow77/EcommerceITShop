@@ -4,6 +4,7 @@ type User = {
   id: number;
   name: string;
   email: string;
+  totpEnabled: boolean;
 };
 
 type AuthContextType = {
@@ -24,8 +25,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       method: "GET",
       credentials: "include",
     })
-      .then((res) => res.json())
-      .then((data) => setUser(data.user))
+      .then((res) => {
+        if (!res.ok) {
+          setUser(null); // brak zalogowanego użytkownika
+          return null;
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data) setUser(data ?? null); // upewniamy się, że user istnieje
+      })
       .finally(() => setLoading(false));
   }, []);
 

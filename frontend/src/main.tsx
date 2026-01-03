@@ -6,11 +6,11 @@ import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./components/index.ts";
 
 createRoot(document.getElementById("root")!).render(
-  <AuthProvider>
-    <ThemeProvider defaultTheme="light">
+  <ThemeProvider defaultTheme="light">
+    <AuthProvider>
       <StrictMode>
         <App />
       </StrictMode>
-    </ThemeProvider>
-  </AuthProvider>,
+    </AuthProvider>
+  </ThemeProvider>,
 );
