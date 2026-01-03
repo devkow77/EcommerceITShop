@@ -17,7 +17,7 @@ const Navbar = () => {
   const desktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <nav className="mb-12 shadow-md">
+    <nav className="mb-12 border-b-2 shadow-md dark:shadow-none">
       <TopBaner />
       <Container className="space-y-4 py-4">
         <MainContent />
@@ -53,7 +53,7 @@ const TopBaner = () => {
   ];
 
   return (
-    <div className="hidden bg-black px-4 py-3 text-white/80 md:block xl:px-8">
+    <div className="hidden bg-black px-4 py-3 text-white/80 md:block xl:px-8 dark:bg-white/10">
       <ul className="flex items-center justify-between text-xs">
         {text.map((info: Info, i: number) => (
           <li key={i} className="flex items-center gap-2">
@@ -78,10 +78,10 @@ const MainContent = () => {
       {/* Profile, Favourite Products, Cart */}
       <div className="flex items-center">
         <Profile />
-        <div className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5">
+        <div className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5 dark:hover:bg-white/10">
           <Heart />
         </div>
-        <div className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5">
+        <div className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5 dark:hover:bg-white/10">
           <ShoppingBasket />
         </div>
       </div>
@@ -108,7 +108,7 @@ const DesktopBottomNavbar = () => {
         {categories.map((category: string, i: number) => {
           return (
             <Link to="#" key={i}>
-              <li className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5">
+              <li className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5 dark:hover:bg-white/10">
                 {category}
               </li>
             </Link>

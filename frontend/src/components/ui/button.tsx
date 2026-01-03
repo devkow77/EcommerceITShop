@@ -13,6 +13,8 @@ const buttonVariants = cva(
         success: "bg-green-500 hover:bg-green-600 text-white",
         reset: "bg-yellow-500 hover:bg-yellow-600 text-white",
         destructive: "bg-red-500 hover:bg-red-600 text-white",
+        outline:
+          "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground text-foreground",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
