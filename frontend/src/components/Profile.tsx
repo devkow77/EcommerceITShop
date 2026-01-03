@@ -78,7 +78,10 @@ const Profile = () => {
               )}
               <div className="border-b border-black">
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex flex-row items-center gap-2">
+                  <Link
+                    to="/account"
+                    className="flex flex-row items-center gap-2"
+                  >
                     <User className="text-black" /> Twoje konto
                   </Link>
                 </NavigationMenuLink>

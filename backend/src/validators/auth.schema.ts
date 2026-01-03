@@ -13,7 +13,10 @@ export const registerSchema = z
       message:
         'Hasło musi mieć min. 8 znaków, 1 wielką literę i 1 znak specjalny.',
     }),
-    repeatPassword: z.string(),
+    repeatPassword: z.string().regex(/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, {
+      message:
+        'Hasło musi mieć min. 8 znaków, 1 wielką literę i 1 znak specjalny.',
+    }),
   })
   .superRefine((data, ctx) => {
     if (data.password !== data.repeatPassword) {
@@ -30,6 +33,13 @@ export const loginSchema = z.object({
     message: 'Podaj poprawny adres email.',
   }),
   password: z.string().regex(/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, {
+    message:
+      'Hasło musi mieć min. 8 znaków, 1 wielką literę i 1 znak specjalny.',
+  }),
+});
+
+export const resetPasswordSchema = z.object({
+  newPassword: z.string().regex(/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, {
     message:
       'Hasło musi mieć min. 8 znaków, 1 wielką literę i 1 znak specjalny.',
   }),
