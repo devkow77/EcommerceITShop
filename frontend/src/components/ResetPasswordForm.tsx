@@ -79,9 +79,13 @@ const ResetPasswordForm = () => {
           name="newPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Nowe hasło</FormLabel>
+              <FormLabel>Hasło</FormLabel>
               <FormControl>
-                <Input placeholder="Podaj hasło..." {...field} />
+                <Input
+                  placeholder="Podaj nowe hasło..."
+                  className="max-w-75"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -89,7 +93,7 @@ const ResetPasswordForm = () => {
         />
         <div className="flex flex-wrap items-center gap-4">
           <Button type="submit" variant={"reset"}>
-            Zresetuj hasło
+            Ustaw nowe hasło
           </Button>
           {serverError && <p className="text-red-600">{serverError}</p>}
           {serverMessage && <p className="text-green-600">{serverMessage}</p>}

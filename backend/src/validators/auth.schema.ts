@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 export const registerSchema = z
   .object({
-    username: z.string().min(4, {
+    name: z.string().min(4, {
       message: 'Użytkownik musi mieć min. 4 znaki.',
     }),
     email: z.string().email({
@@ -13,10 +13,7 @@ export const registerSchema = z
       message:
         'Hasło musi mieć min. 8 znaków, 1 wielką literę i 1 znak specjalny.',
     }),
-    repeatPassword: z.string().regex(/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, {
-      message:
-        'Hasło musi mieć min. 8 znaków, 1 wielką literę i 1 znak specjalny.',
-    }),
+    repeatPassword: z.string(),
   })
   .superRefine((data, ctx) => {
     if (data.password !== data.repeatPassword) {

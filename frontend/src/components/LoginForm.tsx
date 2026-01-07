@@ -18,6 +18,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 
+type LoginFormProps = {
+  on2FARequired: (tempToken: string) => void;
+};
+
 const formSchema = z.object({
   email: z.string().email({
     message: "Podaj poprawny adres email.",
@@ -28,7 +32,7 @@ const formSchema = z.object({
   }),
 });
 
-const LoginForm = () => {
+const LoginForm = ({ on2FARequired }: LoginFormProps) => {
   const [serverError, setServerError] = useState<string | null>(null);
   const navigate = useNavigate();
   const { setUser } = useAuth();
@@ -36,7 +40,7 @@ const LoginForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "kacper@gmail.com",
+      email: "kowalsky429@gmail.com",
       password: "Haslo12345.",
     },
   });
@@ -71,6 +75,12 @@ const LoginForm = () => {
             setServerError("Nieznany błąd");
         }
       } else {
+        if (data.requires2FA) {
+          on2FARequired(data.tempToken);
+          return;
+        }
+
+        // normalne logowanie
         setUser(data.user);
         navigate("/");
       }

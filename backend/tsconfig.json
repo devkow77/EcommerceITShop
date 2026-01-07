@@ -11,6 +11,6 @@
     "forceConsistentCasingInFileNames": true,
     "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
-  "include": ["src/**/*", "src/@types/express.d.ts"],
+  "include": ["src/**/*", "src/@types/express.d.ts", "prisma"],
   "exclude": ["node_modules"]
 }

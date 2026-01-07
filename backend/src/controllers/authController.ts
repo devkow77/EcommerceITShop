@@ -8,6 +8,8 @@ import {
   resetPasswordSchema,
 } from '../validators/auth.schema';
 import jwt from 'jsonwebtoken';
+import speakeasy from 'speakeasy';
+import QRCode from 'qrcode';
 
 // rejestracja użytkownika
 export const createUser = async (req: Request, res: Response) => {
@@ -16,9 +18,9 @@ export const createUser = async (req: Request, res: Response) => {
     return res.status(400).json({ msg: 'Nieprawidłowe dane rejestracji' });
   }
 
-  const { name, email, password } = req.body || {};
+  const { name, email, password, repeatPassword } = req.body || {};
 
-  if (!name || !email || !password) {
+  if (!name || !email || !password || !repeatPassword) {
     return res.status(400).json({ msg: 'Wszystkie pola są wymagane' });
   }
 
@@ -60,7 +62,9 @@ export const signIn = async (req: Request, res: Response) => {
     return res.status(400).json({ msg: 'Wszystkie pola są wymagane' });
   }
 
-  const user = await prisma.user.findUnique({ where: { email } });
+  const user = await prisma.user.findUnique({
+    where: { email },
+  });
   if (!user) {
     return res
       .status(401)
@@ -72,13 +76,30 @@ export const signIn = async (req: Request, res: Response) => {
     return res.status(401).json({ msg: 'Nieprawidłowe dane logowania' });
   }
 
+  if (user.totpEnabled) {
+    const tempToken = jwt.sign(
+      {
+        userId: user.id,
+        twoFactor: true,
+      },
+      process.env.JWT_SECRET!,
+      { expiresIn: '5m' }, // krótko!
+    );
+
+    return res.status(200).json({
+      requires2FA: true,
+      tempToken,
+    });
+  }
+
+  // normalne logowanie
   const token = generateToken({ userId: user.id });
   res
     .cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 1000 * 60 * 60, // 1 godzina
+      maxAge: 1000 * 60 * 60,
     })
     .status(200)
     .json({
@@ -104,7 +125,13 @@ export const authInfo = async (req: Request, res: Response) => {
 
     const user = await prisma.user.findUnique({
       where: { id: payload.userId },
-      select: { id: true, name: true, email: true, createdAt: true },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        createdAt: true,
+        totpEnabled: true,
+      },
     });
 
     return res.status(200).json(user);
@@ -160,4 +187,180 @@ export const resetPassword = async (req: Request, res: Response) => {
     console.error(err);
     res.status(401).json({ msg: 'Nieprawidłowy token uwierzytelniający' });
   }
+};
+
+// Wygeneruj kod TOTP
+export const generateTotp = async (req: Request, res: Response) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ msg: 'Brak tokenu uwierzytelniającego' });
+  }
+
+  const payload = jwt.verify(token, process.env.JWT_SECRET!) as {
+    userId: number;
+  };
+
+  const user = await prisma.user.findUnique({
+    where: { id: payload.userId },
+  });
+
+  if (!user) {
+    return res.status(404).json({ msg: 'Użytkownik nie istnieje' });
+  }
+
+  let secretBase32 = user.totpSecret;
+  let otpauthUrl: string;
+
+  // 🔐 generujemy sekret TYLKO jeśli nie istnieje
+  if (!secretBase32) {
+    const secret = speakeasy.generateSecret({
+      name: `EcommerceITShop (${user.email})`,
+    });
+
+    if (!secret.otpauth_url) {
+      throw new Error('Nie udało się wygenerować URL');
+    }
+
+    secretBase32 = secret.base32;
+    otpauthUrl = secret.otpauth_url;
+
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        totpSecret: secretBase32,
+        totpEnabled: false,
+      },
+    });
+  } else {
+    // 🔁 sekret już istnieje → generujemy QR z istniejącego
+    otpauthUrl = speakeasy.otpauthURL({
+      secret: secretBase32,
+      label: `EcommerceITShop (${user.email})`,
+      issuer: 'EcommerceITShop',
+      encoding: 'base32',
+    });
+  }
+
+  const qrCode = await QRCode.toDataURL(otpauthUrl);
+
+  return res.status(200).json({
+    qrCode,
+    manualKey: secretBase32,
+  });
+};
+
+// Werifikuj kod TOPT
+export const verifyTotp = async (req: Request, res: Response) => {
+  const token = req.cookies.token;
+  const { code } = req.body;
+
+  if (!token)
+    return res.status(401).json({ msg: 'Brak tokenu uwierzytelniającego' });
+  if (!code) return res.status(400).json({ msg: 'Kod TOTP jest wymagany' });
+
+  const payload = jwt.verify(token, process.env.JWT_SECRET!) as {
+    userId: number;
+  };
+
+  const user = await prisma.user.findUnique({ where: { id: payload.userId } });
+  if (!user || !user.totpSecret)
+    return res.status(400).json({ msg: '2FA nie zostało zainicjalizowane' });
+
+  const verified = speakeasy.totp.verify({
+    secret: user.totpSecret,
+    encoding: 'base32',
+    token: code,
+    window: 1,
+  });
+
+  if (!verified) return res.status(400).json({ msg: 'Nieprawidłowy kod TOTP' });
+
+  await prisma.user.update({
+    where: { id: user.id },
+    data: { totpEnabled: true },
+  });
+
+  res.status(200).json({ msg: 'Uwierzytelnianie dwuetapowe włączone' });
+};
+
+// wyłącz TOTP
+export const disableTotp = async (req: Request, res: Response) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ msg: 'Brak tokenu' });
+  }
+
+  const payload = jwt.verify(token, process.env.JWT_SECRET!) as {
+    userId: number;
+  };
+
+  await prisma.user.update({
+    where: { id: payload.userId },
+    data: {
+      totpSecret: null,
+      totpEnabled: false,
+    },
+  });
+
+  res.status(200).json({ msg: '2FA zostało wyłączone' });
+};
+
+// Logowanie z włączonym totp
+export const loginWithTotp = async (req: Request, res: Response) => {
+  const { code, tempToken } = req.body;
+
+  if (!code || !tempToken) {
+    return res.status(400).json({ msg: 'Brak danych' });
+  }
+
+  let payload;
+  try {
+    payload = jwt.verify(tempToken, process.env.JWT_SECRET!) as {
+      userId: number;
+      twoFactor: boolean;
+    };
+  } catch {
+    return res.status(401).json({ msg: 'Token wygasł' });
+  }
+
+  if (!payload.twoFactor) {
+    return res.status(401).json({ msg: 'Nieprawidłowy token' });
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { id: payload.userId },
+  });
+
+  if (!user || !user.totpSecret) {
+    return res.status(400).json({ msg: '2FA nieaktywne' });
+  }
+
+  const verified = speakeasy.totp.verify({
+    secret: user.totpSecret,
+    encoding: 'base32',
+    token: code,
+    window: 1,
+  });
+
+  if (!verified) {
+    return res.status(400).json({ msg: 'Nieprawidłowy kod' });
+  }
+
+  // 🔐 FINALNE LOGOWANIE
+  const token = generateToken({ userId: user.id });
+
+  res.cookie('token', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    maxAge: 1000 * 60 * 60,
+  });
+
+  res.status(200).json({
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    },
+  });
 };

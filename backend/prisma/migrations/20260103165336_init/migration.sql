@@ -12,6 +12,8 @@ CREATE TABLE "User" (
     "password" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "role" "UserRole" NOT NULL DEFAULT 'USER',
+    "totpSecret" TEXT,
+    "totpEnabled" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );

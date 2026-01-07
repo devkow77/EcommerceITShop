@@ -17,7 +17,7 @@ const Navbar = () => {
   const desktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <nav className="mb-12 border-b-2 shadow-md dark:shadow-none">
+    <nav className="border-b-2 shadow-md dark:shadow-none">
       <TopBaner />
       <Container className="space-y-4 py-4">
         <MainContent />

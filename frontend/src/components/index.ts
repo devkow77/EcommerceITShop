@@ -7,6 +7,9 @@ import RegisterForm from "./RegisterForm";
 import ResetPasswordForm from "./ResetPasswordForm";
 import { ThemeProvider } from "./ThemeProvider";
 import ThemeToggle from "./ThemeToggle";
+import VerifyTotpForm from "./VerifyTotpForm";
+import TotpLoginForm from "./TotpLoginForm";
+import DisableTotpForm from "./DisableTotpForm";
 
 export {
   Navbar,
@@ -18,4 +21,7 @@ export {
   ResetPasswordForm,
   ThemeProvider,
   ThemeToggle,
+  VerifyTotpForm,
+  TotpLoginForm,
+  DisableTotpForm,
 };
