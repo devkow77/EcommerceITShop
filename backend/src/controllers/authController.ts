@@ -107,6 +107,7 @@ export const signIn = async (req: Request, res: Response) => {
         id: user.id,
         name: user.name,
         email: user.email,
+        role: user.role,
       },
     });
 };
@@ -131,6 +132,7 @@ export const authInfo = async (req: Request, res: Response) => {
         email: true,
         createdAt: true,
         totpEnabled: true,
+        role: true,
       },
     });
 
