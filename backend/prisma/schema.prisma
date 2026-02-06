@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output = "../generated/prisma"
 }
 
 datasource db {
@@ -21,11 +22,15 @@ model User {
 model Product {
   id          Int         @id @default(autoincrement())
   name        String
+  slug           String      @unique // Np. "iphone-15-pro-max"
   price       Int
   description String
-  imageUrl    String
-  createdAt   DateTime    @default(now())
-  orderItems  OrderItem[]
+  discount       Int?        // Rabat procentowy, np. 10 dla 10%
+  stock          Int         @default(0)
+  isAvailable    Boolean     @default(true)
+  discountedPrice Int?        // Cena po rabacie, obliczana na podstawie price i discount
+  orderItems     OrderItem[]
+  promotion    Promotion[]
 }
 
 model Order {
@@ -46,6 +51,14 @@ model OrderItem {
   price     Int
   order     Order   @relation(fields: [orderId], references: [id])
   product   Product @relation(fields: [productId], references: [id])
+}
+
+model Promotion {
+  id          Int      @id @default(autoincrement())
+  productId   Int
+  discount    Int
+  createdAt   DateTime @default(now())
+  product     Product  @relation(fields: [productId], references: [id])
 }
 
 enum OrderStatus {
