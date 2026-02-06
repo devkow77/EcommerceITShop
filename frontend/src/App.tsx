@@ -1,6 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar, ThemeToggle } from "./components";
-import {Home, Login, Register, Account, NotFound, Forbidden, ServerError} from "./pages";
+import {
+  Home,
+  Login,
+  Register,
+  Account,
+  NotFound,
+  Forbidden,
+  ServerError,
+  Admin,
+} from "./pages";
 
 function App() {
   return (
@@ -11,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/admin" element={<Admin />} />
 
         {/* Error pages */}
         <Route path="/errors/404" element={<NotFound />} />

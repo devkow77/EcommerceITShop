@@ -85,7 +85,10 @@ const Profile = () => {
               {/* LINKS */}
               <div className="border-b border-black dark:border-white/20">
                 <NavigationMenuLink asChild>
-                  <Link to="/account" className={menuItemClass}>
+                  <Link
+                    to={user && user.role == "USER" ? "/account" : "/admin"}
+                    className={menuItemClass}
+                  >
                     <User className={iconClass} />
                     Twoje konto
                   </Link>

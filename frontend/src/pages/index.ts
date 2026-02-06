@@ -5,7 +5,15 @@ import Account from "./Account";
 import NotFound from "./NotFound";
 import Forbidden from "./Forbidden";
 import ServerError from "./ServerError";
+import Admin from "./Admin";
 
-export { Home, Register, Login, Account, NotFound, Forbidden, ServerError };
-
-
+export {
+  Home,
+  Register,
+  Login,
+  Account,
+  NotFound,
+  Forbidden,
+  ServerError,
+  Admin,
+};

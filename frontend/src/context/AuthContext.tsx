@@ -5,6 +5,7 @@ type User = {
   name: string;
   email: string;
   totpEnabled: boolean;
+  role: "USER" | "ADMIN";
 };
 
 type AuthContextType = {
