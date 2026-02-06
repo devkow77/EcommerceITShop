@@ -6,14 +6,13 @@ import {
 } from "@/components";
 import { useAuth } from "@/context/AuthContext";
 import { useTotp } from "@/hooks/useTotp";
-import { useNavigate } from "react-router-dom";
+import Forbidden from "@/pages/Forbidden";
 
 const Account = () => {
   const { qrCode, manualKey, loading, error } = useTotp();
   const { user } = useAuth();
-  const navigate = useNavigate();
 
-  if (!user) return navigate("/");
+  if (!user) return <Forbidden />;
   if (loading)
     return (
       <div className="flex items-center justify-center py-12">
