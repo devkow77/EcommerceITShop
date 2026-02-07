@@ -153,3 +153,106 @@ export const deleteProduct = async (req: Request, res: Response) => {
 
   return res.status(204).send();
 };
+
+// ----------------------
+// Kategorie (CRUD)
+// ----------------------
+
+export const getCategories = async (req: Request, res: Response) => {
+  try {
+    const { page = '1', limit = '10', sortBy = 'id', order = 'asc', search } = req.query;
+
+    const pageNumber = Number(page);
+    const limitNumber = Number(limit);
+    const skip = (pageNumber - 1) * limitNumber;
+
+    const where: any = {
+      ...(search && {
+        OR: [
+          { name: { contains: String(search), mode: 'insensitive' } },
+          { slug: { contains: String(search), mode: 'insensitive' } },
+        ],
+      }),
+    };
+
+    const [categories, total] = await Promise.all([
+      prisma.category.findMany({
+        where,
+        skip,
+        take: limitNumber,
+        orderBy: {
+          [String(sortBy)]: order === 'desc' ? 'desc' : 'asc',
+        },
+      }),
+      prisma.category.count({ where }),
+    ]);
+
+    res.json({
+      data: categories,
+      meta: {
+        page: pageNumber,
+        limit: limitNumber,
+        total,
+        totalPages: Math.ceil(total / limitNumber),
+      },
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: 'Błąd serwera' });
+  }
+};
+
+export const getCategoryById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const category = await prisma.category.findUnique({
+    where: { id: Number(id) },
+    include: { products: true },
+  });
+
+  if (!category) return res.status(404).json({ message: 'Kategoria nie istnieje' });
+
+  return res.status(200).json(category);
+};
+
+export const createCategory = async (req: Request, res: Response) => {
+  const { name, slug } = req.body;
+
+  try {
+    const category = await prisma.category.create({ data: { name, slug } });
+    return res.status(201).json(category);
+  } catch (err: any) {
+    console.error(err);
+    return res.status(400).json({ message: err.message });
+  }
+};
+
+export const updateCategory = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { name, slug } = req.body;
+
+  try {
+    const category = await prisma.category.update({
+      where: { id: Number(id) },
+      data: { name, slug },
+    });
+
+    return res.status(200).json(category);
+  } catch (err: any) {
+    console.error(err);
+    return res.status(400).json({ message: err.message });
+  }
+};
+
+export const deleteCategory = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
+  // Jeśli kategoria ma produkty, zabroń usunięcia
+  const productsCount = await prisma.product.count({ where: { categoryId: id } });
+  if (productsCount > 0) {
+    return res.status(400).json({ message: 'Kategoria posiada produkty. Usuń lub przenieś produkty przed usunięciem.' });
+  }
+
+  await prisma.category.delete({ where: { id } });
+  return res.status(204).send();
+};
