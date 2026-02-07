@@ -1,108 +1,73 @@
 import prisma from '../prisma';
 import { Response, Request } from 'express';
 
-const PROMO_DISCOUNT = 10; // stały rabat 10%
+export const handleDailyPromotions = async () => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-export const randomPromotions = async () => {
-  try {
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+  // 1. Sprawdź czy są promocje z dzisiaj
+  const currentPromotions = await prisma.promotion.findFirst({
+    where: {
+      createdAt: { gte: today },
+    },
+  });
 
-    const todayEnd = new Date();
-    todayEnd.setHours(23, 59, 59, 999);
-
-    // 1. Sprawdzamy, czy są już promocje dzisiaj
-    const existingPromos = await prisma.promotion.findFirst({
-      where: {
-        createdAt: {
-          gte: todayStart,
-          lte: todayEnd,
-        },
-      },
-    });
-
-    if (existingPromos) {
-      console.log('Promocje na dzisiaj zostały już wylosowane.');
-      return; // nic nie robimy
-    }
-
-    // 2. Pobieramy wszystkie produkty
-    const allProducts = await prisma.product.findMany({
-      select: { id: true, price: true },
-    });
-
-    // 3. Tasujemy i wybieramy 5 produktów
-    const shuffled = allProducts.sort(() => 0.5 - Math.random()).slice(0, 5);
-
-    // 4. Resetujemy poprzednie promocje w tabeli produktów
-    await prisma.product.updateMany({
-      data: {
-        discount: null,
-        discountedPrice: null,
-      },
-    });
-
-    // 5. Aktualizujemy wybrane produkty z rabatem
-    const updatePromises = shuffled.map((p) =>
-      prisma.product.update({
-        where: { id: p.id },
-        data: {
-          discount: PROMO_DISCOUNT,
-          discountedPrice: Math.floor(p.price * (1 - PROMO_DISCOUNT / 100)),
-        },
-      }),
-    );
-
-    await Promise.all(updatePromises);
-
-    // 6. Tworzymy wpisy w tabeli Promotion
-    const promotionPromises = shuffled.map((p) =>
-      prisma.promotion.create({
-        data: {
-          productId: p.id,
-          discount: PROMO_DISCOUNT,
-        },
-      }),
-    );
-
-    await Promise.all(promotionPromises);
-
-    console.log('Nowe promocje zostały wylosowane i zapisane.');
-  } catch (error) {
-    console.error('Błąd przy aktualizacji promocji:', error);
+  if (currentPromotions) {
+    console.log('Promocje na dziś są już wylosowane.');
+    return;
   }
+
+  console.log('Losowanie nowych promocji...');
+
+  // 2. Wyczyść starą tabelę promocji
+  await prisma.promotion.deleteMany({});
+
+  // 3. Pobierz 5 losowych ID produktów (używając surowego zapytania dla wydajności)
+  // W PostgreSQL 'ORDER BY RANDOM()' działa świetnie dla małych/średnich baz
+  const randomProducts = await prisma.$queryRaw<{ id: number }[]>`
+    SELECT id FROM "Product" 
+    WHERE "isAvailable" = true AND "stock" > 0 
+    ORDER BY RANDOM() 
+    LIMIT 5
+  `;
+
+  // 4. Zapisz nowe promocje
+  const promotionData = randomProducts.map((p) => ({ productId: p.id }));
+  await prisma.promotion.createMany({
+    data: promotionData,
+  });
+
+  console.log('Nowe promocje zostały zapisane.');
 };
 
 export const getTodayPromotions = async (req: Request, res: Response) => {
-  const todayStart = new Date();
-  todayStart.setHours(0, 0, 0, 0);
-
-  const todayEnd = new Date();
-  todayEnd.setHours(23, 59, 59, 999);
-
   try {
-    // pobieramy produkty tylko z promocją dzisiaj
     const products = await prisma.product.findMany({
       where: {
         promotion: {
-          some: {
-            createdAt: {
-              gte: todayStart,
-              lte: todayEnd,
-            },
-          },
+          some: {},
         },
       },
       select: {
         id: true,
         name: true,
         price: true,
-        discountedPrice: true,
-        discount: true,
+        slug: true,
+        imageUrl: true,
+        category: {
+          select: { name: true },
+        },
       },
+      take: 5,
     });
 
-    return res.json(products);
+    const promotionsWithCalculatedPrice = products.map((product) => ({
+      ...product,
+      discountPercent: 10,
+      discountedPrice: Math.round(product.price * 0.9),
+    }));
+
+    return res.json(promotionsWithCalculatedPrice);
   } catch (error) {
     console.error('Błąd przy pobieraniu promocji:', error);
     return res.status(500).json({ error: 'Internal server error' });

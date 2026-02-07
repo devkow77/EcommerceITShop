@@ -40,7 +40,7 @@ const LoginForm = ({ on2FARequired }: LoginFormProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "kowalsky429@gmail.com",
+      email: "kacper@gmail.com",
       password: "Haslo12345.",
     },
   });

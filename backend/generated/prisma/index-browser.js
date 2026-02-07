@@ -138,9 +138,16 @@ exports.Prisma.ProductScalarFieldEnum = {
   price: 'price',
   description: 'description',
   discount: 'discount',
+  imageUrl: 'imageUrl',
   stock: 'stock',
   isAvailable: 'isAvailable',
-  discountedPrice: 'discountedPrice'
+  categoryId: 'categoryId'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
 };
 
 exports.Prisma.OrderScalarFieldEnum = {
@@ -162,7 +169,6 @@ exports.Prisma.OrderItemScalarFieldEnum = {
 exports.Prisma.PromotionScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
-  discount: 'discount',
   createdAt: 'createdAt'
 };
 
@@ -188,12 +194,15 @@ exports.UserRole = exports.$Enums.UserRole = {
 exports.OrderStatus = exports.$Enums.OrderStatus = {
   PENDING: 'PENDING',
   PAID: 'PAID',
+  SHIPPED: 'SHIPPED',
+  COMPLETED: 'COMPLETED',
   CANCELED: 'CANCELED'
 };
 
 exports.Prisma.ModelName = {
   User: 'User',
   Product: 'Product',
+  Category: 'Category',
   Order: 'Order',
   OrderItem: 'OrderItem',
   Promotion: 'Promotion'
