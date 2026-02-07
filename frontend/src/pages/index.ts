@@ -12,6 +12,8 @@ import AdminCategories from "./AdminCategories";
 import AdminUsers from "./AdminUsers";
 import AdminOrders from "./AdminOrders";
 import AdminStatistics from "./AdminStatistics";
+import CategoryProducts from "./CategoryProducts";
+import Product from "./Product";
 
 export {
   Home,
@@ -28,4 +30,6 @@ export {
   AdminUsers,
   AdminOrders,
   AdminStatistics,
+  CategoryProducts,
+  Product,
 };

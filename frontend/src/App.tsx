@@ -5,7 +5,6 @@ import {
   Login,
   Register,
   Account,
-  AccountOrders,
   NotFound,
   Forbidden,
   ServerError,
@@ -14,7 +13,9 @@ import {
   AdminCategories,
   AdminUsers,
   AdminOrders,
+  CategoryProducts,
   AdminStatistics,
+  Product,
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 
@@ -27,13 +28,17 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/account/orders" element={<AccountOrders />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/products" element={<AdminProducts />} />
-        <Route path="/admin/users" element={<AdminUsers />} />
-        <Route path="/admin/categories" element={<AdminCategories />} />
-        <Route path="/admin/orders" element={<AdminOrders />} />
-        <Route path="/admin/statistics" element={<AdminStatistics />} />
+
+        <Route path="/admin" element={<Admin />}>
+          <Route path="products" element={<AdminProducts />} />
+          <Route path="users" element={<AdminUsers />} />
+          <Route path="categories" element={<AdminCategories />} />
+          <Route path="orders" element={<AdminOrders />} />
+          <Route path="statistics" element={<AdminStatistics />} />
+        </Route>
+
+        <Route path="/products/:category" element={<CategoryProducts />} />
+        <Route path="/products/:category/:product" element={<Product />} />
 
         {/* Error pages */}
         <Route path="/errors/404" element={<NotFound />} />
