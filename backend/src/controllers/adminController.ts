@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import prisma from '../prisma';
 import bcrypt from 'bcrypt';
+import { createOrderSchema } from '../validators/orders.schema';
 
 // Pobierz wszystkie prosdukty z opcjonalnymi filtrami, sortowaniem i paginacja
 export const getProducts = async (req: Request, res: Response) => {
@@ -414,6 +415,78 @@ export const deleteUser = async (req: Request, res: Response) => {
   res.status(204).send();
 };
 
+// Tworzenie nowego zamówienia
+export const createOrder = async (req: Request, res: Response) => {
+  try {
+    // Walidacja danych wchodzących
+    const validationResult = createOrderSchema.safeParse(req.body);
+
+    if (!validationResult.success) {
+      const errors = validationResult.error.issues.map(
+        (err: any) => err.message,
+      );
+      return res.status(400).json({ message: 'Błąd walidacji', errors });
+    }
+
+    const {
+      userId,
+      items,
+      totalAmount,
+      status = 'PENDING',
+    } = validationResult.data;
+
+    // Sprawdzenie czy użytkownik istnieje
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Użytkownik nie istnieje' });
+    }
+
+    // Tworzenie zamówienia z pozycjami
+    const order = await prisma.order.create({
+      data: {
+        userId,
+        totalAmount,
+        status,
+        items: {
+          create: items.map((item) => ({
+            productId: item.productId,
+            quantity: item.quantity,
+            price: item.price,
+          })),
+        },
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+        items: {
+          include: {
+            product: {
+              select: {
+                id: true,
+                name: true,
+                price: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    return res.status(201).json(order);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: 'Błąd serwera' });
+  }
+};
+
 // Pobierz wszystkie zamówienia z opcjonalnymi filtrami, sortowaniem i paginacją
 export const getOrders = async (req: Request, res: Response) => {
   try {
@@ -601,6 +674,113 @@ export const deleteOrder = async (req: Request, res: Response) => {
     ]);
 
     return res.status(204).send();
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: 'Błąd serwera' });
+  }
+};
+
+// Pobierz statystyki sprzedaży
+export const getStatistics = async (req: Request, res: Response) => {
+  try {
+    const { month, year } = req.query;
+
+    // Ustaw domyślnie bieżący miesiąc i rok
+    const now = new Date();
+    const queryMonth = month ? Number(month) : now.getMonth() + 1;
+    const queryYear = year ? Number(year) : now.getFullYear();
+
+    // Sprawdzenie poprawności danych
+    if (queryMonth < 1 || queryMonth > 12) {
+      return res
+        .status(400)
+        .json({ message: 'Miesiąc musi być między 1 a 12' });
+    }
+
+    // Oblicz pierwszy i ostatni dzień miesiąca
+    const firstDay = new Date(queryYear, queryMonth - 1, 1);
+    const lastDay = new Date(queryYear, queryMonth, 0);
+
+    let orders: any[] = [];
+    let dailyRevenue: Record<string, number> = {};
+    let dailyOrders: Record<string, number> = {};
+    let categoryRevenue: Record<string, number> = {};
+    let createdAtExists = false;
+
+    // Pobierz wszystkie zamówienia ze statusem PAID, SHIPPED, COMPLETED (bez filtru daty - createdAt nie istnieje w bazie)
+    try {
+      orders = (await prisma.order.findMany({
+        where: {
+          status: {
+            in: ['PAID', 'SHIPPED', 'COMPLETED'],
+          },
+        },
+        include: {
+          items: { include: { product: { include: { category: true } } } },
+        },
+      })) as any[];
+
+      // Agreguj przychód po kategoriach (bez podziału na dni)
+      orders.forEach((order: any) => {
+        (order.items || []).forEach((item: any) => {
+          const categoryName = item.product?.category?.name || 'Uncategorized';
+
+          if (!categoryRevenue[categoryName]) categoryRevenue[categoryName] = 0;
+          categoryRevenue[categoryName] += item.price * item.quantity;
+        });
+      });
+    } catch (err) {
+      console.error('Błąd pobierania zamówień:', err);
+    }
+
+    // Statystyki ogólne
+    const totalRevenueFromDaily = Object.values(dailyRevenue).reduce(
+      (a, b) => a + b,
+      0,
+    );
+    const totalRevenueFromCategory = Object.values(categoryRevenue).reduce(
+      (a, b) => a + b,
+      0,
+    );
+    const finalTotalRevenue =
+      totalRevenueFromDaily > 0
+        ? totalRevenueFromDaily
+        : totalRevenueFromCategory;
+
+    const totalOrders = orders.length;
+    const avgOrderValue =
+      totalOrders > 0
+        ? Number((finalTotalRevenue / totalOrders / 100).toFixed(2))
+        : 0;
+
+    const chartData = Object.entries(dailyRevenue)
+      .sort(([dateA], [dateB]) => dateA.localeCompare(dateB))
+      .map(([date, revenue]) => ({
+        date,
+        revenue: Number((revenue / 100).toFixed(2)),
+        orders: dailyOrders[date],
+      }));
+
+    const topCategories = Object.entries(categoryRevenue)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 5)
+      .map(([category, revenue]) => ({
+        category,
+        revenue: Number((revenue / 100).toFixed(2)),
+      }));
+
+    res.json({
+      month: queryMonth,
+      year: queryYear,
+      stats: {
+        totalRevenue: Number((finalTotalRevenue / 100).toFixed(2)),
+        totalOrders,
+        avgOrderValue,
+      },
+      chartData,
+      topCategories,
+      dateStatsAvailable: !!createdAtExists,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: 'Błąd serwera' });

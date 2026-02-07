@@ -17,8 +17,10 @@ import {
   deleteCategory,
   getOrders,
   getOrderById,
+  createOrder,
   updateOrder,
   deleteOrder,
+  getStatistics,
 } from '../controllers/adminController';
 
 const router = Router();
@@ -47,7 +49,11 @@ router.delete('/users/:id', deleteUser);
 // Zamówienia
 router.get('/orders', getOrders);
 router.get('/orders/:id', getOrderById);
+router.post('/orders', createOrder);
 router.put('/orders/:id', updateOrder);
 router.delete('/orders/:id', deleteOrder);
+
+// Statystyki
+router.get('/statistics', getStatistics);
 
 export default router;

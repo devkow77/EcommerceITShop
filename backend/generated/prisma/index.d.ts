@@ -4963,6 +4963,7 @@ export namespace Prisma {
     totalAmount: number | null
     stripeSession: string | null
     status: $Enums.OrderStatus | null
+    createdAt: Date | null
   }
 
   export type OrderMaxAggregateOutputType = {
@@ -4971,6 +4972,7 @@ export namespace Prisma {
     totalAmount: number | null
     stripeSession: string | null
     status: $Enums.OrderStatus | null
+    createdAt: Date | null
   }
 
   export type OrderCountAggregateOutputType = {
@@ -4979,6 +4981,7 @@ export namespace Prisma {
     totalAmount: number
     stripeSession: number
     status: number
+    createdAt: number
     _all: number
   }
 
@@ -5001,6 +5004,7 @@ export namespace Prisma {
     totalAmount?: true
     stripeSession?: true
     status?: true
+    createdAt?: true
   }
 
   export type OrderMaxAggregateInputType = {
@@ -5009,6 +5013,7 @@ export namespace Prisma {
     totalAmount?: true
     stripeSession?: true
     status?: true
+    createdAt?: true
   }
 
   export type OrderCountAggregateInputType = {
@@ -5017,6 +5022,7 @@ export namespace Prisma {
     totalAmount?: true
     stripeSession?: true
     status?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -5112,6 +5118,7 @@ export namespace Prisma {
     totalAmount: number
     stripeSession: string | null
     status: $Enums.OrderStatus
+    createdAt: Date
     _count: OrderCountAggregateOutputType | null
     _avg: OrderAvgAggregateOutputType | null
     _sum: OrderSumAggregateOutputType | null
@@ -5139,6 +5146,7 @@ export namespace Prisma {
     totalAmount?: boolean
     stripeSession?: boolean
     status?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     items?: boolean | Order$itemsArgs<ExtArgs>
     _count?: boolean | OrderCountOutputTypeDefaultArgs<ExtArgs>
@@ -5150,6 +5158,7 @@ export namespace Prisma {
     totalAmount?: boolean
     stripeSession?: boolean
     status?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["order"]>
 
@@ -5159,6 +5168,7 @@ export namespace Prisma {
     totalAmount?: boolean
     stripeSession?: boolean
     status?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["order"]>
 
@@ -5168,9 +5178,10 @@ export namespace Prisma {
     totalAmount?: boolean
     stripeSession?: boolean
     status?: boolean
+    createdAt?: boolean
   }
 
-  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "totalAmount" | "stripeSession" | "status", ExtArgs["result"]["order"]>
+  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "totalAmount" | "stripeSession" | "status" | "createdAt", ExtArgs["result"]["order"]>
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     items?: boolean | Order$itemsArgs<ExtArgs>
@@ -5195,6 +5206,7 @@ export namespace Prisma {
       totalAmount: number
       stripeSession: string | null
       status: $Enums.OrderStatus
+      createdAt: Date
     }, ExtArgs["result"]["order"]>
     composites: {}
   }
@@ -5625,6 +5637,7 @@ export namespace Prisma {
     readonly totalAmount: FieldRef<"Order", 'Int'>
     readonly stripeSession: FieldRef<"Order", 'String'>
     readonly status: FieldRef<"Order", 'OrderStatus'>
+    readonly createdAt: FieldRef<"Order", 'DateTime'>
   }
     
 
@@ -8307,7 +8320,8 @@ export namespace Prisma {
     userId: 'userId',
     totalAmount: 'totalAmount',
     stripeSession: 'stripeSession',
-    status: 'status'
+    status: 'status',
+    createdAt: 'createdAt'
   };
 
   export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
@@ -8672,6 +8686,7 @@ export namespace Prisma {
     totalAmount?: IntFilter<"Order"> | number
     stripeSession?: StringNullableFilter<"Order"> | string | null
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
+    createdAt?: DateTimeFilter<"Order"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     items?: OrderItemListRelationFilter
   }
@@ -8682,6 +8697,7 @@ export namespace Prisma {
     totalAmount?: SortOrder
     stripeSession?: SortOrderInput | SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     items?: OrderItemOrderByRelationAggregateInput
   }
@@ -8695,6 +8711,7 @@ export namespace Prisma {
     userId?: IntFilter<"Order"> | number
     totalAmount?: IntFilter<"Order"> | number
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
+    createdAt?: DateTimeFilter<"Order"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     items?: OrderItemListRelationFilter
   }, "id" | "stripeSession">
@@ -8705,6 +8722,7 @@ export namespace Prisma {
     totalAmount?: SortOrder
     stripeSession?: SortOrderInput | SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
     _count?: OrderCountOrderByAggregateInput
     _avg?: OrderAvgOrderByAggregateInput
     _max?: OrderMaxOrderByAggregateInput
@@ -8721,6 +8739,7 @@ export namespace Prisma {
     totalAmount?: IntWithAggregatesFilter<"Order"> | number
     stripeSession?: StringNullableWithAggregatesFilter<"Order"> | string | null
     status?: EnumOrderStatusWithAggregatesFilter<"Order"> | $Enums.OrderStatus
+    createdAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
   }
 
   export type OrderItemWhereInput = {
@@ -9050,6 +9069,7 @@ export namespace Prisma {
     totalAmount: number
     stripeSession?: string | null
     status?: $Enums.OrderStatus
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutOrdersInput
     items?: OrderItemCreateNestedManyWithoutOrderInput
   }
@@ -9060,6 +9080,7 @@ export namespace Prisma {
     totalAmount: number
     stripeSession?: string | null
     status?: $Enums.OrderStatus
+    createdAt?: Date | string
     items?: OrderItemUncheckedCreateNestedManyWithoutOrderInput
   }
 
@@ -9067,6 +9088,7 @@ export namespace Prisma {
     totalAmount?: IntFieldUpdateOperationsInput | number
     stripeSession?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutOrdersNestedInput
     items?: OrderItemUpdateManyWithoutOrderNestedInput
   }
@@ -9077,6 +9099,7 @@ export namespace Prisma {
     totalAmount?: IntFieldUpdateOperationsInput | number
     stripeSession?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     items?: OrderItemUncheckedUpdateManyWithoutOrderNestedInput
   }
 
@@ -9086,12 +9109,14 @@ export namespace Prisma {
     totalAmount: number
     stripeSession?: string | null
     status?: $Enums.OrderStatus
+    createdAt?: Date | string
   }
 
   export type OrderUpdateManyMutationInput = {
     totalAmount?: IntFieldUpdateOperationsInput | number
     stripeSession?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderUncheckedUpdateManyInput = {
@@ -9100,6 +9125,7 @@ export namespace Prisma {
     totalAmount?: IntFieldUpdateOperationsInput | number
     stripeSession?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderItemCreateInput = {
@@ -9529,6 +9555,7 @@ export namespace Prisma {
     totalAmount?: SortOrder
     stripeSession?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type OrderAvgOrderByAggregateInput = {
@@ -9543,6 +9570,7 @@ export namespace Prisma {
     totalAmount?: SortOrder
     stripeSession?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type OrderMinOrderByAggregateInput = {
@@ -9551,6 +9579,7 @@ export namespace Prisma {
     totalAmount?: SortOrder
     stripeSession?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type OrderSumOrderByAggregateInput = {
@@ -10146,6 +10175,7 @@ export namespace Prisma {
     totalAmount: number
     stripeSession?: string | null
     status?: $Enums.OrderStatus
+    createdAt?: Date | string
     items?: OrderItemCreateNestedManyWithoutOrderInput
   }
 
@@ -10154,6 +10184,7 @@ export namespace Prisma {
     totalAmount: number
     stripeSession?: string | null
     status?: $Enums.OrderStatus
+    createdAt?: Date | string
     items?: OrderItemUncheckedCreateNestedManyWithoutOrderInput
   }
 
@@ -10192,6 +10223,7 @@ export namespace Prisma {
     totalAmount?: IntFilter<"Order"> | number
     stripeSession?: StringNullableFilter<"Order"> | string | null
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
+    createdAt?: DateTimeFilter<"Order"> | Date | string
   }
 
   export type OrderItemCreateWithoutProductInput = {
@@ -10496,6 +10528,7 @@ export namespace Prisma {
     totalAmount: number
     stripeSession?: string | null
     status?: $Enums.OrderStatus
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutOrdersInput
   }
 
@@ -10505,6 +10538,7 @@ export namespace Prisma {
     totalAmount: number
     stripeSession?: string | null
     status?: $Enums.OrderStatus
+    createdAt?: Date | string
   }
 
   export type OrderCreateOrConnectWithoutItemsInput = {
@@ -10559,6 +10593,7 @@ export namespace Prisma {
     totalAmount?: IntFieldUpdateOperationsInput | number
     stripeSession?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutOrdersNestedInput
   }
 
@@ -10568,6 +10603,7 @@ export namespace Prisma {
     totalAmount?: IntFieldUpdateOperationsInput | number
     stripeSession?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProductUpsertWithoutOrderItemsInput = {
@@ -10683,12 +10719,14 @@ export namespace Prisma {
     totalAmount: number
     stripeSession?: string | null
     status?: $Enums.OrderStatus
+    createdAt?: Date | string
   }
 
   export type OrderUpdateWithoutUserInput = {
     totalAmount?: IntFieldUpdateOperationsInput | number
     stripeSession?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     items?: OrderItemUpdateManyWithoutOrderNestedInput
   }
 
@@ -10697,6 +10735,7 @@ export namespace Prisma {
     totalAmount?: IntFieldUpdateOperationsInput | number
     stripeSession?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     items?: OrderItemUncheckedUpdateManyWithoutOrderNestedInput
   }
 
@@ -10705,6 +10744,7 @@ export namespace Prisma {
     totalAmount?: IntFieldUpdateOperationsInput | number
     stripeSession?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderItemCreateManyProductInput = {

@@ -14,6 +14,7 @@ import {
   AdminCategories,
   AdminUsers,
   AdminOrders,
+  AdminStatistics,
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/categories" element={<AdminCategories />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/admin/statistics" element={<AdminStatistics />} />
 
         {/* Error pages */}
         <Route path="/errors/404" element={<NotFound />} />

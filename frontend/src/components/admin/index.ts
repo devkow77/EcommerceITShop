@@ -9,6 +9,7 @@ import EditUserDialog from "./EditUserDialog";
 import DeleteUserDialog from "./DeleteUserDialog";
 import EditOrderDialog from "./EditOrderDialog";
 import DeleteOrderDialog from "./DeleteOrderDialog";
+import AddOrderDialog from "./AddOrderDialog";
 
 export {
   EditProductDialog,
@@ -22,4 +23,5 @@ export {
   DeleteUserDialog,
   EditOrderDialog,
   DeleteOrderDialog,
+  AddOrderDialog,
 };
