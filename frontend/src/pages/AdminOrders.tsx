@@ -3,27 +3,43 @@ import Forbidden from "@/pages/Forbidden";
 import { useAuth } from "@/context/AuthContext";
 import { Container } from "@/components";
 import {
-  AddProductDialog,
-  DeleteProductDialog,
-  EditProductDialog,
+  EditOrderDialog,
+  DeleteOrderDialog,
 } from "@/components/admin";
 import { Link } from "react-router-dom";
 
-interface Product {
+interface OrderItem {
   id: number;
-  name: string;
-  slug: string;
+  orderId: number;
+  productId: number;
+  quantity: number;
   price: number;
-  description: string;
-  discount: number;
-  imageUrl: string;
-  stock: number;
-  isAvailable: boolean;
-  categoryId: number;
+  product: {
+    id: number;
+    name: string;
+    price: number;
+  };
 }
 
-interface ProductsResponse {
-  data: Product[];
+interface OrderUser {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface Order {
+  id: number;
+  userId: number;
+  totalAmount: number;
+  stripeSession: string | null;
+  status: string;
+  createdAt: string;
+  user: OrderUser;
+  items: OrderItem[];
+}
+
+interface OrdersResponse {
+  data: Order[];
   meta: {
     page: number;
     limit: number;
@@ -32,11 +48,11 @@ interface ProductsResponse {
   };
 }
 
-const AdminProducts = () => {
+const AdminOrders = () => {
   const { user } = useAuth();
 
   // dane
-  const [products, setProducts] = useState<Product[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
 
   // paginacja
@@ -45,10 +61,11 @@ const AdminProducts = () => {
 
   // filtry / sortowanie
   const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("");
   const [sortBy, setSortBy] = useState("id");
-  const [order, setOrder] = useState<"asc" | "desc">("asc");
+  const [order, setOrder] = useState<"asc" | "desc">("desc");
 
-  const fetchProducts = async () => {
+  const fetchOrders = async () => {
     setLoading(true);
 
     try {
@@ -58,25 +75,53 @@ const AdminProducts = () => {
         sortBy,
         order,
         ...(search && { search }),
+        ...(status && { status }),
       });
 
-      const res = await fetch(`/api/admin/products?${params}`);
-      const json: ProductsResponse = await res.json();
+      const res = await fetch(`/api/admin/orders?${params}`);
+      const json: OrdersResponse = await res.json();
 
-      setProducts(json.data);
+      setOrders(json.data);
       setTotalPages(json.meta.totalPages);
     } catch (err) {
-      console.error("Błąd pobierania produktów", err);
+      console.error("Błąd pobierania zamówień", err);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchProducts();
-  }, [page, search, sortBy, order]);
+    fetchOrders();
+  }, [page, search, status, sortBy, order]);
 
   if (!user || user.role !== "ADMIN") return <Forbidden />;
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "PENDING":
+        return "text-yellow-600";
+      case "PAID":
+        return "text-blue-600";
+      case "SHIPPED":
+        return "text-purple-600";
+      case "COMPLETED":
+        return "text-green-600";
+      case "CANCELED":
+        return "text-red-600";
+      default:
+        return "text-gray-600";
+    }
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("pl-PL", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
 
   return (
     <section className="py-12">
@@ -123,7 +168,7 @@ const AdminProducts = () => {
           <div className="flex flex-wrap gap-2">
             <input
               type="text"
-              placeholder="Szukaj produktu..."
+              placeholder="Szukaj po imieniu/emailu..."
               value={search}
               onChange={(e) => {
                 setPage(1);
@@ -132,14 +177,29 @@ const AdminProducts = () => {
               className="rounded border px-3 py-2 text-sm"
             />
             <select
+              value={status}
+              onChange={(e) => {
+                setPage(1);
+                setStatus(e.target.value);
+              }}
+              className="rounded border px-3 py-2 text-sm"
+            >
+              <option value="">Wszystkie statusy</option>
+              <option value="PENDING">Oczekujące</option>
+              <option value="PAID">Opłacone</option>
+              <option value="SHIPPED">Wysłane</option>
+              <option value="COMPLETED">Ukończone</option>
+              <option value="CANCELED">Anulowane</option>
+            </select>
+            <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className="rounded border px-3 py-2 text-sm"
             >
               <option value="id">ID</option>
-              <option value="price">Cena</option>
-              <option value="stock">Stan</option>
-              <option value="name">Nazwa</option>
+              <option value="createdAt">Data</option>
+              <option value="totalAmount">Kwota</option>
+              <option value="status">Status</option>
             </select>
             <select
               value={order}
@@ -150,7 +210,6 @@ const AdminProducts = () => {
               <option value="desc">Malejąco</option>
             </select>
           </div>
-          <AddProductDialog onSuccess={fetchProducts} />
         </section>
 
         {/* TABELA */}
@@ -159,50 +218,59 @@ const AdminProducts = () => {
             <thead className="bg-gray-50 text-xs text-gray-600 uppercase">
               <tr>
                 <th className="px-4 py-3">ID</th>
-                <th className="px-4 py-3">Nazwa</th>
-                <th className="px-4 py-3">Zdjęcie</th>
-                <th className="px-4 py-3">Slug</th>
-                <th className="px-4 py-3">Cena</th>
-                <th className="px-4 py-3">Stan</th>
+                <th className="px-4 py-3">Klient</th>
+                <th className="px-4 py-3">Data</th>
+                <th className="px-4 py-3">Kwota</th>
+                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">Pozycje</th>
                 <th className="px-4 py-3 text-right">Akcje</th>
               </tr>
             </thead>
             <tbody className="divide-y">
               {loading ? (
                 <tr>
-                  <td colSpan={6} className="p-6 text-center">
+                  <td colSpan={7} className="p-6 text-center">
                     Ładowanie...
                   </td>
                 </tr>
-              ) : products.length === 0 ? (
+              ) : orders.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="p-6 text-center text-gray-500">
-                    Brak produktów
+                  <td colSpan={7} className="p-6 text-center text-gray-500">
+                    Brak zamówień
                   </td>
                 </tr>
               ) : (
-                products.map((p) => (
-                  <tr key={p.id} className="hover:bg-gray-50">
-                    <td className="px-4 py-3">{p.id}</td>
-                    <td className="px-4 py-3 font-medium">{p.name}</td>
-                    <td className="px-4 py-3 font-medium">
-                      <div className="h-14 w-14 bg-black/20"></div>
+                orders.map((o) => (
+                  <tr key={o.id} className="hover:bg-gray-50">
+                    <td className="px-4 py-3 font-medium">{o.id}</td>
+                    <td className="px-4 py-3">
+                      <div className="text-sm">
+                        <p className="font-medium">{o.user.name}</p>
+                        <p className="text-gray-500">{o.user.email}</p>
+                      </div>
                     </td>
-                    <td className="px-4 py-3 text-gray-500">
-                      /products/{p.slug}
+                    <td className="px-4 py-3 text-gray-500 text-xs">
+                      {formatDate(o.createdAt)}
+                    </td>
+                    <td className="px-4 py-3 font-medium">
+                      {(o.totalAmount / 100).toFixed(2)} zł
+                    </td>
+                    <td className={`px-4 py-3 font-medium ${getStatusColor(o.status)}`}>
+                      {o.status}
                     </td>
                     <td className="px-4 py-3">
-                      {(p.price / 100).toFixed(2)} zł
+                      <span className="inline-block bg-gray-100 px-2 py-1 rounded text-xs">
+                        {o.items.length} szt.
+                      </span>
                     </td>
-                    <td className="px-4 py-3">{p.stock}</td>
                     <td className="space-x-3 px-4 py-3 text-right">
-                      <EditProductDialog
-                        product={p}
-                        onSuccess={fetchProducts}
+                      <EditOrderDialog
+                        order={o}
+                        onSuccess={fetchOrders}
                       />
-                      <DeleteProductDialog
-                        productId={p.id}
-                        onSuccess={fetchProducts}
+                      <DeleteOrderDialog
+                        orderId={o.id}
+                        onSuccess={fetchOrders}
                       />
                     </td>
                   </tr>
@@ -239,4 +307,4 @@ const AdminProducts = () => {
   );
 };
 
-export default AdminProducts;
+export default AdminOrders;
