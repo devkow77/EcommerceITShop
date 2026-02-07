@@ -155,6 +155,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
   return res.status(204).send();
 };
 
+// Pobierz wszystkie kategorie
 export const getCategories = async (req: Request, res: Response) => {
   try {
     const {
@@ -205,6 +206,7 @@ export const getCategories = async (req: Request, res: Response) => {
   }
 };
 
+// Pobierz szczegóły kategorii
 export const getCategoryById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
@@ -219,6 +221,7 @@ export const getCategoryById = async (req: Request, res: Response) => {
   return res.status(200).json(category);
 };
 
+// Tworzenie nowej kategorii
 export const createCategory = async (req: Request, res: Response) => {
   const { name, slug } = req.body;
 
@@ -231,6 +234,7 @@ export const createCategory = async (req: Request, res: Response) => {
   }
 };
 
+// Aktualizacja kategorii
 export const updateCategory = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { name, slug } = req.body;
@@ -248,6 +252,7 @@ export const updateCategory = async (req: Request, res: Response) => {
   }
 };
 
+// Usuwanie kategorii
 export const deleteCategory = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
