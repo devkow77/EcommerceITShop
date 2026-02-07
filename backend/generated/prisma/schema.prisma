@@ -48,6 +48,7 @@ model Order {
   totalAmount   Int
   stripeSession String?     @unique
   status        OrderStatus @default(PENDING)
+  createdAt     DateTime    @default(now())
   user          User        @relation(fields: [userId], references: [id])
   items         OrderItem[]
 }

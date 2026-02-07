@@ -5,6 +5,7 @@ import { Container } from "@/components";
 import {
   EditOrderDialog,
   DeleteOrderDialog,
+  AddOrderDialog,
 } from "@/components/admin";
 import { Link } from "react-router-dom";
 
@@ -48,11 +49,25 @@ interface OrdersResponse {
   };
 }
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+}
+
 const AdminOrders = () => {
   const { user } = useAuth();
 
   // dane
   const [orders, setOrders] = useState<Order[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   // paginacja
@@ -90,9 +105,41 @@ const AdminOrders = () => {
     }
   };
 
+  const fetchUsers = async () => {
+    try {
+      const params = new URLSearchParams({
+        limit: "1000",
+      });
+      const res = await fetch(`/api/admin/users?${params}`);
+      const json: any = await res.json();
+      setUsers(json.data || []);
+    } catch (err) {
+      console.error("Błąd pobierania użytkowników", err);
+    }
+  };
+
+  const fetchProducts = async () => {
+    try {
+      const params = new URLSearchParams({
+        limit: "1000",
+      });
+      const res = await fetch(`/api/admin/products?${params}`);
+      const json: any = await res.json();
+      setProducts(json.data || []);
+    } catch (err) {
+      console.error("Błąd pobierania produktów", err);
+    }
+  };
+
   useEffect(() => {
     fetchOrders();
   }, [page, search, status, sortBy, order]);
+
+  // Pobierz dane do dialogów przy załadowaniu
+  useEffect(() => {
+    fetchUsers();
+    fetchProducts();
+  }, []);
 
   if (!user || user.role !== "ADMIN") return <Forbidden />;
 
@@ -157,10 +204,26 @@ const AdminOrders = () => {
             >
               Zamówienia
             </Link>
+            <Link
+              to="/admin/statistics"
+              className="bg-black px-4 py-2 text-sm text-white"
+            >
+              Statystyki
+            </Link>
           </div>
           <span className="text-sm text-gray-500">
             Zalogowany jako <b>{user.name}</b>
           </span>
+        </div>
+
+        {/* AKCJE */}
+        <div className="flex items-center justify-between">
+          <h3 className="text-xl font-semibold">Zamówienia</h3>
+          <AddOrderDialog
+            onSuccess={fetchOrders}
+            users={users}
+            products={products}
+          />
         </div>
 
         {/* FILTRY */}
@@ -249,25 +312,24 @@ const AdminOrders = () => {
                         <p className="text-gray-500">{o.user.email}</p>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-gray-500 text-xs">
+                    <td className="px-4 py-3 text-xs text-gray-500">
                       {formatDate(o.createdAt)}
                     </td>
                     <td className="px-4 py-3 font-medium">
                       {(o.totalAmount / 100).toFixed(2)} zł
                     </td>
-                    <td className={`px-4 py-3 font-medium ${getStatusColor(o.status)}`}>
+                    <td
+                      className={`px-4 py-3 font-medium ${getStatusColor(o.status)}`}
+                    >
                       {o.status}
                     </td>
                     <td className="px-4 py-3">
-                      <span className="inline-block bg-gray-100 px-2 py-1 rounded text-xs">
+                      <span className="inline-block rounded bg-gray-100 px-2 py-1 text-xs">
                         {o.items.length} szt.
                       </span>
                     </td>
                     <td className="space-x-3 px-4 py-3 text-right">
-                      <EditOrderDialog
-                        order={o}
-                        onSuccess={fetchOrders}
-                      />
+                      <EditOrderDialog order={o} onSuccess={fetchOrders} />
                       <DeleteOrderDialog
                         orderId={o.id}
                         onSuccess={fetchOrders}

@@ -3,10 +3,8 @@ import { z } from 'zod';
 
 export const updateOrderStatusSchema = z.object({
   status: z.enum(['PENDING', 'PAID', 'SHIPPED', 'COMPLETED', 'CANCELED'], {
-    errorMap: () => ({
-      message:
-        'Status musi być jedną z wartości: PENDING, PAID, SHIPPED, COMPLETED, CANCELED',
-    }),
+    message:
+      'Status musi być jedną z wartości: PENDING, PAID, SHIPPED, COMPLETED, CANCELED',
   }),
   totalAmount: z.number().positive('Kwota musi być dodatnia').optional(),
 });
@@ -26,6 +24,10 @@ export const createOrderSchema = z.object({
       }),
     )
     .min(1, 'Zamówienie musi zawierać co najmniej jeden produkt'),
+  status: z
+    .enum(['PENDING', 'PAID', 'SHIPPED', 'COMPLETED', 'CANCELED'])
+    .default('PENDING')
+    .optional(),
 });
 
 export type UpdateOrderStatusInput = z.infer<typeof updateOrderStatusSchema>;

@@ -157,7 +157,38 @@ async function main() {
       },
     });
   }
+
   console.log('Products seeded!');
+
+  // 4. SEEDOWANIE PRZYKŁADOWYCH ZAMÓWIEŃ
+  const kacper = await prisma.user.findUnique({
+    where: { email: 'kacper@gmail.com' },
+  });
+
+  if (kacper) {
+    const products = await prisma.product.findMany({ take: 3 });
+
+    for (let i = 0; i < 5; i++) {
+      const product = products[i % products.length];
+      const quantity = Math.floor(Math.random() * 3) + 1;
+
+      await prisma.order.create({
+        data: {
+          userId: kacper.id,
+          totalAmount: product.price * quantity,
+          status: ['PAID', 'SHIPPED', 'COMPLETED'][i % 3] as any,
+          items: {
+            create: {
+              productId: product.id,
+              quantity,
+              price: product.price,
+            },
+          },
+        },
+      });
+    }
+    console.log('Orders seeded!');
+  }
 }
 
 main()
