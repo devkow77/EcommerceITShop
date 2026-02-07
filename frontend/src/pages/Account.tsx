@@ -7,6 +7,7 @@ import {
 import { useAuth } from "@/context/AuthContext";
 import { useTotp } from "@/hooks/useTotp";
 import Forbidden from "@/pages/Forbidden";
+import { Link } from "react-router-dom";
 
 const Account = () => {
   const { qrCode, manualKey, loading, error } = useTotp();
@@ -29,6 +30,22 @@ const Account = () => {
   return (
     <section className="py-12">
       <Container className="space-y-8">
+        {/* Navigation */}
+        <div className="flex flex-wrap gap-2">
+          <Link
+            to="/account"
+            className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+          >
+            Moje konto
+          </Link>
+          <Link
+            to="/account/orders"
+            className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+          >
+            Moje zamówienia
+          </Link>
+        </div>
+
         {/* Podstawowe dane konta */}
         <div className="space-y-1">
           <h2 className="mb-4 text-xl font-bold">Twoje konto</h2>

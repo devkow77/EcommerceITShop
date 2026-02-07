@@ -2,6 +2,7 @@ import Home from "./Home";
 import Register from "./Register";
 import Login from "./Login";
 import Account from "./Account";
+import AccountOrders from "./AccountOrders";
 import NotFound from "./NotFound";
 import Forbidden from "./Forbidden";
 import ServerError from "./ServerError";
@@ -16,6 +17,7 @@ export {
   Register,
   Login,
   Account,
+  AccountOrders,
   NotFound,
   Forbidden,
   ServerError,
