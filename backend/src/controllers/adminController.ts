@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import prisma from '../prisma';
+import bcrypt from 'bcrypt';
 
 // Pobierz wszystkie prosdukty z opcjonalnymi filtrami, sortowaniem i paginacja
 export const getProducts = async (req: Request, res: Response) => {
@@ -154,13 +155,15 @@ export const deleteProduct = async (req: Request, res: Response) => {
   return res.status(204).send();
 };
 
-// ----------------------
-// Kategorie (CRUD)
-// ----------------------
-
 export const getCategories = async (req: Request, res: Response) => {
   try {
-    const { page = '1', limit = '10', sortBy = 'id', order = 'asc', search } = req.query;
+    const {
+      page = '1',
+      limit = '10',
+      sortBy = 'id',
+      order = 'asc',
+      search,
+    } = req.query;
 
     const pageNumber = Number(page);
     const limitNumber = Number(limit);
@@ -210,7 +213,8 @@ export const getCategoryById = async (req: Request, res: Response) => {
     include: { products: true },
   });
 
-  if (!category) return res.status(404).json({ message: 'Kategoria nie istnieje' });
+  if (!category)
+    return res.status(404).json({ message: 'Kategoria nie istnieje' });
 
   return res.status(200).json(category);
 };
@@ -248,11 +252,161 @@ export const deleteCategory = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
   // Jeśli kategoria ma produkty, zabroń usunięcia
-  const productsCount = await prisma.product.count({ where: { categoryId: id } });
+  const productsCount = await prisma.product.count({
+    where: { categoryId: id },
+  });
   if (productsCount > 0) {
-    return res.status(400).json({ message: 'Kategoria posiada produkty. Usuń lub przenieś produkty przed usunięciem.' });
+    return res
+      .status(400)
+      .json({
+        message:
+          'Kategoria posiada produkty. Usuń lub przenieś produkty przed usunięciem.',
+      });
   }
 
   await prisma.category.delete({ where: { id } });
   return res.status(204).send();
+};
+
+// Pobierz wszystkich użytkowników z opcjonalnymi filtrami, sortowaniem i paginacją
+export const getUsers = async (req: Request, res: Response) => {
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
+  const sortBy = (req.query.sortBy as string) || 'id';
+  const order = req.query.order === 'desc' ? 'desc' : 'asc';
+  const search = req.query.search as string | undefined;
+
+  const where: any = search
+    ? {
+        OR: [
+          { name: { contains: search, mode: 'insensitive' } },
+          { email: { contains: search, mode: 'insensitive' } },
+        ],
+      }
+    : {};
+
+  const [users, total] = await Promise.all([
+    prisma.user.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: { [sortBy]: order },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        createdAt: true,
+      },
+    }),
+    prisma.user.count({ where }),
+  ]);
+
+  res.json({
+    data: users,
+    meta: {
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit),
+    },
+  });
+};
+
+// Pobierz szczegóły użytkownika po ID
+export const getUserById = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
+  const user = await prisma.user.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      createdAt: true,
+      orders: true,
+    },
+  });
+
+  if (!user) {
+    return res.status(404).json({ message: 'Użytkownik nie istnieje' });
+  }
+
+  res.json(user);
+};
+
+// Tworzenie nowego użytkownika
+export const createUser = async (req: Request, res: Response) => {
+  const { name, email, password, role } = req.body;
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const user = await prisma.user.create({
+    data: {
+      name,
+      email,
+      password: hashedPassword,
+      role,
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      createdAt: true,
+    },
+  });
+
+  res.status(201).json(user);
+};
+
+// Aktualizacja użytkownika
+export const updateUser = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const { name, email, password, role } = req.body;
+
+  const data: any = {
+    name,
+    email,
+    role,
+  };
+
+  if (password) {
+    data.password = await bcrypt.hash(password, 10);
+  }
+
+  const user = await prisma.user.update({
+    where: { id },
+    data,
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      createdAt: true,
+    },
+  });
+
+  res.json(user);
+};
+
+// Usun użytkownika wraz z jego zamówieniami i pozycjami zamówień
+export const deleteUser = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
+  await prisma.$transaction([
+    prisma.orderItem.deleteMany({
+      where: { order: { userId: id } },
+    }),
+    prisma.order.deleteMany({
+      where: { userId: id },
+    }),
+    prisma.user.delete({
+      where: { id },
+    }),
+  ]);
+
+  res.status(204).send();
 };

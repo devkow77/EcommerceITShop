@@ -9,6 +9,9 @@ import {
   Forbidden,
   ServerError,
   Admin,
+  AdminProducts,
+  AdminCategories,
+  AdminUsers,
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 
@@ -22,6 +25,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/admin/categories" element={<AdminCategories />} />
 
         {/* Error pages */}
         <Route path="/errors/404" element={<NotFound />} />
