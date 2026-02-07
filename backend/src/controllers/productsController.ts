@@ -57,7 +57,7 @@ export const getTodayPromotions = async (req: Request, res: Response) => {
         slug: true,
         imageUrl: true,
         category: {
-          select: { name: true },
+          select: { name: true, slug: true },
         },
       },
       take: 5,

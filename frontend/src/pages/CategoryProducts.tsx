@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Container } from "@/components";
-import { Button } from "@/components/ui/button";
+import { ShoppingBasket } from "lucide-react";
 
 interface Product {
   id: number;
   name: string;
   slug: string;
   price: number; // grosze
-  discountedPrice: number; // grosze
-  discountPercent: number;
+  discount: number; // grosze
   imageUrl: string;
 }
 
@@ -173,7 +172,7 @@ const CategoryProducts = () => {
               setSort("newest");
               setPage(1);
             }}
-            className="rounded-lg border bg-gray-100 text-sm hover:bg-gray-200"
+            className="rounded-lg border bg-gray-100 text-sm hover:bg-gray-200 dark:bg-black"
           >
             Wyczyść filtry
           </button>
@@ -189,41 +188,30 @@ const CategoryProducts = () => {
         ) : (
           <>
             {/* GRID produktów */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
               {products.map((product) => (
                 <Link
                   key={product.id}
                   to={`/products/${category}/${product.slug}`}
                 >
-                  <div className="group relative flex h-full flex-col rounded-xl border bg-white p-4 shadow-sm transition hover:shadow-md">
-                    {product.discountPercent > 0 && (
-                      <div className="absolute -top-3 -right-3 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white">
-                        -{product.discountPercent}%
-                      </div>
-                    )}
-
-                    <img
-                      src={product.imageUrl}
-                      alt={product.name}
-                      className="mb-3 h-40 w-full rounded-lg object-cover"
-                    />
-
-                    <h3 className="mb-2 text-sm font-medium text-gray-800 group-hover:text-blue-600">
-                      {product.name}
-                    </h3>
-
-                    <div className="mt-auto flex flex-col">
-                      {product.discountPercent > 0 && (
-                        <span className="text-xs text-gray-400 line-through">
-                          {formatPrice(product.price)}
-                        </span>
-                      )}
-                      <span className="text-lg font-bold text-red-600">
-                        {formatPrice(product.discountedPrice)}
-                      </span>
+                  <div className="relative aspect-square bg-black dark:bg-white/60">
+                    <div className="absolute top-0 right-0 bg-red-600 px-3 py-1 text-sm font-semibold text-white">
+                      -10%
                     </div>
-
-                    <Button className="mt-4 w-full">Do koszyka</Button>
+                  </div>
+                  <div className="space-y-2 py-2">
+                    <h3 className="truncate font-bold">{product.name}</h3>
+                    {product.discount > 0 && (
+                      <span>{formatPrice(product.price)}</span>
+                    )}
+                    <p>{formatPrice(product.discount)}</p>
+                    <Link
+                      to="/"
+                      className="flex w-full items-center justify-center gap-x-2 bg-blue-500 px-4 py-2 text-sm font-semibold text-white"
+                    >
+                      Do koszyka
+                      <ShoppingBasket />
+                    </Link>
                   </div>
                 </Link>
               ))}

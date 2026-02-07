@@ -12,6 +12,13 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useEffect, useState } from "react";
+
+interface Category {
+  id: number;
+  name: string;
+  slug: string;
+}
 
 const Navbar = () => {
   const desktop = useMediaQuery("(min-width: 768px)");
@@ -90,30 +97,33 @@ const MainContent = () => {
 };
 
 const DesktopBottomNavbar = () => {
-  const categories: string[] = [
-    "Laptopy",
-    "Smartfony",
-    "Tablety",
-    "Akcesoria",
-    "Podzespoły komputerowe",
-    "Monitory",
-    "Drukarki",
-    "Sieci komputerowe",
-    "Promocje",
-  ];
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await fetch("/api/categories");
+        const data: Category[] = await res.json();
+        setCategories(data);
+      } catch (err) {
+        console.error("Błąd pobierania kategorii:", err);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   return (
     <div className="hidden md:block">
       <ul className="flex flex-wrap items-center justify-center gap-x-2 text-sm font-semibold">
-        {categories.map((category: string, i: number) => {
-          return (
-            <Link to="#" key={i}>
-              <li className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5 dark:hover:bg-white/10">
-                {category}
-              </li>
-            </Link>
-          );
-        })}
+        {categories.map((category: Category) => (
+          <li
+            key={category.id}
+            className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5 dark:hover:bg-white/10"
+          >
+            <Link to={`/products/${category.slug}`}>{category.name}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );

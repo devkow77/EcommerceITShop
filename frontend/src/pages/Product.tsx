@@ -55,12 +55,12 @@ const Product = () => {
     <section className="py-10">
       <Container className="grid grid-cols-1 gap-10 md:grid-cols-2">
         <div className="flex justify-center">
-          {/* <img
+          <img
             src={productData.imageUrl}
             alt={productData.name}
-            className="max-w-full rounded-lg shadow-md"
-          /> */}
-          <div className="h-80 w-80 bg-black/20"></div>
+            className="max-w-md"
+          />
+          {/* <div className="h-80 w-80 bg-black/20"></div> */}
         </div>
 
         <div className="space-y-4">
