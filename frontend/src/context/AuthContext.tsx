@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   // sprawdzamy zalogowanego usera przy starcie
   useEffect(() => {
-    fetch("http://localhost:4000/api/auth/me", {
+    fetch("/api/auth/me", {
       method: "GET",
       credentials: "include",
     })

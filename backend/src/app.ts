@@ -1,9 +1,10 @@
 import express from 'express';
 import authRoutes from './routes/authRoutes';
+import productsRoutes from './routes/productsRoutes';
+import adminRoutes from './routes/adminRoutes';
 import { errorHandler } from './middlewares/errorHandler';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import productsRoutes from './routes/productsRoutes';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productsRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.use(errorHandler);
 
