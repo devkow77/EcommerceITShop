@@ -95,7 +95,14 @@ const Profile = () => {
                 </NavigationMenuLink>
 
                 <NavigationMenuLink asChild>
-                  <Link to="#" className={menuItemClass}>
+                  <Link
+                    to={
+                      user && user.role == "USER"
+                        ? "/account/orders"
+                        : "/admin/orders"
+                    }
+                    className={menuItemClass}
+                  >
                     <NotepadText className={iconClass} />
                     Zamówienia
                   </Link>
@@ -115,12 +122,6 @@ const Profile = () => {
                   </Link>
                 </NavigationMenuLink>
               </div>
-
-              {/* THEME */}
-              <NavigationMenuLink className={menuItemClass}>
-                <Moon className={iconClass} />
-                Tryb ciemny / jasny
-              </NavigationMenuLink>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

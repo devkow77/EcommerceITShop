@@ -84,6 +84,12 @@ const AdminCategories = () => {
             >
               Użytkownicy
             </Link>
+            <Link
+              to="/admin/orders"
+              className="bg-black px-4 py-2 text-sm text-white"
+            >
+              Zamówienia
+            </Link>
           </div>
           <span className="text-sm text-gray-500">
             Zalogowany jako <b>{user.name}</b>

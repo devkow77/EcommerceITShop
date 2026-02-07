@@ -256,12 +256,10 @@ export const deleteCategory = async (req: Request, res: Response) => {
     where: { categoryId: id },
   });
   if (productsCount > 0) {
-    return res
-      .status(400)
-      .json({
-        message:
-          'Kategoria posiada produkty. Usuń lub przenieś produkty przed usunięciem.',
-      });
+    return res.status(400).json({
+      message:
+        'Kategoria posiada produkty. Usuń lub przenieś produkty przed usunięciem.',
+    });
   }
 
   await prisma.category.delete({ where: { id } });
@@ -409,4 +407,197 @@ export const deleteUser = async (req: Request, res: Response) => {
   ]);
 
   res.status(204).send();
+};
+
+// Pobierz wszystkie zamówienia z opcjonalnymi filtrami, sortowaniem i paginacją
+export const getOrders = async (req: Request, res: Response) => {
+  try {
+    const {
+      page = '1',
+      limit = '10',
+      sortBy = 'id',
+      order = 'asc',
+      search,
+      status,
+      userId,
+      minAmount,
+      maxAmount,
+    } = req.query;
+
+    const pageNumber = Number(page);
+    const limitNumber = Number(limit);
+    const skip = (pageNumber - 1) * limitNumber;
+
+    // 🔍 FILTRY
+    const where: any = {
+      ...(search && {
+        user: {
+          OR: [
+            { name: { contains: String(search), mode: 'insensitive' } },
+            { email: { contains: String(search), mode: 'insensitive' } },
+          ],
+        },
+      }),
+      ...(status && { status: String(status) }),
+      ...(userId && { userId: Number(userId) }),
+      ...(minAmount || maxAmount
+        ? {
+            totalAmount: {
+              ...(minAmount && { gte: Number(minAmount) }),
+              ...(maxAmount && { lte: Number(maxAmount) }),
+            },
+          }
+        : {}),
+    };
+
+    // ZAPYTANIA
+    const [orders, total] = await Promise.all([
+      prisma.order.findMany({
+        where,
+        skip,
+        take: limitNumber,
+        orderBy: {
+          [String(sortBy)]: order === 'desc' ? 'desc' : 'asc',
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              name: true,
+              email: true,
+            },
+          },
+          items: {
+            include: {
+              product: {
+                select: {
+                  id: true,
+                  name: true,
+                  price: true,
+                },
+              },
+            },
+          },
+        },
+      }),
+      prisma.order.count({ where }),
+    ]);
+
+    res.json({
+      data: orders,
+      meta: {
+        page: pageNumber,
+        limit: limitNumber,
+        total,
+        totalPages: Math.ceil(total / limitNumber),
+      },
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: 'Błąd serwera' });
+  }
+};
+
+// Pobierz szczegóły zamówienia po ID
+export const getOrderById = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const order = await prisma.order.findUnique({
+      where: { id: Number(id) },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            createdAt: true,
+          },
+        },
+        items: {
+          include: {
+            product: {
+              select: {
+                id: true,
+                name: true,
+                price: true,
+                imageUrl: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    if (!order) {
+      return res.status(404).json({ message: 'Zamówienie nie istnieje' });
+    }
+
+    return res.status(200).json(order);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: 'Błąd serwera' });
+  }
+};
+
+// Aktualizacja zamówienia (głównie status)
+export const updateOrder = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { status, totalAmount } = req.body;
+
+    const order = await prisma.order.update({
+      where: { id: Number(id) },
+      data: {
+        ...(status && { status }),
+        ...(totalAmount && { totalAmount: Number(totalAmount) }),
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+        items: {
+          include: {
+            product: {
+              select: {
+                id: true,
+                name: true,
+                price: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    return res.status(200).json(order);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: 'Błąd serwera' });
+  }
+};
+
+// Usuwanie zamówienia
+export const deleteOrder = async (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id);
+
+    await prisma.$transaction([
+      prisma.orderItem.deleteMany({
+        where: { orderId: id },
+      }),
+      prisma.order.delete({
+        where: { id },
+      }),
+    ]);
+
+    return res.status(204).send();
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: 'Błąd serwera' });
+  }
 };

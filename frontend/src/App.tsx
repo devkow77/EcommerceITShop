@@ -12,6 +12,7 @@ import {
   AdminProducts,
   AdminCategories,
   AdminUsers,
+  AdminOrders,
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/admin/products" element={<AdminProducts />} />
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/categories" element={<AdminCategories />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
 
         {/* Error pages */}
         <Route path="/errors/404" element={<NotFound />} />
