@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navbar, ThemeToggle } from "./components";
+import { Footer, Navbar, ThemeToggle } from "./components";
 import {
   Home,
   Login,
@@ -29,13 +29,12 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
 
-        <Route path="/admin" element={<Admin />}>
-          <Route path="products" element={<AdminProducts />} />
-          <Route path="users" element={<AdminUsers />} />
-          <Route path="categories" element={<AdminCategories />} />
-          <Route path="orders" element={<AdminOrders />} />
-          <Route path="statistics" element={<AdminStatistics />} />
-        </Route>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/admin/categories" element={<AdminCategories />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/admin/statistics" element={<AdminStatistics />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
 
         <Route path="/products/:category" element={<CategoryProducts />} />
         <Route path="/products/:category/:product" element={<Product />} />
@@ -50,6 +49,7 @@ function App() {
       </Routes>
       <ThemeToggle />
       <Toaster />
+      <Footer />
     </Router>
   );
 }

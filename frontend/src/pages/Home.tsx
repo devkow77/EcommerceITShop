@@ -1,6 +1,8 @@
 import { Container } from "@/components";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ShoppingBasket } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Product {
   id: number;
@@ -8,7 +10,6 @@ interface Product {
   slug: string;
   price: number; // w groszach
   discount: number; // procent rabatu
-  discountedPrice: number; // price po rabacie
   imageUrl: string;
   category: {
     name: string;
@@ -75,100 +76,111 @@ const Home = () => {
   }
 
   return (
-    <div className="space-y-16 py-10">
-      <Container>
-        {/* Sekcja promocji */}
-        {promotions.length > 0 && (
-          <Container>
-            <section className="space-y-6">
-              <h2 className="text-center text-3xl font-bold text-gray-900">
-                Okazje Dnia
-              </h2>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-5">
-                {promotions.map((product: Product, index: number) => (
-                  <Link
-                    to={`/products/${product.category.slug}/${product.slug}`}
-                  >
-                    <div
-                      key={index}
-                      className="group relative flex flex-col items-start rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:shadow-md"
-                    >
-                      <div className="absolute -top-3 -right-3 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow-sm">
-                        {product.discount}%
-                      </div>
-                      <h3 className="mb-2 text-sm font-medium text-gray-700 group-hover:text-blue-600">
-                        {product.name}
-                      </h3>
-                      <div className="mt-auto flex flex-col">
-                        <span className="text-xs text-gray-400 line-through">
-                          {formatPrice(product.price)}
-                        </span>
-                        <span className="text-xl font-bold text-red-600">
-                          {formatPrice(product.discountedPrice)}
-                        </span>
-                      </div>
-                      <button className="mt-4 w-full rounded-lg bg-gray-900 py-2 text-xs font-semibold text-white transition-colors hover:bg-gray-700">
-                        Do koszyka
-                      </button>
+    <main className="space-y-16 py-10">
+      <Container className="space-y-12">
+        {promotions.length && (
+          <article className="space-y-6">
+            <h2 className="mb-10 text-center text-3xl font-bold">
+              Okazje dnia!
+            </h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-5">
+              {promotions.map((product: Product, index: number) => (
+                <Link
+                  key={index}
+                  to={`/products/${product.category.name}/${product.slug}`}
+                >
+                  <div className="relative aspect-square bg-black dark:bg-white/60">
+                    <div className="absolute top-0 right-0 bg-yellow-600 px-3 py-1 text-sm font-semibold text-white">
+                      -30%
                     </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          </Container>
-        )}
-      </Container>
-      {categories.map((category: Category, index: number) => (
-        <Container key={index} className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900">{category.name}</h2>
-          {category.products.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {category.products.map((product) => (
-                <Link to={`/products/${category.slug}/${product.slug}`}>
-                  <div
-                    key={product.id}
-                    className="group flex flex-col items-start rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md"
-                  >
+                  </div>
+                  <div className="space-y-2 py-2">
+                    <h3 className="truncate font-bold">{product.name}</h3>
                     {product.discount > 0 && (
-                      <div className="absolute -top-3 -right-3 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow-sm">
-                        -{product.discount}%
-                      </div>
+                      <span>{formatPrice(product.price)}</span>
                     )}
-                    <h3 className="mb-2 text-sm font-medium text-gray-700 group-hover:text-blue-600">
-                      {product.name}
-                    </h3>
-                    <div className="mt-auto flex flex-col">
-                      {product.discount > 0 && (
-                        <span className="text-xs text-gray-400 line-through">
-                          {formatPrice(product.price)}
-                        </span>
-                      )}
-                      <span className="text-xl font-bold text-red-600">
-                        {formatPrice(product.discountedPrice)}
-                      </span>
-                    </div>
-                    <button className="mt-4 w-full rounded-lg bg-gray-900 py-2 text-xs font-semibold text-white hover:bg-gray-700">
+                    <p>{formatPrice(product.discount)}</p>
+                    <Button className="flex w-full items-center justify-center gap-x-2 bg-blue-500 px-4 py-2 text-sm font-semibold text-white duration-200 hover:bg-blue-700">
                       Do koszyka
-                    </button>
+                      <ShoppingBasket />
+                    </Button>
                   </div>
                 </Link>
               ))}
             </div>
-          ) : (
-            <p className="text-gray-400">
-              Aktualnie brak produktów w tej kategorii.
-            </p>
-          )}
-          <Link
-            to={`/products/${category.slug}`}
-            className="bg-blue-600 px-4 py-2 text-white"
-          >
-            Zobacz wszystkie {category.name}
-          </Link>
-        </Container>
-      ))}
-    </div>
+          </article>
+        )}
+        <article>
+          <h2 className="mb-10 text-3xl font-bold">Produkty w sklepie</h2>
+          <div className="space-y-12">
+            {categories.map((category: Category, index: number) => (
+              <section key={index} className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <h3 className="text-xl font-semibold">{category.name}</h3>
+                  <Link
+                    className="text-sm italic opacity-60"
+                    to={`/products/${category.slug}`}
+                  >
+                    Zobacz wszystkie {category.name.toLowerCase()}
+                  </Link>
+                </div>
+                {category.products.length ? (
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
+                    {category.products.map((product) => (
+                      <Link
+                        key={product.id}
+                        to={`/products/${category}/${product.slug}`}
+                      >
+                        <div className="relative aspect-square bg-black dark:bg-white/60">
+                          <div className="absolute top-0 right-0 bg-red-600 px-3 py-1 text-sm font-semibold text-white">
+                            -10%
+                          </div>
+                        </div>
+                        <div className="space-y-2 py-2">
+                          <h3 className="truncate font-bold">{product.name}</h3>
+                          {product.discount > 0 && (
+                            <span>{formatPrice(product.price)}</span>
+                          )}
+                          <p>{formatPrice(product.discount)}</p>
+                          <Button className="flex w-full items-center justify-center gap-x-2 bg-blue-500 px-4 py-2 text-sm font-semibold text-white duration-200 hover:bg-blue-700">
+                            Do koszyka
+                            <ShoppingBasket />
+                          </Button>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <p>Aktualnie brak produktów w tej kategorii.</p>
+                )}
+              </section>
+            ))}
+          </div>
+        </article>
+      </Container>
+    </main>
   );
 };
+
+//   <div>
+//     {product.discount > 0 && (
+//       <div>-{product.discount}%</div>
+//     )}
+//     <img
+//       src={product.imageUrl}
+//       alt={product.name}
+//       className="aspect-square object-cover"
+//     />
+//     <h3>{product.name}</h3>
+//     <div>
+//       {product.discount > 0 && (
+//         <span>{formatPrice(product.price)}</span>
+//       )}
+//       <span>{formatPrice(product.discountedPrice)}</span>
+//     </div>
+//     <Button className="w-full bg-blue-500">
+//       Do koszyka
+//     </Button>
+//   </div>
 
 export default Home;

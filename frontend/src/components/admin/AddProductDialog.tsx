@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -34,16 +34,20 @@ const formSchema = z.object({
   price: z.coerce.number().min(0),
   description: z.string(),
   discount: z.coerce.number().min(0).optional(),
-  imageUrl: z.string(),
+  imageUrl: z.string().min(1, "Musisz przesłać zdjęcie produktu"),
   stock: z.coerce.number().min(0),
   isAvailable: z.coerce.boolean(),
-  categoryId: z.coerce.number(),
+  categoryId: z.coerce.number().min(1, "Musisz wybrać kategorię"),
 });
 
 type ProductFormValues = z.infer<typeof formSchema>;
 
 const AddProductDialog = ({ onSuccess }: Props) => {
   const [open, setOpen] = useState(false);
+  const [categories, setCategories] = useState<{ id: number; name: string }[]>(
+    [],
+  );
+
   const form = useForm<ProductFormValues>({
     resolver: zodResolver(formSchema) as Resolver<ProductFormValues>,
     defaultValues: {
@@ -59,31 +63,36 @@ const AddProductDialog = ({ onSuccess }: Props) => {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  // Pobranie kategorii przy mount
+  useEffect(() => {
+    fetch("/api/categories")
+      .then((res) => res.json())
+      .then((data) => setCategories(data))
+      .catch((err) => console.error("Błąd pobierania kategorii:", err));
+  }, []);
+
+  async function onSubmit(values: ProductFormValues) {
     try {
       const response = await fetch("/api/admin/products", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        console.log(`Blad dodania produktu: ${data.message}`);
+        toast.error(`Błąd dodania produktu: ${data.message}`);
         return;
       }
 
-      toast.success("Produkt dodany pomyślnie!", {
-        position: "top-center",
-      });
-
+      toast.success("Produkt dodany pomyślnie!");
       onSuccess();
       setOpen(false);
+      form.reset();
     } catch (error) {
       console.error("Błąd dodania produktu:", error);
+      toast.error("Błąd dodania produktu!");
     }
   }
 
@@ -100,11 +109,13 @@ const AddProductDialog = ({ onSuccess }: Props) => {
             po potwierdzeniu.
           </DialogDescription>
         </DialogHeader>
+
         <Form<ProductFormValues> {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="grid grid-cols-2 gap-4 md:grid-cols-2 md:gap-4"
           >
+            {/* Nazwa */}
             <FormField
               control={form.control}
               name="name"
@@ -118,6 +129,8 @@ const AddProductDialog = ({ onSuccess }: Props) => {
                 </FormItem>
               )}
             />
+
+            {/* Slug */}
             <FormField
               control={form.control}
               name="slug"
@@ -131,6 +144,8 @@ const AddProductDialog = ({ onSuccess }: Props) => {
                 </FormItem>
               )}
             />
+
+            {/* Cena */}
             <FormField
               control={form.control}
               name="price"
@@ -149,12 +164,13 @@ const AddProductDialog = ({ onSuccess }: Props) => {
               )}
             />
 
+            {/* Upust */}
             <FormField
               control={form.control}
               name="discount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Upust (procenty)</FormLabel>
+                  <FormLabel>Upust (%)</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -166,6 +182,8 @@ const AddProductDialog = ({ onSuccess }: Props) => {
                 </FormItem>
               )}
             />
+
+            {/* Opis */}
             <FormField
               control={form.control}
               name="description"
@@ -179,22 +197,33 @@ const AddProductDialog = ({ onSuccess }: Props) => {
                 </FormItem>
               )}
             />
+
+            {/* Upload zdjęcia */}
             <FormField
               control={form.control}
               name="imageUrl"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Zdjęcie</FormLabel>
+                <FormItem className="col-span-2">
+                  <FormLabel>Adres URL zdjęcia</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Wpisz URL zdjęcia produktu..."
                       {...field}
+                      placeholder="Wpisz adres URL zdjęcia produktu..."
                     />
                   </FormControl>
                   <FormMessage />
+                  {field.value && (
+                    <img
+                      src={field.value}
+                      alt="Podgląd"
+                      className="mt-2 max-h-24 rounded border"
+                    />
+                  )}
                 </FormItem>
               )}
             />
+
+            {/* Stan magazynowy */}
             <FormField
               control={form.control}
               name="stock"
@@ -212,6 +241,8 @@ const AddProductDialog = ({ onSuccess }: Props) => {
                 </FormItem>
               )}
             />
+
+            {/* Dostępność */}
             <FormField
               control={form.control}
               name="isAvailable"
@@ -228,23 +259,31 @@ const AddProductDialog = ({ onSuccess }: Props) => {
                 </FormItem>
               )}
             />
+
+            {/* Kategoria */}
             <FormField
               control={form.control}
               name="categoryId"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="col-span-2">
                   <FormLabel>Kategoria</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="Wpisz kategorię produktu..."
-                      {...field}
-                    />
+                    <select {...field} className="w-full rounded border p-2">
+                      <option value={0}>-- Wybierz kategorię --</option>
+                      {categories.map((cat) => (
+                        <option key={cat.id} value={cat.id}>
+                          {cat.name}
+                        </option>
+                      ))}
+                    </select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <div className="flex flex-wrap items-center gap-4">
+
+            {/* Submit */}
+            <div className="col-span-2 flex flex-wrap items-center gap-4">
               <Button type="submit" variant={"success"}>
                 Dodaj produkt
               </Button>
