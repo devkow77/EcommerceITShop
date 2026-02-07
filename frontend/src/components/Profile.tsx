@@ -7,7 +7,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
-import { User, NotepadText, RotateCcw, Heart, Moon } from "lucide-react";
+import { User, NotepadText, RotateCcw, Heart } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 const Profile = () => {
