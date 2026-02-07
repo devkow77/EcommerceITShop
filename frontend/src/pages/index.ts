@@ -6,6 +6,9 @@ import NotFound from "./NotFound";
 import Forbidden from "./Forbidden";
 import ServerError from "./ServerError";
 import Admin from "./Admin";
+import AdminProducts from "./AdminProducts";
+import AdminCategories from "./AdminCategories";
+import AdminUsers from "./AdminUsers";
 
 export {
   Home,
@@ -16,4 +19,7 @@ export {
   Forbidden,
   ServerError,
   Admin,
+  AdminProducts,
+  AdminCategories,
+  AdminUsers,
 };
