@@ -15,6 +15,7 @@ import {
 
 interface ChartData {
   date: string;
+  dateFormatted: string;
   revenue: number;
   orders: number;
 }
@@ -206,19 +207,11 @@ const AdminStatistics = () => {
                       <ResponsiveContainer>
                         <LineChart data={statistics.chartData}>
                           <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis
-                            dataKey="date"
-                            tickFormatter={(iso: any) =>
-                              String(new Date(iso).getDate())
-                            }
-                          />
+                          <XAxis dataKey="dateFormatted" />
                           <YAxis
                             tickFormatter={(val) => `${Number(val).toFixed(0)}`}
                           />
                           <Tooltip
-                            labelFormatter={(iso: any) =>
-                              new Date(iso).toLocaleDateString("pl-PL")
-                            }
                             formatter={(value: any) => [
                               value != null
                                 ? `${Number(value).toFixed(2)} zł`
@@ -250,9 +243,7 @@ const AdminStatistics = () => {
                           {statistics.chartData.map((data) => (
                             <tr key={data.date} className="hover:bg-gray-50">
                               <td className="px-4 py-3">
-                                {new Date(data.date).toLocaleDateString(
-                                  "pl-PL",
-                                )}
+                                {data.dateFormatted}
                               </td>
                               <td className="px-4 py-3 text-right font-medium">
                                 {data.revenue.toFixed(2)} zł

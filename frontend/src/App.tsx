@@ -5,6 +5,7 @@ import {
   Login,
   Register,
   Account,
+  AccountOrders,
   NotFound,
   Forbidden,
   ServerError,
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/account/orders" element={<AccountOrders />} />
 
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/users" element={<AdminUsers />} />

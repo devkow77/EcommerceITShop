@@ -65,7 +65,7 @@ export const getTodayPromotions = async (req: Request, res: Response) => {
 
     const promotionsWithCalculatedPrice = products.map((product) => ({
       ...product,
-      discountPercent: 10,
+      discount: 10,
       discountedPrice: Math.round(product.price * 0.9),
     }));
 
@@ -203,5 +203,158 @@ export const getProduct = async (req: Request, res: Response) => {
   } catch (err) {
     console.error('Błąd pobierania produktu:', err);
     res.status(500).json({ message: 'Błąd serwera' });
+  }
+};
+
+// Losuj nowy Hot Shot produkt (co 12 godzin)
+export const handleHotShotRotation = async () => {
+  try {
+    const now = new Date();
+    const inTwelveHours = new Date(now.getTime() + 12 * 60 * 60 * 1000);
+
+    // 1. Sprawdź czy jest aktywny HotShot
+    const currentHotShot = await prisma.$queryRaw<
+      Array<{ id: number; productId: number; expiresAt: Date }>
+    >`
+      SELECT id, "productId", "expiresAt" FROM "HotShot" 
+      WHERE "isActive" = true AND "expiresAt" > NOW()
+      LIMIT 1
+    `;
+
+    if (currentHotShot && currentHotShot.length > 0) {
+      console.log(`[HotShot] Produkt ${currentHotShot[0].productId} jest aktywny do ${currentHotShot[0].expiresAt.toISOString()}`);
+      return;
+    }
+
+    console.log('[HotShot] Losowanie nowego produktu...');
+
+    // 2. Deaktywuj stary HotShot
+    await prisma.$executeRaw`
+      UPDATE "HotShot" 
+      SET "isActive" = false 
+      WHERE "isActive" = true
+    `;
+
+    // 3. Pobierz losowy produkt (dostępny i na stanie)
+    const randomProduct = await prisma.$queryRaw<{ id: number; price: number }[]>`
+      SELECT id, price FROM "Product" 
+      WHERE "isAvailable" = true AND stock > 0 
+      ORDER BY RANDOM() 
+      LIMIT 1
+    `;
+
+    if (!randomProduct || randomProduct.length === 0) {
+      console.error('[HotShot] Brak dostępnych produktów do wylosowania');
+      return;
+    }
+
+    const product = randomProduct[0];
+    const discountPercent = 60; // 60% zniżka
+    const stockLimit = 5; // Tylko 5 sztuk dostępnych po tej cenie
+
+    // 4. Twórz nowy HotShot
+    await prisma.$executeRaw`
+      INSERT INTO "HotShot" 
+      ("productId", "originalPrice", "discountPercent", "stockLimit", "stockSold", "expiresAt", "isActive", "startedAt")
+      VALUES (
+        ${product.id},
+        ${product.price},
+        ${discountPercent},
+        ${stockLimit},
+        0,
+        ${inTwelveHours},
+        true,
+        ${now}
+      )
+    `;
+
+    // Pobierz nazwę produktu do logu
+    const productInfo = await prisma.$queryRaw<{ name: string }[]>`
+      SELECT name FROM "Product" WHERE id = ${product.id}
+    `;
+
+    if (productInfo && productInfo.length > 0) {
+      console.log(`[HotShot] Nowy produkt: ${productInfo[0].name} (${discountPercent}% zniżki, limit: ${stockLimit} szt.)`);
+    }
+  } catch (error) {
+    console.error('[HotShot] Błąd podczas rotacji:', error);
+  }
+};
+
+// Pobierz aktualny Hot Shot
+export const getHotShot = async (req: Request, res: Response) => {
+  try {
+    // Pobierz aktywny Hot Shot
+    const hotShotData = await prisma.$queryRaw<
+      Array<{
+        id: number;
+        productId: number;
+        originalPrice: number;
+        discountPercent: number;
+        stockLimit: number;
+        stockSold: number;
+        expiresAt: Date;
+      }>
+    >`
+      SELECT 
+        id, "productId", "originalPrice", "discountPercent", 
+        "stockLimit", "stockSold", "expiresAt"
+      FROM "HotShot" 
+      WHERE "isActive" = true AND "expiresAt" > NOW()
+      LIMIT 1
+    `;
+
+    if (!hotShotData || hotShotData.length === 0) {
+      return res.status(404).json({ message: 'Brak aktywnego Hot Shot produktu' });
+    }
+
+    const hotShot = hotShotData[0];
+
+    // Pobierz info o produkcie
+    const product = await prisma.product.findUnique({
+      where: { id: hotShot.productId },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        price: true,
+        description: true,
+        imageUrl: true,
+        category: {
+          select: { name: true, slug: true },
+        },
+      },
+    });
+
+    if (!product) {
+      return res.status(404).json({ message: 'Produkt nie znaleziony' });
+    }
+
+    const discountedPrice = Math.round(
+      hotShot.originalPrice * (1 - hotShot.discountPercent / 100)
+    );
+    const remainingStock = hotShot.stockLimit - hotShot.stockSold;
+    const now = new Date();
+    const hoursRemaining = Math.ceil(
+      (hotShot.expiresAt.getTime() - now.getTime()) / (60 * 60 * 1000)
+    );
+
+    return res.json({
+      id: hotShot.id,
+      product: {
+        ...product,
+        originalPrice: hotShot.originalPrice,
+        discountedPrice,
+        discountPercent: hotShot.discountPercent,
+      },
+      stockLimit: hotShot.stockLimit,
+      remainingStock,
+      stockSold: hotShot.stockSold,
+      expiresAt: hotShot.expiresAt,
+      hoursRemaining,
+    });
+  } catch (error) {
+    console.error('[HotShot] Błąd pobierania:', error);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 };

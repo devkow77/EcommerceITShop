@@ -1,4 +1,9 @@
-import { Container, ProductCard, LoadingProductsView } from "@/components";
+import {
+  Container,
+  ProductCard,
+  LoadingProductsView,
+  HotShot,
+} from "@/components";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -68,6 +73,8 @@ const Home = () => {
   return (
     <main className="space-y-16 py-12 md:py-16">
       <Container className="space-y-12 md:space-y-20">
+        {/* Hot Shot Section */}
+        <HotShot />
         {promotions.length && (
           <article className="space-y-6">
             <h2 className="mb-10 text-center text-2xl font-bold md:text-3xl">

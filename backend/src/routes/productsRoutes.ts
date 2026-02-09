@@ -4,10 +4,12 @@ import {
   getProducts,
   getProduct,
   getProductsPreview,
+  getHotShot,
 } from '../controllers/productsController';
 
 const router = Router();
 
+router.get('/hotshot', getHotShot);
 router.get('/promotions', getTodayPromotions);
 router.get('/preview', getProductsPreview);
 router.get('/:slug', getProduct);
