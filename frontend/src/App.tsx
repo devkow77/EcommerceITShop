@@ -18,6 +18,7 @@ import {
   Product,
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
+import { ShoppingCard } from "./components/shopping";
 
 function App() {
   return (
@@ -47,9 +48,11 @@ function App() {
         {/* Catch all */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+
       <ThemeToggle />
       <Toaster />
       <Footer />
+      <ShoppingCard />
     </Router>
   );
 }

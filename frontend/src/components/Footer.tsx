@@ -1,46 +1,33 @@
 import { Container } from "@/components/index";
 import { Link } from "react-router-dom";
 import { LaptopMinimal } from "lucide-react";
+import { useEffect, useState } from "react";
 
-interface NavLink {
+interface Category {
+  id: number;
   name: string;
-  href: string;
+  slug: string;
 }
 
-const links: NavLink[] = [
-  {
-    name: "Strona główna",
-    href: "/",
-  },
-  {
-    name: "Akcesoria",
-    href: "/products/akcesoria",
-  },
-  {
-    name: "Laptopy",
-    href: "/products/laptopy",
-  },
-  {
-    name: "Smartwatche",
-    href: "/products/smartwatche",
-  },
-  {
-    name: "Słuchawki",
-    href: "/products/sluchawki",
-  },
-  {
-    name: "Laptopy",
-    href: "/products/laptopy",
-  },
-  {
-    name: "Telefony",
-    href: "/products/telefony",
-  },
-];
-
 const Footer = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await fetch("/api/categories");
+        const data: Category[] = await res.json();
+        setCategories(data);
+      } catch (err) {
+        console.error("Błąd pobierania kategorii:", err);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
-    <footer className="mt-8">
+    <footer>
       <Container>
         <section className="border-t border-neutral-300 py-8 dark:border-neutral-700">
           <div className="grid grid-cols-1 gap-6">
@@ -56,21 +43,20 @@ const Footer = () => {
             </section>
             <section className="space-y-2">
               <h2 className="font-semibold">Linki</h2>
-              <ul className="flex items-center gap-4">
-                {links.map(({ name, href }: NavLink, index: number) => (
+              <ul className="flex flex-wrap items-center gap-4">
+                {categories.map(({ name, slug }: Category, index: number) => (
                   <li
                     key={index}
-                    className={`text-sm duration-200 md:text-base`}
+                    className={`text-sm duration-200 hover:text-blue-500 md:text-base`}
                   >
-                    <Link to={href}>{name}</Link>
+                    <Link to={slug}>{name}</Link>
                   </li>
                 ))}
               </ul>
             </section>
-            <section>
+            <section className="text-sm leading-6 md:text-base md:leading-8">
               Sklep internetowy utworzony przez w celu zaliczenia przedmiotu
-              Aplikacje Internetowe. Autorzy: Kacper Kowalski, Jakub
-              Kwaśniak.{" "}
+              Aplikacje Internetowe. Autorzy: Kacper Kowalski i Jakub Kwaśniak.
             </section>
           </div>
         </section>

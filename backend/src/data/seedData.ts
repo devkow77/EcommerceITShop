@@ -6,7 +6,9 @@ export const productsData = [
     price: 4199,
     stock: 25,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=1',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Samsung S23',
@@ -14,7 +16,9 @@ export const productsData = [
     price: 3599,
     stock: 18,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=2',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Xiaomi 13T',
@@ -22,7 +26,9 @@ export const productsData = [
     price: 2499,
     stock: 32,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=3',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Google Pixel 8',
@@ -30,7 +36,9 @@ export const productsData = [
     price: 3650,
     stock: 20,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=4',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'OnePlus 12',
@@ -38,7 +46,9 @@ export const productsData = [
     price: 3999,
     stock: 15,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=5',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Nothing Phone 2',
@@ -46,7 +56,9 @@ export const productsData = [
     price: 2999,
     stock: 28,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=6',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Huawei P60',
@@ -54,7 +66,9 @@ export const productsData = [
     price: 3799,
     stock: 22,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=7',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'iPhone 15 Pro',
@@ -62,7 +76,9 @@ export const productsData = [
     price: 4999,
     stock: 12,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=8',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Samsung S23 Ultra',
@@ -70,7 +86,9 @@ export const productsData = [
     price: 5899,
     stock: 10,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=9',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Xiaomi 13 Pro',
@@ -78,7 +96,9 @@ export const productsData = [
     price: 3299,
     stock: 17,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=10',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Google Pixel 8 Pro',
@@ -86,7 +106,9 @@ export const productsData = [
     price: 4200,
     stock: 14,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=11',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'OnePlus 12 Pro',
@@ -94,7 +116,9 @@ export const productsData = [
     price: 4499,
     stock: 16,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=12',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Nothing Phone 2 Pro',
@@ -102,7 +126,9 @@ export const productsData = [
     price: 3399,
     stock: 21,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=13',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Huawei P60 Pro',
@@ -110,7 +136,9 @@ export const productsData = [
     price: 4399,
     stock: 19,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=14',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'iPhone 15 Mini',
@@ -118,7 +146,9 @@ export const productsData = [
     price: 3799,
     stock: 23,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=15',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Samsung S23 Mini',
@@ -126,7 +156,9 @@ export const productsData = [
     price: 2999,
     stock: 25,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=16',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Xiaomi 13T Lite',
@@ -134,7 +166,9 @@ export const productsData = [
     price: 2199,
     stock: 30,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=17',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Google Pixel 8 Lite',
@@ -142,7 +176,9 @@ export const productsData = [
     price: 3050,
     stock: 27,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=18',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'OnePlus 12 Lite',
@@ -150,7 +186,9 @@ export const productsData = [
     price: 3599,
     stock: 22,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=19',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Nothing Phone 2 Lite',
@@ -158,7 +196,9 @@ export const productsData = [
     price: 2799,
     stock: 28,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=20',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Huawei P60 Lite',
@@ -166,7 +206,9 @@ export const productsData = [
     price: 3199,
     stock: 25,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=21',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'iPhone SE 3',
@@ -174,7 +216,9 @@ export const productsData = [
     price: 2399,
     stock: 30,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=22',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Samsung A54',
@@ -182,7 +226,9 @@ export const productsData = [
     price: 1999,
     stock: 35,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=23',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Xiaomi Redmi Note 13',
@@ -190,7 +236,9 @@ export const productsData = [
     price: 1499,
     stock: 40,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=24',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
   {
     name: 'Google Pixel 7a',
@@ -198,7 +246,9 @@ export const productsData = [
     price: 2299,
     stock: 28,
     category: 'Telefony',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartphone&sig=25',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+    categoryId: '6',
   },
 
   // ---------------- LAPTOPY ----------------
@@ -208,7 +258,9 @@ export const productsData = [
     price: 5499,
     stock: 12,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=1',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Lenovo Legion 5',
@@ -216,7 +268,9 @@ export const productsData = [
     price: 4799,
     stock: 20,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=2',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Dell XPS 15',
@@ -224,7 +278,9 @@ export const productsData = [
     price: 8999,
     stock: 8,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=3',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'ASUS Zenbook',
@@ -232,7 +288,9 @@ export const productsData = [
     price: 4299,
     stock: 18,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=4',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'HP Pavilion',
@@ -240,7 +298,9 @@ export const productsData = [
     price: 3199,
     stock: 25,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=5',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Acer Nitro 5',
@@ -248,7 +308,9 @@ export const productsData = [
     price: 3899,
     stock: 16,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=6',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Microsoft Surface',
@@ -256,7 +318,9 @@ export const productsData = [
     price: 5199,
     stock: 10,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=7',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'MacBook Pro 14',
@@ -264,7 +328,9 @@ export const productsData = [
     price: 8499,
     stock: 14,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=8',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Lenovo ThinkPad X1',
@@ -272,7 +338,9 @@ export const productsData = [
     price: 6999,
     stock: 12,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=9',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Dell Inspiron 16',
@@ -280,7 +348,9 @@ export const productsData = [
     price: 4199,
     stock: 18,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=10',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'ASUS ROG Strix',
@@ -288,7 +358,9 @@ export const productsData = [
     price: 7499,
     stock: 10,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=11',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'HP Envy 13',
@@ -296,7 +368,9 @@ export const productsData = [
     price: 4299,
     stock: 20,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=12',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Acer Swift 3',
@@ -304,7 +378,9 @@ export const productsData = [
     price: 3899,
     stock: 16,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=13',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Microsoft Surface Laptop 4',
@@ -312,7 +388,9 @@ export const productsData = [
     price: 4999,
     stock: 12,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=14',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'MacBook Pro 16',
@@ -320,7 +398,9 @@ export const productsData = [
     price: 12499,
     stock: 6,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=15',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Lenovo Yoga 9i',
@@ -328,7 +408,9 @@ export const productsData = [
     price: 6299,
     stock: 12,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=16',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Dell Latitude 7420',
@@ -336,7 +418,9 @@ export const productsData = [
     price: 5799,
     stock: 10,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=17',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'ASUS VivoBook 15',
@@ -344,7 +428,9 @@ export const productsData = [
     price: 3399,
     stock: 18,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=18',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'HP Spectre x360',
@@ -352,7 +438,9 @@ export const productsData = [
     price: 6499,
     stock: 12,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=19',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Acer Predator Helios',
@@ -360,7 +448,9 @@ export const productsData = [
     price: 7499,
     stock: 8,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=20',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Microsoft Surface Pro 9',
@@ -368,7 +458,9 @@ export const productsData = [
     price: 5499,
     stock: 10,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=21',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'MacBook Air 15',
@@ -376,7 +468,9 @@ export const productsData = [
     price: 5999,
     stock: 10,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=22',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Lenovo Legion 7',
@@ -384,7 +478,9 @@ export const productsData = [
     price: 7999,
     stock: 8,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=23',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'Dell XPS 17',
@@ -392,7 +488,9 @@ export const productsData = [
     price: 9999,
     stock: 6,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=24',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
   {
     name: 'ASUS ROG Zephyrus',
@@ -400,7 +498,9 @@ export const productsData = [
     price: 8499,
     stock: 10,
     category: 'Laptopy',
-    imageUrl: 'https://source.unsplash.com/640x480/?laptop&sig=25',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+    categoryId: 1,
   },
 
   // ---------------- TABLETY ----------------
@@ -410,7 +510,9 @@ export const productsData = [
     price: 4500,
     stock: 22,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=1',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Samsung Galaxy Tab S8',
@@ -418,7 +520,9 @@ export const productsData = [
     price: 3200,
     stock: 18,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=2',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Huawei MatePad 11',
@@ -426,7 +530,9 @@ export const productsData = [
     price: 2800,
     stock: 25,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=3',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Lenovo Tab P11',
@@ -434,7 +540,9 @@ export const productsData = [
     price: 2100,
     stock: 30,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=4',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Microsoft Surface Go',
@@ -442,7 +550,9 @@ export const productsData = [
     price: 3500,
     stock: 12,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=5',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Samsung Galaxy Tab A8',
@@ -450,7 +560,9 @@ export const productsData = [
     price: 1800,
     stock: 28,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=6',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'iPad Mini 6',
@@ -458,7 +570,9 @@ export const productsData = [
     price: 2200,
     stock: 15,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=7',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'iPad Air 5',
@@ -466,15 +580,19 @@ export const productsData = [
     price: 3300,
     stock: 20,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=8',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Samsung Tab S7+',
     slug: 'samsung-tab-s7-plus',
-    price: 3600,
-    stock: 18,
+    price: 4000,
+    stock: 30,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=9',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Huawei MatePad Pro',
@@ -482,7 +600,9 @@ export const productsData = [
     price: 4000,
     stock: 12,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=10',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Lenovo Tab M10',
@@ -490,7 +610,9 @@ export const productsData = [
     price: 2100,
     stock: 25,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=11',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Microsoft Surface Pro 8',
@@ -498,7 +620,9 @@ export const productsData = [
     price: 4700,
     stock: 14,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=12',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'iPad Pro 11',
@@ -506,7 +630,9 @@ export const productsData = [
     price: 4300,
     stock: 20,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=13',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Samsung Galaxy Tab S6',
@@ -514,7 +640,9 @@ export const productsData = [
     price: 2800,
     stock: 22,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=14',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Huawei MatePad 10',
@@ -522,7 +650,9 @@ export const productsData = [
     price: 2600,
     stock: 18,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=15',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Lenovo Tab P12',
@@ -530,7 +660,9 @@ export const productsData = [
     price: 2500,
     stock: 20,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=16',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'iPad Mini 7',
@@ -538,7 +670,9 @@ export const productsData = [
     price: 2300,
     stock: 25,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=17',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Samsung Tab A7',
@@ -546,7 +680,9 @@ export const productsData = [
     price: 2000,
     stock: 30,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=18',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Huawei MatePad 12',
@@ -554,7 +690,9 @@ export const productsData = [
     price: 4200,
     stock: 12,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=19',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Lenovo Tab M8',
@@ -562,7 +700,9 @@ export const productsData = [
     price: 1800,
     stock: 28,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=20',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'iPad Air 6',
@@ -570,7 +710,9 @@ export const productsData = [
     price: 3500,
     stock: 15,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=21',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Samsung Tab S5e',
@@ -578,7 +720,9 @@ export const productsData = [
     price: 3100,
     stock: 18,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=22',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Huawei MatePad 8',
@@ -586,7 +730,9 @@ export const productsData = [
     price: 2700,
     stock: 20,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=23',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'Lenovo Tab P10',
@@ -594,7 +740,9 @@ export const productsData = [
     price: 2400,
     stock: 25,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=24',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
   {
     name: 'iPad Pro 10',
@@ -602,7 +750,9 @@ export const productsData = [
     price: 4500,
     stock: 12,
     category: 'Tablety',
-    imageUrl: 'https://source.unsplash.com/640x480/?tablet&sig=25',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+    categoryId: 5,
   },
 
   // ---------------- SMARTWATCH ----------------
@@ -612,7 +762,9 @@ export const productsData = [
     price: 1800,
     stock: 20,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=1',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Samsung Galaxy Watch 6',
@@ -620,7 +772,9 @@ export const productsData = [
     price: 1600,
     stock: 18,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=2',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Huawei Watch GT 3',
@@ -628,7 +782,9 @@ export const productsData = [
     price: 1400,
     stock: 25,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=3',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Garmin Fenix 7',
@@ -636,7 +792,9 @@ export const productsData = [
     price: 2500,
     stock: 10,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=4',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Fitbit Versa 4',
@@ -644,7 +802,9 @@ export const productsData = [
     price: 1200,
     stock: 22,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=5',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Apple Watch SE',
@@ -652,7 +812,9 @@ export const productsData = [
     price: 1400,
     stock: 18,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=6',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Samsung Galaxy Watch 5',
@@ -660,7 +822,9 @@ export const productsData = [
     price: 1500,
     stock: 20,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=7',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Garmin Venu 2',
@@ -668,7 +832,9 @@ export const productsData = [
     price: 2000,
     stock: 12,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=8',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Fitbit Sense',
@@ -676,7 +842,9 @@ export const productsData = [
     price: 1700,
     stock: 15,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=9',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Huawei Watch Fit',
@@ -684,7 +852,9 @@ export const productsData = [
     price: 900,
     stock: 25,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=10',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Apple Watch Series 8',
@@ -692,7 +862,9 @@ export const productsData = [
     price: 1750,
     stock: 18,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=11',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Samsung Galaxy Watch 4',
@@ -700,7 +872,9 @@ export const productsData = [
     price: 1400,
     stock: 22,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=12',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Garmin Forerunner 945',
@@ -708,7 +882,9 @@ export const productsData = [
     price: 2400,
     stock: 12,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=13',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Fitbit Charge 5',
@@ -716,7 +892,9 @@ export const productsData = [
     price: 900,
     stock: 28,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=14',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Apple Watch Ultra',
@@ -724,7 +902,9 @@ export const productsData = [
     price: 4000,
     stock: 8,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=15',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Samsung Galaxy Watch Active 2',
@@ -732,7 +912,9 @@ export const productsData = [
     price: 1300,
     stock: 20,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=16',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Garmin Instinct 2',
@@ -740,7 +922,9 @@ export const productsData = [
     price: 1800,
     stock: 15,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=17',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Fitbit Inspire 3',
@@ -748,7 +932,9 @@ export const productsData = [
     price: 800,
     stock: 25,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=18',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Huawei Watch 3',
@@ -756,7 +942,9 @@ export const productsData = [
     price: 1500,
     stock: 18,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=19',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Apple Watch Series 7',
@@ -764,7 +952,9 @@ export const productsData = [
     price: 1600,
     stock: 20,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=20',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Samsung Galaxy Watch Active 3',
@@ -772,7 +962,9 @@ export const productsData = [
     price: 1200,
     stock: 25,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=21',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Garmin Fenix 6',
@@ -780,7 +972,9 @@ export const productsData = [
     price: 2200,
     stock: 10,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=22',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Fitbit Versa 3',
@@ -788,7 +982,9 @@ export const productsData = [
     price: 1100,
     stock: 28,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=23',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Huawei Watch GT 2',
@@ -796,7 +992,9 @@ export const productsData = [
     price: 1300,
     stock: 22,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=24',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
   {
     name: 'Samsung Galaxy Watch 3',
@@ -804,7 +1002,9 @@ export const productsData = [
     price: 1400,
     stock: 20,
     category: 'Smartwatche',
-    imageUrl: 'https://source.unsplash.com/640x480/?smartwatch&sig=25',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+    categoryId: 3,
   },
 
   // ---------------- SŁUCHAWKI ----------------
@@ -814,7 +1014,9 @@ export const productsData = [
     price: 1500,
     stock: 30,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=1',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Bose QuietComfort 45',
@@ -822,7 +1024,9 @@ export const productsData = [
     price: 1400,
     stock: 25,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=2',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Apple AirPods Max',
@@ -830,7 +1034,9 @@ export const productsData = [
     price: 2200,
     stock: 12,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=3',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'JBL Live 660NC',
@@ -838,7 +1044,9 @@ export const productsData = [
     price: 900,
     stock: 20,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=4',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Sennheiser HD 450BT',
@@ -846,7 +1054,9 @@ export const productsData = [
     price: 1100,
     stock: 15,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=5',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Sony WF-1000XM5',
@@ -854,7 +1064,9 @@ export const productsData = [
     price: 1200,
     stock: 18,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=6',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Bose SoundSport',
@@ -862,7 +1074,9 @@ export const productsData = [
     price: 700,
     stock: 25,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=7',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Apple AirPods Pro',
@@ -870,7 +1084,9 @@ export const productsData = [
     price: 1200,
     stock: 22,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=8',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'JBL Tune 750BT',
@@ -878,7 +1094,9 @@ export const productsData = [
     price: 800,
     stock: 20,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=9',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Sennheiser Momentum 4',
@@ -886,7 +1104,9 @@ export const productsData = [
     price: 1600,
     stock: 12,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=10',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Sony WH-XB910N',
@@ -894,7 +1114,9 @@ export const productsData = [
     price: 1400,
     stock: 20,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=11',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Bose 700',
@@ -902,7 +1124,9 @@ export const productsData = [
     price: 1800,
     stock: 12,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=12',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Apple AirPods 3',
@@ -910,7 +1134,9 @@ export const productsData = [
     price: 900,
     stock: 25,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=13',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'JBL Club 950NC',
@@ -918,7 +1144,9 @@ export const productsData = [
     price: 1000,
     stock: 15,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=14',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Sennheiser HD 560S',
@@ -926,7 +1154,9 @@ export const productsData = [
     price: 1100,
     stock: 20,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=15',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Sony WF-C500',
@@ -934,7 +1164,9 @@ export const productsData = [
     price: 700,
     stock: 22,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=16',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Bose SoundLink',
@@ -942,7 +1174,9 @@ export const productsData = [
     price: 1300,
     stock: 18,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=17',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Apple Beats Fit Pro',
@@ -950,7 +1184,8 @@ export const productsData = [
     price: 1000,
     stock: 25,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=18',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
   },
   {
     name: 'JBL Live Pro+',
@@ -958,7 +1193,8 @@ export const productsData = [
     price: 900,
     stock: 20,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=19',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
   },
   {
     name: 'Sennheiser HD 350BT',
@@ -966,7 +1202,9 @@ export const productsData = [
     price: 800,
     stock: 28,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=20',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Sony WH-CH720N',
@@ -974,7 +1212,9 @@ export const productsData = [
     price: 950,
     stock: 22,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=21',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Bose QuietComfort Earbuds',
@@ -982,7 +1222,9 @@ export const productsData = [
     price: 1600,
     stock: 12,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=22',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Apple AirPods Max 2',
@@ -990,7 +1232,9 @@ export const productsData = [
     price: 2400,
     stock: 10,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=23',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'JBL Quantum 800',
@@ -998,7 +1242,9 @@ export const productsData = [
     price: 1100,
     stock: 15,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=24',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
   {
     name: 'Sennheiser Momentum True Wireless 3',
@@ -1006,208 +1252,259 @@ export const productsData = [
     price: 1700,
     stock: 12,
     category: 'Słuchawki',
-    imageUrl: 'https://source.unsplash.com/640x480/?headphones&sig=25',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+    categoryId: 4,
   },
 
-  // ---------------- AKCESORIA ----------------
+  // ---------------- MYSZKI ----------------
   {
     name: 'Logitech G502',
     slug: 'logitech-g502',
     price: 299,
     stock: 30,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=1',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Razer DeathAdder',
-    slug: 'razer-deathadder',
+    name: 'Razer DeathAdder V2',
+    slug: 'razer-deathadder-v2',
     price: 250,
     stock: 18,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=2',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Powerbank 20k',
-    slug: 'powerbank-20k',
+    name: 'Logitech G Pro X Superlight',
+    slug: 'logitech-g-pro-x-superlight',
     price: 199,
     stock: 22,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=3',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'SteelSeries Arctis 7',
-    slug: 'steelseries-arctis-7',
+    name: 'SteelSeries Rival 600',
+    slug: 'steelseries-rival-600',
     price: 599,
     stock: 16,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=4',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Keychron K2',
-    slug: 'keychron-k2',
+    name: 'Glorious Model O',
+    slug: 'glorious-model-o',
     price: 450,
     stock: 20,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=5',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
     name: 'Logitech MX Master 3',
     slug: 'logitech-mx-master-3',
     price: 399,
     stock: 25,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=6',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Razer BlackWidow',
-    slug: 'razer-blackwidow',
+    name: 'Razer Basilisk Ultimate',
+    slug: 'razer-basilisk-ultimate',
     price: 799,
     stock: 15,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=7',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Anker USB-C Hub',
-    slug: 'anker-usb-c-hub',
+    name: 'Corsair Dark Core RGB',
+    slug: 'corsair-dark-core-rgb',
     price: 299,
     stock: 20,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=8',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Corsair K70',
-    slug: 'corsair-k70',
+    name: 'Corsair M65 Elite',
+    slug: 'corsair-m65-elite',
     price: 699,
     stock: 18,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=9',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Apple MagSafe Charger',
-    slug: 'magsafe-charger',
+    name: 'Logitech G305 Lightspeed',
+    slug: 'logitech-g305-lightspeed',
     price: 299,
     stock: 25,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=10',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Samsung Fast Charger',
-    slug: 'samsung-fast-charger',
+    name: 'Razer Orochi V2',
+    slug: 'razer-orochi-v2',
     price: 199,
     stock: 30,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=11',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
   },
   {
-    name: 'Logitech C920 Camera',
-    slug: 'logitech-c920-camera',
+    name: 'Logitech G203 Lightsync',
+    slug: 'logitech-g203-lightsync',
     price: 399,
     stock: 12,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=12',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Razer Seiren X',
-    slug: 'razer-seiren-x',
+    name: 'Razer Viper Mini',
+    slug: 'razer-viper-mini',
     price: 599,
     stock: 18,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=13',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Anker SoundCore',
-    slug: 'anker-soundcore',
+    name: 'SteelSeries Sensei Ten',
+    slug: 'steelseries-sensei-ten',
     price: 249,
     stock: 20,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=14',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Corsair MM350 Mousepad',
-    slug: 'corsair-mm350-mousepad',
+    name: 'HyperX Pulsefire FPS Pro',
+    slug: 'hyperx-pulsefire-fps-pro',
     price: 150,
     stock: 35,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=15',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Apple Pencil 2',
-    slug: 'apple-pencil-2',
+    name: 'Logitech G903 Lightspeed',
+    slug: 'logitech-g903-lightspeed',
     price: 499,
     stock: 12,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=16',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Samsung S Pen',
-    slug: 'samsung-s-pen',
+    name: 'Razer Naga Trinity',
+    slug: 'razer-naga-trinity',
     price: 299,
     stock: 25,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=17',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Logitech G Pro Mouse',
-    slug: 'logitech-g-pro-mouse',
+    name: 'Logitech G Pro Wireless',
+    slug: 'logitech-g-pro-wireless',
     price: 399,
     stock: 18,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=18',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Razer Kraken X',
-    slug: 'razer-kraken-x',
+    name: 'Razer Kraken Mouse Edition',
+    slug: 'razer-kraken-mouse-edition',
     price: 299,
     stock: 22,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=19',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Anker Wireless Charger',
-    slug: 'anker-wireless-charger',
+    name: 'Corsair Katar Pro',
+    slug: 'corsair-katar-pro',
     price: 199,
     stock: 28,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=20',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Corsair Void RGB Headset',
-    slug: 'corsair-void-rgb-headset',
+    name: 'Corsair Sabre RGB Pro',
+    slug: 'corsair-sabre-rgb-pro',
     price: 499,
     stock: 15,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=21',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Apple AirTag',
-    slug: 'apple-airtag',
+    name: 'Apple Magic Mouse 2',
+    slug: 'apple-magic-mouse-2',
     price: 149,
     stock: 40,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=22',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Samsung Galaxy Buds Live',
-    slug: 'galaxy-buds-live',
+    name: 'Samsung Bluetooth Mouse',
+    slug: 'samsung-bluetooth-mouse',
     price: 699,
     stock: 22,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=23',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
-    name: 'Logitech G915 Keyboard',
-    slug: 'logitech-g915-keyboard',
+    name: 'Logitech G703 Lightspeed',
+    slug: 'logitech-g703-lightspeed',
     price: 1099,
     stock: 10,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=24',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
   {
     name: 'Razer Viper Ultimate',
     slug: 'razer-viper-ultimate',
     price: 599,
     stock: 20,
-    category: 'Akcesoria',
-    imageUrl: 'https://source.unsplash.com/640x480/?electronics&sig=25',
+    category: 'Myszki',
+    imageUrl:
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+    categoryId: 2,
   },
 ];

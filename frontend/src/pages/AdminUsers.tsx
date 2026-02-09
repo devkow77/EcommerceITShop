@@ -76,49 +76,36 @@ const AdminUsers = () => {
   return (
     <section className="py-12">
       <Container className="space-y-8">
-        {/* HEADER */}
-        <div className="flex items-center justify-between border-b pb-4">
-          <h2 className="text-3xl font-bold">Panel Administratora</h2>
-          <div className="flex items-center gap-2">
-            <Link to="/admin" className="bg-black px-4 py-2 text-sm text-white">
+        <div className="space-y-4 border-b pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-2xl font-bold md:text-3xl">
+              Panel Administratora
+            </h2>
+            <span className="text-sm text-gray-500">
+              Zalogowany jako <b>{user.name}</b>
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 font-semibold md:gap-4">
+            <Link className="hover:text-blue-500" to="/admin">
               Moje konto
             </Link>
-            <Link
-              to="/admin/products"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/products">
               Produkty
             </Link>
-            <Link
-              to="/admin/categories"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/categories">
               Kategorie
             </Link>
-            <Link
-              to="/admin/users"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/users">
               Użytkownicy
             </Link>
-            <Link
-              to="/admin/orders"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/orders">
               Zamówienia
             </Link>
-            <Link
-              to="/admin/statistics"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/statistics">
               Statystyki
             </Link>
           </div>
-          <span className="text-sm text-gray-500">
-            Zalogowany jako <b>{user.name}</b>
-          </span>
         </div>
-
         {/* FILTRY */}
         <section className="flex items-center justify-between">
           <div className="flex flex-wrap gap-2">
@@ -137,19 +124,33 @@ const AdminUsers = () => {
               onChange={(e) => setSortBy(e.target.value)}
               className="rounded border px-3 py-2 text-sm"
             >
-              <option value="id">ID</option>
-              <option value="name">Nazwa</option>
-              <option value="email">Email</option>
-              <option value="role">Rola</option>
-              <option value="createdAt">Data utworzenia</option>
+              <option className="dark:bg-[#222]" value="id">
+                ID
+              </option>
+              <option className="dark:bg-[#222]" value="name">
+                Nazwa
+              </option>
+              <option className="dark:bg-[#222]" value="email">
+                Email
+              </option>
+              <option className="dark:bg-[#222]" value="role">
+                Rola
+              </option>
+              <option className="dark:bg-[#222]" value="createdAt">
+                Data utworzenia
+              </option>
             </select>
             <select
               value={order}
               onChange={(e) => setOrder(e.target.value as "asc" | "desc")}
               className="rounded border px-3 py-2 text-sm"
             >
-              <option value="asc">Rosnąco</option>
-              <option value="desc">Malejąco</option>
+              <option className="dark:bg-[#222]" value="asc">
+                Rosnąco
+              </option>
+              <option className="dark:bg-[#222]" value="desc">
+                Malejąco
+              </option>
             </select>
           </div>
           <AddUserDialog onSuccess={fetchUsers} />
@@ -158,7 +159,7 @@ const AdminUsers = () => {
         {/* TABELA */}
         <div className="overflow-x-auto rounded-lg border">
           <table className="w-full text-sm">
-            <thead className="bg-gray-50 text-xs text-gray-600 uppercase">
+            <thead className="bg-gray-50 text-xs uppercase dark:bg-[#222]">
               <tr>
                 <th className="px-4 py-3">ID</th>
                 <th className="px-4 py-3">Nazwa</th>
@@ -183,7 +184,10 @@ const AdminUsers = () => {
                 </tr>
               ) : (
                 users.map((u) => (
-                  <tr key={u.id} className="hover:bg-gray-50">
+                  <tr
+                    key={u.id}
+                    className="hover:bg-gray-50 dark:hover:bg-[#222]"
+                  >
                     <td className="px-4 py-3">{u.id}</td>
                     <td className="px-4 py-3 font-medium">{u.name}</td>
                     <td className="px-4 py-3">{u.email}</td>
@@ -191,7 +195,7 @@ const AdminUsers = () => {
                     <td className="px-4 py-3">
                       {new Date(u.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="space-x-3 px-4 py-3 text-right">
+                    <td className="w-1/8 space-y-3 px-4 py-3 text-right">
                       <EditUserDialog user={u} onSuccess={fetchUsers} />
                       <DeleteUserDialog userId={u.id} onSuccess={fetchUsers} />
                     </td>

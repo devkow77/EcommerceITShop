@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { User, NotepadText, RotateCcw, Heart } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
+import { Button } from "./ui/button";
 
 const Profile = () => {
   const { user, loading, setUser } = useAuth();
@@ -50,12 +51,12 @@ const Profile = () => {
               {user ? (
                 <div className="space-y-2 border-b border-black p-2 dark:border-white/20">
                   <NavigationMenuLink asChild>
-                    <button
+                    <Button
                       onClick={handleLogout}
                       className="w-full bg-red-500 px-4 py-2 text-center font-medium text-white shadow-sm hover:bg-red-600"
                     >
                       Wyloguj się
-                    </button>
+                    </Button>
                   </NavigationMenuLink>
                 </div>
               ) : (
@@ -75,7 +76,7 @@ const Profile = () => {
 
                   <NavigationMenuLink
                     asChild
-                    className="bg-black px-4 py-2 text-center font-medium text-white hover:bg-black"
+                    className="bg-green-500 px-4 py-2 text-center font-medium text-white duration-200 hover:bg-green-700"
                   >
                     <Link to="/register">Załóż konto</Link>
                   </NavigationMenuLink>

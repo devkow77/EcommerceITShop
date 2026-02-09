@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -13,7 +12,12 @@ const buttonVariants = cva(
         success: "bg-green-500 hover:bg-green-600 text-white",
         reset: "bg-yellow-500 hover:bg-yellow-600 text-white",
         destructive: "bg-red-500 hover:bg-red-600 text-white",
-        blue: "bg-blue-500 hover:bg-blue-600 text-white",
+        blue: "bg-blue-500 hover:bg-blue-700 text-white text-xs md:text-sm font-semibold w-full",
+        red: "bg-red-500 hover:bg-red-700 text-white text-xs md:text-sm font-semibold w-full",
+        green:
+          "bg-green-500 max-w-50 hover:bg-green-700 text-white text-xs md:text-sm font-semibold w-full",
+        yellow:
+          "bg-yellow-500 hover:bg-yellow-700 text-white text-xs md:text-sm font-semibold w-full",
         outline:
           "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground text-foreground",
       },
@@ -33,20 +37,16 @@ const buttonVariants = cva(
   },
 );
 
-function Button({
-  className,
-  variant = "default",
-  size = "default",
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
+// ✅ forwardRef obsługuje ref poprawnie
+const Button = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<"button"> &
+    VariantProps<typeof buttonVariants> & { asChild?: boolean }
+>(({ className, variant, size, asChild = false, ...props }, ref) => {
   const Comp = asChild ? Slot : "button";
-
   return (
     <Comp
+      ref={ref} // <--- tutaj trafia ref
       data-slot="button"
       data-variant={variant}
       data-size={size}
@@ -54,6 +54,8 @@ function Button({
       {...props}
     />
   );
-}
+});
+
+Button.displayName = "Button";
 
 export { Button, buttonVariants };

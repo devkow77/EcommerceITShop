@@ -14,6 +14,9 @@ import OrdersList from "./OrdersList";
 import OrderCard from "./OrderCard";
 import CancelOrderDialog from "./CancelOrderDialog";
 
+import ProductCard from "./ProductCard";
+import LoadingProductsView from "./LoadingProductsView";
+
 export {
   Navbar,
   Footer,
@@ -30,4 +33,6 @@ export {
   OrdersList,
   OrderCard,
   CancelOrderDialog,
+  ProductCard,
+  LoadingProductsView,
 };

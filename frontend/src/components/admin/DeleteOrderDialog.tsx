@@ -16,10 +16,7 @@ interface DeleteOrderDialogProps {
   onSuccess: () => void;
 }
 
-const DeleteOrderDialog = ({
-  orderId,
-  onSuccess,
-}: DeleteOrderDialogProps) => {
+const DeleteOrderDialog = ({ orderId, onSuccess }: DeleteOrderDialogProps) => {
   const handleDelete = async () => {
     try {
       const res = await fetch(`/api/admin/orders/${orderId}`, {
@@ -45,7 +42,7 @@ const DeleteOrderDialog = ({
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button variant="outline">Usuń</Button>
+          <Button variant="red">Usuń</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>

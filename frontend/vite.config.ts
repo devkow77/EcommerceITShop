@@ -9,11 +9,12 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    dedupe: ["react", "react-dom"],
   },
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:5000", // your backend server URL
+        target: "http://localhost:6000", // your backend server URL
         changeOrigin: true,
         secure: false,
       },

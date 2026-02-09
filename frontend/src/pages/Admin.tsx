@@ -31,49 +31,38 @@ const Admin = () => {
 
   return (
     <main className="py-12">
-      <Container className="space-y-8">
-        {/* HEADER */}
-        <div className="flex items-center justify-between border-b pb-4">
-          <h2 className="text-3xl font-bold">Panel Administratora</h2>
-          <div className="flex items-center gap-2">
-            <Link to="/admin" className="bg-black px-4 py-2 text-sm text-white">
+      <Container className="space-y-8 text-sm md:text-base">
+        <div className="space-y-4 border-b pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-2xl font-bold md:text-3xl">
+              Panel Administratora
+            </h2>
+            <span className="text-sm text-gray-500">
+              Zalogowany jako <b>{user.name}</b>
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 font-semibold md:gap-4">
+            <Link className="hover:text-blue-500" to="/admin">
               Moje konto
             </Link>
-            <Link
-              to="/admin/products"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/products">
               Produkty
             </Link>
-            <Link
-              to="/admin/categories"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/categories">
               Kategorie
             </Link>
-            <Link
-              to="/admin/users"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/users">
               Użytkownicy
             </Link>
-            <Link
-              to="/admin/orders"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/orders">
               Zamówienia
             </Link>
-            <Link
-              to="/admin/statistics"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/statistics">
               Statystyki
             </Link>
           </div>
-          <span className="text-sm text-gray-500">
-            Zalogowany jako <b>{user.name}</b>
-          </span>
         </div>
+
         <main className="space-y-6">
           {/* Podstawowe dane konta */}
           <div className="space-y-4">
@@ -108,7 +97,7 @@ const Admin = () => {
               <img src={qrCode} alt="QR Code do TOTP" className="mb-4" />
             )}
             <p className="mb-2 text-sm">Lub wpisz ręcznie klucz:</p>
-            <div className="mb-2 inline-block bg-black/5 px-4 py-2 wrap-break-word select-all dark:bg-white/10">
+            <div className="mb-2 bg-black/5 px-4 py-2 wrap-break-word select-all dark:bg-white/10">
               {manualKey}
             </div>
             <p className="text-sm leading-6">

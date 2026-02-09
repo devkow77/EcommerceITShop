@@ -59,47 +59,35 @@ const AdminCategories = () => {
   return (
     <section className="py-12">
       <Container className="space-y-8">
-        {/* HEADER */}
-        <div className="flex items-center justify-between border-b pb-4">
-          <h2 className="text-3xl font-bold">Panel Administratora</h2>
-          <div className="flex items-center gap-2">
-            <Link to="/admin" className="bg-black px-4 py-2 text-sm text-white">
+        <div className="space-y-4 border-b pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-2xl font-bold md:text-3xl">
+              Panel Administratora
+            </h2>
+            <span className="text-sm text-gray-500">
+              Zalogowany jako <b>{user.name}</b>
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 font-semibold md:gap-4">
+            <Link className="hover:text-blue-500" to="/admin">
               Moje konto
             </Link>
-            <Link
-              to="/admin/products"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/products">
               Produkty
             </Link>
-            <Link
-              to="/admin/categories"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/categories">
               Kategorie
             </Link>
-            <Link
-              to="/admin/users"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/users">
               Użytkownicy
             </Link>
-            <Link
-              to="/admin/orders"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/orders">
               Zamówienia
             </Link>
-            <Link
-              to="/admin/statistics"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/statistics">
               Statystyki
             </Link>
           </div>
-          <span className="text-sm text-gray-500">
-            Zalogowany jako <b>{user.name}</b>
-          </span>
         </div>
         {/* KATEGORIE */}
         <section className="mt-12">
@@ -125,23 +113,31 @@ const AdminCategories = () => {
                 onChange={(e) => setCatSortBy(e.target.value)}
                 className="rounded border px-3 py-2 text-sm"
               >
-                <option value="id">ID</option>
-                <option value="name">Nazwa</option>
+                <option className="dark:bg-[#222]" value="id">
+                  ID
+                </option>
+                <option className="dark:bg-[#222]" value="name">
+                  Nazwa
+                </option>
               </select>
               <select
                 value={catOrder}
                 onChange={(e) => setCatOrder(e.target.value as "asc" | "desc")}
                 className="rounded border px-3 py-2 text-sm"
               >
-                <option value="asc">Rosnąco</option>
-                <option value="desc">Malejąco</option>
+                <option className="dark:bg-[#222]" value="asc">
+                  Rosnąco
+                </option>
+                <option className="dark:bg-[#222]" value="desc">
+                  Malejąco
+                </option>
               </select>
             </div>
           </div>
 
           <div className="mt-4 overflow-x-auto rounded-lg border">
             <table className="w-full text-sm">
-              <thead className="bg-gray-50 text-xs text-gray-600 uppercase">
+              <thead className="bg-gray-50 text-xs uppercase dark:bg-[#222]">
                 <tr>
                   <th className="px-4 py-3">ID</th>
                   <th className="px-4 py-3">Nazwa</th>
@@ -164,11 +160,14 @@ const AdminCategories = () => {
                   </tr>
                 ) : (
                   categories.map((c) => (
-                    <tr key={c.id} className="hover:bg-gray-50">
+                    <tr
+                      key={c.id}
+                      className="hover:bg-gray-50 dark:hover:bg-[#222]"
+                    >
                       <td className="px-4 py-3">{c.id}</td>
                       <td className="px-4 py-3 font-medium">{c.name}</td>
                       <td className="px-4 py-3 text-gray-500">{c.slug}</td>
-                      <td className="space-x-3 px-4 py-3 text-right">
+                      <td className="w-1/8 space-y-3 px-4 py-3 text-right">
                         <EditCategoryDialog
                           category={c}
                           onSuccess={fetchCategories}

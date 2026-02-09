@@ -121,7 +121,7 @@ const AddOrderDialog = ({ onSuccess, users, products }: Props) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="default">+ Nowe zamówienie</Button>
+        <Button variant="green">+ Nowe zamówienie</Button>
       </DialogTrigger>
       <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
         <DialogHeader>

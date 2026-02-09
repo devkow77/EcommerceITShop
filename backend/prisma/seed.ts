@@ -25,18 +25,26 @@ async function main() {
   console.log('Users seeded!');
 
   // 2. SEED KATEGORII
-  const categories = Array.from(new Set(productsData.map((p) => p.category))); // wyciągamy unikalne kategorie
+  const categories = Array.from(
+    new Set(productsData.map((p) => p.category)),
+  ).sort((a, b) => a.localeCompare(b, 'pl'));
+
   const createdCategories: Record<string, number> = {};
 
   for (const cat of categories) {
     const category = await prisma.category.upsert({
       where: { slug: cat.toLowerCase() },
       update: {},
-      create: { name: cat, slug: cat.toLowerCase() },
+      create: {
+        name: cat,
+        slug: cat.toLowerCase(),
+      },
     });
+
     createdCategories[cat] = category.id;
   }
-  console.log('Categories seeded!');
+
+  console.log('Categories seeded (sorted)!');
 
   // 3. SEED PRODUKTÓW
   for (const p of productsData) {
@@ -45,8 +53,8 @@ async function main() {
       update: {},
       create: {
         name: p.name,
-        slug: p.slug,
-        price: p.price,
+        slug: p.slug as string,
+        price: p.price as number,
         stock: p.stock,
         categoryId: createdCategories[p.category],
         description: `Świetny produkt z kategorii ${p.category}`,
