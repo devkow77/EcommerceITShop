@@ -88,23 +88,25 @@ const Home = () => {
           </article>
         )}
         <article>
-          <div className="mb-10 flex flex-wrap items-center gap-4">
+          <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
             <h2 className="text-2xl font-bold md:text-3xl">
               Produkty w sklepie
             </h2>
-            <div className="flex items-center gap-x-2">
-              <Button
-                className={`${view == "grid-4" ? "bg-blue-600" : "bg-slate-500"} text-xs`}
-                onClick={() => setView("grid-4")}
-              >
-                <LayoutGrid /> 4
-              </Button>
-              <Button
-                className={`${view == "grid-3" ? "bg-blue-600" : "bg-slate-500"} text-xs`}
-                onClick={() => setView("grid-3")}
-              >
-                <LayoutGrid /> 3
-              </Button>
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="flex items-center gap-x-2">
+                <Button
+                  className={`${view == "grid-4" ? "bg-blue-600" : "bg-slate-500"} text-xs`}
+                  onClick={() => setView("grid-4")}
+                >
+                  <LayoutGrid /> 4
+                </Button>
+                <Button
+                  className={`${view == "grid-3" ? "bg-blue-600" : "bg-slate-500"} text-xs`}
+                  onClick={() => setView("grid-3")}
+                >
+                  <LayoutGrid /> 3
+                </Button>
+              </div>
             </div>
           </div>
           <div className="space-y-12">

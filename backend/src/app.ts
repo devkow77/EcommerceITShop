@@ -5,7 +5,9 @@ import adminRoutes from './routes/adminRoutes';
 import ordersRoutes from './routes/ordersRoutes';
 import categoriesRoutes from './routes/categoriesRoutes';
 import paymentRoutes from './routes/paymentRoutes';
+import rewardRoutes from './routes/rewardRoutes';
 import { errorHandler } from './middlewares/errorHandler';
+import favoritesRoutes from './routes/favoritesRoutes';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
@@ -28,6 +30,8 @@ app.use('/api/orders', ordersRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/reward', rewardRoutes);
+app.use('/api/favorites', favoritesRoutes);
 
 app.use(errorHandler);
 

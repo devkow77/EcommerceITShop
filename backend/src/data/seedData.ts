@@ -1,4 +1,15 @@
-export const productsData = [
+export interface SeedProduct {
+  name: string;
+  slug: string;
+  price: number;
+  stock: number;
+  category: string;
+  imageUrl: string;
+  categoryId?: number | string;
+  description?: string;
+}
+
+export let productsData: SeedProduct[] = [
   // ---------------- TELEFONY ----------------
   {
     name: 'iPhone 15',
@@ -1508,3 +1519,29 @@ export const productsData = [
     categoryId: 2,
   },
 ];
+
+// Add default descriptions per category for seed data
+const phoneDescription =
+  'Nowoczesny smartfon z wysokiej klasy aparatem, szybkim procesorem i długim czasem pracy na baterii.';
+const laptopDescription =
+  'Wydajny laptop z wysokiej jakości ekranem, długim czasem pracy na baterii i solidną konstrukcją.';
+const tabletDescription =
+  'Lekki i wydajny tablet idealny do pracy i rozrywki, z wyraźnym ekranem i długim czasem pracy na baterii.';
+const watchDescription =
+  'Nowoczesny smartwatch z monitorowaniem zdrowia, długim czasem pracy baterii i eleganckim designem.';
+
+productsData = productsData.map((p: any) => {
+  if (!p.description) {
+    const cat = String(p.category || '').toLowerCase();
+    if (cat.includes('telefon')) p.description = phoneDescription;
+    else if (cat.includes('laptop')) p.description = laptopDescription;
+    else if (cat.includes('tablet')) p.description = tabletDescription;
+    else if (
+      cat.includes('smart') ||
+      cat.includes('watch') ||
+      cat.includes('zegarek')
+    )
+      p.description = watchDescription;
+  }
+  return p;
+});

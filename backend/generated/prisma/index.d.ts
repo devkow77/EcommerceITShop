@@ -19,6 +19,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
+ * Model UserReward
+ * 
+ */
+export type UserReward = $Result.DefaultSelection<Prisma.$UserRewardPayload>
+/**
  * Model Product
  * 
  */
@@ -43,6 +48,16 @@ export type OrderItem = $Result.DefaultSelection<Prisma.$OrderItemPayload>
  * 
  */
 export type Promotion = $Result.DefaultSelection<Prisma.$PromotionPayload>
+/**
+ * Model HotShot
+ * 
+ */
+export type HotShot = $Result.DefaultSelection<Prisma.$HotShotPayload>
+/**
+ * Model UserFavorite
+ * 
+ */
+export type UserFavorite = $Result.DefaultSelection<Prisma.$UserFavoritePayload>
 
 /**
  * Enums
@@ -204,6 +219,16 @@ export class PrismaClient<
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.userReward`: Exposes CRUD operations for the **UserReward** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserRewards
+    * const userRewards = await prisma.userReward.findMany()
+    * ```
+    */
+  get userReward(): Prisma.UserRewardDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.product`: Exposes CRUD operations for the **Product** model.
     * Example usage:
     * ```ts
@@ -252,6 +277,26 @@ export class PrismaClient<
     * ```
     */
   get promotion(): Prisma.PromotionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.hotShot`: Exposes CRUD operations for the **HotShot** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HotShots
+    * const hotShots = await prisma.hotShot.findMany()
+    * ```
+    */
+  get hotShot(): Prisma.HotShotDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userFavorite`: Exposes CRUD operations for the **UserFavorite** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserFavorites
+    * const userFavorites = await prisma.userFavorite.findMany()
+    * ```
+    */
+  get userFavorite(): Prisma.UserFavoriteDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -687,11 +732,14 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
+    UserReward: 'UserReward',
     Product: 'Product',
     Category: 'Category',
     Order: 'Order',
     OrderItem: 'OrderItem',
-    Promotion: 'Promotion'
+    Promotion: 'Promotion',
+    HotShot: 'HotShot',
+    UserFavorite: 'UserFavorite'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -707,7 +755,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "product" | "category" | "order" | "orderItem" | "promotion"
+      modelProps: "user" | "userReward" | "product" | "category" | "order" | "orderItem" | "promotion" | "hotShot" | "userFavorite"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -782,6 +830,80 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserReward: {
+        payload: Prisma.$UserRewardPayload<ExtArgs>
+        fields: Prisma.UserRewardFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserRewardFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserRewardFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload>
+          }
+          findFirst: {
+            args: Prisma.UserRewardFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserRewardFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload>
+          }
+          findMany: {
+            args: Prisma.UserRewardFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload>[]
+          }
+          create: {
+            args: Prisma.UserRewardCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload>
+          }
+          createMany: {
+            args: Prisma.UserRewardCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserRewardCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload>[]
+          }
+          delete: {
+            args: Prisma.UserRewardDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload>
+          }
+          update: {
+            args: Prisma.UserRewardUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserRewardDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserRewardUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserRewardUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserRewardUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRewardPayload>
+          }
+          aggregate: {
+            args: Prisma.UserRewardAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserReward>
+          }
+          groupBy: {
+            args: Prisma.UserRewardGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserRewardGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserRewardCountArgs<ExtArgs>
+            result: $Utils.Optional<UserRewardCountAggregateOutputType> | number
           }
         }
       }
@@ -1155,6 +1277,154 @@ export namespace Prisma {
           }
         }
       }
+      HotShot: {
+        payload: Prisma.$HotShotPayload<ExtArgs>
+        fields: Prisma.HotShotFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HotShotFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HotShotFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload>
+          }
+          findFirst: {
+            args: Prisma.HotShotFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HotShotFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload>
+          }
+          findMany: {
+            args: Prisma.HotShotFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload>[]
+          }
+          create: {
+            args: Prisma.HotShotCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload>
+          }
+          createMany: {
+            args: Prisma.HotShotCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HotShotCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload>[]
+          }
+          delete: {
+            args: Prisma.HotShotDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload>
+          }
+          update: {
+            args: Prisma.HotShotUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload>
+          }
+          deleteMany: {
+            args: Prisma.HotShotDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HotShotUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HotShotUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload>[]
+          }
+          upsert: {
+            args: Prisma.HotShotUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HotShotPayload>
+          }
+          aggregate: {
+            args: Prisma.HotShotAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHotShot>
+          }
+          groupBy: {
+            args: Prisma.HotShotGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HotShotGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HotShotCountArgs<ExtArgs>
+            result: $Utils.Optional<HotShotCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserFavorite: {
+        payload: Prisma.$UserFavoritePayload<ExtArgs>
+        fields: Prisma.UserFavoriteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserFavoriteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserFavoriteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload>
+          }
+          findFirst: {
+            args: Prisma.UserFavoriteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserFavoriteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload>
+          }
+          findMany: {
+            args: Prisma.UserFavoriteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload>[]
+          }
+          create: {
+            args: Prisma.UserFavoriteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload>
+          }
+          createMany: {
+            args: Prisma.UserFavoriteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserFavoriteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload>[]
+          }
+          delete: {
+            args: Prisma.UserFavoriteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload>
+          }
+          update: {
+            args: Prisma.UserFavoriteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserFavoriteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserFavoriteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserFavoriteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload>[]
+          }
+          upsert: {
+            args: Prisma.UserFavoriteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavoritePayload>
+          }
+          aggregate: {
+            args: Prisma.UserFavoriteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserFavorite>
+          }
+          groupBy: {
+            args: Prisma.UserFavoriteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserFavoriteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserFavoriteCountArgs<ExtArgs>
+            result: $Utils.Optional<UserFavoriteCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1264,11 +1534,14 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    userReward?: UserRewardOmit
     product?: ProductOmit
     category?: CategoryOmit
     order?: OrderOmit
     orderItem?: OrderItemOmit
     promotion?: PromotionOmit
+    hotShot?: HotShotOmit
+    userFavorite?: UserFavoriteOmit
   }
 
   /* Types for Logging */
@@ -1350,10 +1623,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     orders: number
+    favorites: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | UserCountOutputTypeCountOrdersArgs
+    favorites?: boolean | UserCountOutputTypeCountFavoritesArgs
   }
 
   // Custom InputTypes
@@ -1374,6 +1649,13 @@ export namespace Prisma {
     where?: OrderWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserFavoriteWhereInput
+  }
+
 
   /**
    * Count Type ProductCountOutputType
@@ -1382,11 +1664,15 @@ export namespace Prisma {
   export type ProductCountOutputType = {
     orderItems: number
     promotion: number
+    userRewards: number
+    userFavorites: number
   }
 
   export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orderItems?: boolean | ProductCountOutputTypeCountOrderItemsArgs
     promotion?: boolean | ProductCountOutputTypeCountPromotionArgs
+    userRewards?: boolean | ProductCountOutputTypeCountUserRewardsArgs
+    userFavorites?: boolean | ProductCountOutputTypeCountUserFavoritesArgs
   }
 
   // Custom InputTypes
@@ -1412,6 +1698,20 @@ export namespace Prisma {
    */
   export type ProductCountOutputTypeCountPromotionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PromotionWhereInput
+  }
+
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeCountUserRewardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserRewardWhereInput
+  }
+
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeCountUserFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserFavoriteWhereInput
   }
 
 
@@ -1704,6 +2004,8 @@ export namespace Prisma {
     totpSecret?: boolean
     totpEnabled?: boolean
     orders?: boolean | User$ordersArgs<ExtArgs>
+    reward?: boolean | User$rewardArgs<ExtArgs>
+    favorites?: boolean | User$favoritesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1743,6 +2045,8 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "createdAt" | "role" | "totpSecret" | "totpEnabled", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | User$ordersArgs<ExtArgs>
+    reward?: boolean | User$rewardArgs<ExtArgs>
+    favorites?: boolean | User$favoritesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1752,6 +2056,8 @@ export namespace Prisma {
     name: "User"
     objects: {
       orders: Prisma.$OrderPayload<ExtArgs>[]
+      reward: Prisma.$UserRewardPayload<ExtArgs> | null
+      favorites: Prisma.$UserFavoritePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2157,6 +2463,8 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     orders<T extends User$ordersArgs<ExtArgs> = {}>(args?: Subset<T, User$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reward<T extends User$rewardArgs<ExtArgs> = {}>(args?: Subset<T, User$rewardArgs<ExtArgs>>): Prisma__UserRewardClient<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    favorites<T extends User$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, User$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2606,6 +2914,49 @@ export namespace Prisma {
   }
 
   /**
+   * User.reward
+   */
+  export type User$rewardArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    where?: UserRewardWhereInput
+  }
+
+  /**
+   * User.favorites
+   */
+  export type User$favoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    where?: UserFavoriteWhereInput
+    orderBy?: UserFavoriteOrderByWithRelationInput | UserFavoriteOrderByWithRelationInput[]
+    cursor?: UserFavoriteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserFavoriteScalarFieldEnum | UserFavoriteScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2621,6 +2972,1118 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserReward
+   */
+
+  export type AggregateUserReward = {
+    _count: UserRewardCountAggregateOutputType | null
+    _avg: UserRewardAvgAggregateOutputType | null
+    _sum: UserRewardSumAggregateOutputType | null
+    _min: UserRewardMinAggregateOutputType | null
+    _max: UserRewardMaxAggregateOutputType | null
+  }
+
+  export type UserRewardAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+    discountPercent: number | null
+  }
+
+  export type UserRewardSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+    discountPercent: number | null
+  }
+
+  export type UserRewardMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+    discountPercent: number | null
+    generatedAt: Date | null
+  }
+
+  export type UserRewardMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+    discountPercent: number | null
+    generatedAt: Date | null
+  }
+
+  export type UserRewardCountAggregateOutputType = {
+    id: number
+    userId: number
+    productId: number
+    discountPercent: number
+    generatedAt: number
+    _all: number
+  }
+
+
+  export type UserRewardAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+    discountPercent?: true
+  }
+
+  export type UserRewardSumAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+    discountPercent?: true
+  }
+
+  export type UserRewardMinAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+    discountPercent?: true
+    generatedAt?: true
+  }
+
+  export type UserRewardMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+    discountPercent?: true
+    generatedAt?: true
+  }
+
+  export type UserRewardCountAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+    discountPercent?: true
+    generatedAt?: true
+    _all?: true
+  }
+
+  export type UserRewardAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserReward to aggregate.
+     */
+    where?: UserRewardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserRewards to fetch.
+     */
+    orderBy?: UserRewardOrderByWithRelationInput | UserRewardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserRewardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserRewards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserRewards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserRewards
+    **/
+    _count?: true | UserRewardCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserRewardAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserRewardSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserRewardMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserRewardMaxAggregateInputType
+  }
+
+  export type GetUserRewardAggregateType<T extends UserRewardAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserReward]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserReward[P]>
+      : GetScalarType<T[P], AggregateUserReward[P]>
+  }
+
+
+
+
+  export type UserRewardGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserRewardWhereInput
+    orderBy?: UserRewardOrderByWithAggregationInput | UserRewardOrderByWithAggregationInput[]
+    by: UserRewardScalarFieldEnum[] | UserRewardScalarFieldEnum
+    having?: UserRewardScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserRewardCountAggregateInputType | true
+    _avg?: UserRewardAvgAggregateInputType
+    _sum?: UserRewardSumAggregateInputType
+    _min?: UserRewardMinAggregateInputType
+    _max?: UserRewardMaxAggregateInputType
+  }
+
+  export type UserRewardGroupByOutputType = {
+    id: number
+    userId: number
+    productId: number
+    discountPercent: number
+    generatedAt: Date
+    _count: UserRewardCountAggregateOutputType | null
+    _avg: UserRewardAvgAggregateOutputType | null
+    _sum: UserRewardSumAggregateOutputType | null
+    _min: UserRewardMinAggregateOutputType | null
+    _max: UserRewardMaxAggregateOutputType | null
+  }
+
+  type GetUserRewardGroupByPayload<T extends UserRewardGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserRewardGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserRewardGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserRewardGroupByOutputType[P]>
+            : GetScalarType<T[P], UserRewardGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserRewardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+    discountPercent?: boolean
+    generatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userReward"]>
+
+  export type UserRewardSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+    discountPercent?: boolean
+    generatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userReward"]>
+
+  export type UserRewardSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+    discountPercent?: boolean
+    generatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userReward"]>
+
+  export type UserRewardSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+    discountPercent?: boolean
+    generatedAt?: boolean
+  }
+
+  export type UserRewardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "productId" | "discountPercent" | "generatedAt", ExtArgs["result"]["userReward"]>
+  export type UserRewardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type UserRewardIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type UserRewardIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+
+  export type $UserRewardPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserReward"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      product: Prisma.$ProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      productId: number
+      discountPercent: number
+      generatedAt: Date
+    }, ExtArgs["result"]["userReward"]>
+    composites: {}
+  }
+
+  type UserRewardGetPayload<S extends boolean | null | undefined | UserRewardDefaultArgs> = $Result.GetResult<Prisma.$UserRewardPayload, S>
+
+  type UserRewardCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserRewardFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserRewardCountAggregateInputType | true
+    }
+
+  export interface UserRewardDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserReward'], meta: { name: 'UserReward' } }
+    /**
+     * Find zero or one UserReward that matches the filter.
+     * @param {UserRewardFindUniqueArgs} args - Arguments to find a UserReward
+     * @example
+     * // Get one UserReward
+     * const userReward = await prisma.userReward.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserRewardFindUniqueArgs>(args: SelectSubset<T, UserRewardFindUniqueArgs<ExtArgs>>): Prisma__UserRewardClient<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserReward that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserRewardFindUniqueOrThrowArgs} args - Arguments to find a UserReward
+     * @example
+     * // Get one UserReward
+     * const userReward = await prisma.userReward.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserRewardFindUniqueOrThrowArgs>(args: SelectSubset<T, UserRewardFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserRewardClient<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserReward that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRewardFindFirstArgs} args - Arguments to find a UserReward
+     * @example
+     * // Get one UserReward
+     * const userReward = await prisma.userReward.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserRewardFindFirstArgs>(args?: SelectSubset<T, UserRewardFindFirstArgs<ExtArgs>>): Prisma__UserRewardClient<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserReward that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRewardFindFirstOrThrowArgs} args - Arguments to find a UserReward
+     * @example
+     * // Get one UserReward
+     * const userReward = await prisma.userReward.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserRewardFindFirstOrThrowArgs>(args?: SelectSubset<T, UserRewardFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserRewardClient<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserRewards that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRewardFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserRewards
+     * const userRewards = await prisma.userReward.findMany()
+     * 
+     * // Get first 10 UserRewards
+     * const userRewards = await prisma.userReward.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userRewardWithIdOnly = await prisma.userReward.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserRewardFindManyArgs>(args?: SelectSubset<T, UserRewardFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserReward.
+     * @param {UserRewardCreateArgs} args - Arguments to create a UserReward.
+     * @example
+     * // Create one UserReward
+     * const UserReward = await prisma.userReward.create({
+     *   data: {
+     *     // ... data to create a UserReward
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserRewardCreateArgs>(args: SelectSubset<T, UserRewardCreateArgs<ExtArgs>>): Prisma__UserRewardClient<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserRewards.
+     * @param {UserRewardCreateManyArgs} args - Arguments to create many UserRewards.
+     * @example
+     * // Create many UserRewards
+     * const userReward = await prisma.userReward.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserRewardCreateManyArgs>(args?: SelectSubset<T, UserRewardCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserRewards and returns the data saved in the database.
+     * @param {UserRewardCreateManyAndReturnArgs} args - Arguments to create many UserRewards.
+     * @example
+     * // Create many UserRewards
+     * const userReward = await prisma.userReward.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserRewards and only return the `id`
+     * const userRewardWithIdOnly = await prisma.userReward.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserRewardCreateManyAndReturnArgs>(args?: SelectSubset<T, UserRewardCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserReward.
+     * @param {UserRewardDeleteArgs} args - Arguments to delete one UserReward.
+     * @example
+     * // Delete one UserReward
+     * const UserReward = await prisma.userReward.delete({
+     *   where: {
+     *     // ... filter to delete one UserReward
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserRewardDeleteArgs>(args: SelectSubset<T, UserRewardDeleteArgs<ExtArgs>>): Prisma__UserRewardClient<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserReward.
+     * @param {UserRewardUpdateArgs} args - Arguments to update one UserReward.
+     * @example
+     * // Update one UserReward
+     * const userReward = await prisma.userReward.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserRewardUpdateArgs>(args: SelectSubset<T, UserRewardUpdateArgs<ExtArgs>>): Prisma__UserRewardClient<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserRewards.
+     * @param {UserRewardDeleteManyArgs} args - Arguments to filter UserRewards to delete.
+     * @example
+     * // Delete a few UserRewards
+     * const { count } = await prisma.userReward.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserRewardDeleteManyArgs>(args?: SelectSubset<T, UserRewardDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserRewards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRewardUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserRewards
+     * const userReward = await prisma.userReward.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserRewardUpdateManyArgs>(args: SelectSubset<T, UserRewardUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserRewards and returns the data updated in the database.
+     * @param {UserRewardUpdateManyAndReturnArgs} args - Arguments to update many UserRewards.
+     * @example
+     * // Update many UserRewards
+     * const userReward = await prisma.userReward.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserRewards and only return the `id`
+     * const userRewardWithIdOnly = await prisma.userReward.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserRewardUpdateManyAndReturnArgs>(args: SelectSubset<T, UserRewardUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserReward.
+     * @param {UserRewardUpsertArgs} args - Arguments to update or create a UserReward.
+     * @example
+     * // Update or create a UserReward
+     * const userReward = await prisma.userReward.upsert({
+     *   create: {
+     *     // ... data to create a UserReward
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserReward we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserRewardUpsertArgs>(args: SelectSubset<T, UserRewardUpsertArgs<ExtArgs>>): Prisma__UserRewardClient<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserRewards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRewardCountArgs} args - Arguments to filter UserRewards to count.
+     * @example
+     * // Count the number of UserRewards
+     * const count = await prisma.userReward.count({
+     *   where: {
+     *     // ... the filter for the UserRewards we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserRewardCountArgs>(
+      args?: Subset<T, UserRewardCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserRewardCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserReward.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRewardAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserRewardAggregateArgs>(args: Subset<T, UserRewardAggregateArgs>): Prisma.PrismaPromise<GetUserRewardAggregateType<T>>
+
+    /**
+     * Group by UserReward.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRewardGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserRewardGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserRewardGroupByArgs['orderBy'] }
+        : { orderBy?: UserRewardGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserRewardGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserRewardGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserReward model
+   */
+  readonly fields: UserRewardFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserReward.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserRewardClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserReward model
+   */
+  interface UserRewardFieldRefs {
+    readonly id: FieldRef<"UserReward", 'Int'>
+    readonly userId: FieldRef<"UserReward", 'Int'>
+    readonly productId: FieldRef<"UserReward", 'Int'>
+    readonly discountPercent: FieldRef<"UserReward", 'Int'>
+    readonly generatedAt: FieldRef<"UserReward", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserReward findUnique
+   */
+  export type UserRewardFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    /**
+     * Filter, which UserReward to fetch.
+     */
+    where: UserRewardWhereUniqueInput
+  }
+
+  /**
+   * UserReward findUniqueOrThrow
+   */
+  export type UserRewardFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    /**
+     * Filter, which UserReward to fetch.
+     */
+    where: UserRewardWhereUniqueInput
+  }
+
+  /**
+   * UserReward findFirst
+   */
+  export type UserRewardFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    /**
+     * Filter, which UserReward to fetch.
+     */
+    where?: UserRewardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserRewards to fetch.
+     */
+    orderBy?: UserRewardOrderByWithRelationInput | UserRewardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserRewards.
+     */
+    cursor?: UserRewardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserRewards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserRewards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserRewards.
+     */
+    distinct?: UserRewardScalarFieldEnum | UserRewardScalarFieldEnum[]
+  }
+
+  /**
+   * UserReward findFirstOrThrow
+   */
+  export type UserRewardFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    /**
+     * Filter, which UserReward to fetch.
+     */
+    where?: UserRewardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserRewards to fetch.
+     */
+    orderBy?: UserRewardOrderByWithRelationInput | UserRewardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserRewards.
+     */
+    cursor?: UserRewardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserRewards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserRewards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserRewards.
+     */
+    distinct?: UserRewardScalarFieldEnum | UserRewardScalarFieldEnum[]
+  }
+
+  /**
+   * UserReward findMany
+   */
+  export type UserRewardFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    /**
+     * Filter, which UserRewards to fetch.
+     */
+    where?: UserRewardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserRewards to fetch.
+     */
+    orderBy?: UserRewardOrderByWithRelationInput | UserRewardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserRewards.
+     */
+    cursor?: UserRewardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserRewards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserRewards.
+     */
+    skip?: number
+    distinct?: UserRewardScalarFieldEnum | UserRewardScalarFieldEnum[]
+  }
+
+  /**
+   * UserReward create
+   */
+  export type UserRewardCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserReward.
+     */
+    data: XOR<UserRewardCreateInput, UserRewardUncheckedCreateInput>
+  }
+
+  /**
+   * UserReward createMany
+   */
+  export type UserRewardCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserRewards.
+     */
+    data: UserRewardCreateManyInput | UserRewardCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserReward createManyAndReturn
+   */
+  export type UserRewardCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserRewards.
+     */
+    data: UserRewardCreateManyInput | UserRewardCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserReward update
+   */
+  export type UserRewardUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserReward.
+     */
+    data: XOR<UserRewardUpdateInput, UserRewardUncheckedUpdateInput>
+    /**
+     * Choose, which UserReward to update.
+     */
+    where: UserRewardWhereUniqueInput
+  }
+
+  /**
+   * UserReward updateMany
+   */
+  export type UserRewardUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserRewards.
+     */
+    data: XOR<UserRewardUpdateManyMutationInput, UserRewardUncheckedUpdateManyInput>
+    /**
+     * Filter which UserRewards to update
+     */
+    where?: UserRewardWhereInput
+    /**
+     * Limit how many UserRewards to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserReward updateManyAndReturn
+   */
+  export type UserRewardUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * The data used to update UserRewards.
+     */
+    data: XOR<UserRewardUpdateManyMutationInput, UserRewardUncheckedUpdateManyInput>
+    /**
+     * Filter which UserRewards to update
+     */
+    where?: UserRewardWhereInput
+    /**
+     * Limit how many UserRewards to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserReward upsert
+   */
+  export type UserRewardUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserReward to update in case it exists.
+     */
+    where: UserRewardWhereUniqueInput
+    /**
+     * In case the UserReward found by the `where` argument doesn't exist, create a new UserReward with this data.
+     */
+    create: XOR<UserRewardCreateInput, UserRewardUncheckedCreateInput>
+    /**
+     * In case the UserReward was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserRewardUpdateInput, UserRewardUncheckedUpdateInput>
+  }
+
+  /**
+   * UserReward delete
+   */
+  export type UserRewardDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    /**
+     * Filter which UserReward to delete.
+     */
+    where: UserRewardWhereUniqueInput
+  }
+
+  /**
+   * UserReward deleteMany
+   */
+  export type UserRewardDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserRewards to delete
+     */
+    where?: UserRewardWhereInput
+    /**
+     * Limit how many UserRewards to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserReward without action
+   */
+  export type UserRewardDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
   }
 
 
@@ -2880,6 +4343,9 @@ export namespace Prisma {
     categoryId?: boolean
     orderItems?: boolean | Product$orderItemsArgs<ExtArgs>
     promotion?: boolean | Product$promotionArgs<ExtArgs>
+    hotShot?: boolean | Product$hotShotArgs<ExtArgs>
+    userRewards?: boolean | Product$userRewardsArgs<ExtArgs>
+    userFavorites?: boolean | Product$userFavoritesArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
@@ -2929,6 +4395,9 @@ export namespace Prisma {
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orderItems?: boolean | Product$orderItemsArgs<ExtArgs>
     promotion?: boolean | Product$promotionArgs<ExtArgs>
+    hotShot?: boolean | Product$hotShotArgs<ExtArgs>
+    userRewards?: boolean | Product$userRewardsArgs<ExtArgs>
+    userFavorites?: boolean | Product$userFavoritesArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -2944,6 +4413,9 @@ export namespace Prisma {
     objects: {
       orderItems: Prisma.$OrderItemPayload<ExtArgs>[]
       promotion: Prisma.$PromotionPayload<ExtArgs>[]
+      hotShot: Prisma.$HotShotPayload<ExtArgs> | null
+      userRewards: Prisma.$UserRewardPayload<ExtArgs>[]
+      userFavorites: Prisma.$UserFavoritePayload<ExtArgs>[]
       category: Prisma.$CategoryPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -3353,6 +4825,9 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     orderItems<T extends Product$orderItemsArgs<ExtArgs> = {}>(args?: Subset<T, Product$orderItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     promotion<T extends Product$promotionArgs<ExtArgs> = {}>(args?: Subset<T, Product$promotionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromotionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    hotShot<T extends Product$hotShotArgs<ExtArgs> = {}>(args?: Subset<T, Product$hotShotArgs<ExtArgs>>): Prisma__HotShotClient<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    userRewards<T extends Product$userRewardsArgs<ExtArgs> = {}>(args?: Subset<T, Product$userRewardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRewardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userFavorites<T extends Product$userFavoritesArgs<ExtArgs> = {}>(args?: Subset<T, Product$userFavoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3834,6 +5309,73 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PromotionScalarFieldEnum | PromotionScalarFieldEnum[]
+  }
+
+  /**
+   * Product.hotShot
+   */
+  export type Product$hotShotArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    where?: HotShotWhereInput
+  }
+
+  /**
+   * Product.userRewards
+   */
+  export type Product$userRewardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserReward
+     */
+    select?: UserRewardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserReward
+     */
+    omit?: UserRewardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRewardInclude<ExtArgs> | null
+    where?: UserRewardWhereInput
+    orderBy?: UserRewardOrderByWithRelationInput | UserRewardOrderByWithRelationInput[]
+    cursor?: UserRewardWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserRewardScalarFieldEnum | UserRewardScalarFieldEnum[]
+  }
+
+  /**
+   * Product.userFavorites
+   */
+  export type Product$userFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    where?: UserFavoriteWhereInput
+    orderBy?: UserFavoriteOrderByWithRelationInput | UserFavoriteOrderByWithRelationInput[]
+    cursor?: UserFavoriteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserFavoriteScalarFieldEnum | UserFavoriteScalarFieldEnum[]
   }
 
   /**
@@ -8263,6 +9805,2265 @@ export namespace Prisma {
 
 
   /**
+   * Model HotShot
+   */
+
+  export type AggregateHotShot = {
+    _count: HotShotCountAggregateOutputType | null
+    _avg: HotShotAvgAggregateOutputType | null
+    _sum: HotShotSumAggregateOutputType | null
+    _min: HotShotMinAggregateOutputType | null
+    _max: HotShotMaxAggregateOutputType | null
+  }
+
+  export type HotShotAvgAggregateOutputType = {
+    id: number | null
+    productId: number | null
+    discountPercent: number | null
+    stockLimit: number | null
+    stockSold: number | null
+    originalPrice: number | null
+  }
+
+  export type HotShotSumAggregateOutputType = {
+    id: number | null
+    productId: number | null
+    discountPercent: number | null
+    stockLimit: number | null
+    stockSold: number | null
+    originalPrice: number | null
+  }
+
+  export type HotShotMinAggregateOutputType = {
+    id: number | null
+    productId: number | null
+    discountPercent: number | null
+    stockLimit: number | null
+    stockSold: number | null
+    originalPrice: number | null
+    startedAt: Date | null
+    expiresAt: Date | null
+    isActive: boolean | null
+  }
+
+  export type HotShotMaxAggregateOutputType = {
+    id: number | null
+    productId: number | null
+    discountPercent: number | null
+    stockLimit: number | null
+    stockSold: number | null
+    originalPrice: number | null
+    startedAt: Date | null
+    expiresAt: Date | null
+    isActive: boolean | null
+  }
+
+  export type HotShotCountAggregateOutputType = {
+    id: number
+    productId: number
+    discountPercent: number
+    stockLimit: number
+    stockSold: number
+    originalPrice: number
+    startedAt: number
+    expiresAt: number
+    isActive: number
+    _all: number
+  }
+
+
+  export type HotShotAvgAggregateInputType = {
+    id?: true
+    productId?: true
+    discountPercent?: true
+    stockLimit?: true
+    stockSold?: true
+    originalPrice?: true
+  }
+
+  export type HotShotSumAggregateInputType = {
+    id?: true
+    productId?: true
+    discountPercent?: true
+    stockLimit?: true
+    stockSold?: true
+    originalPrice?: true
+  }
+
+  export type HotShotMinAggregateInputType = {
+    id?: true
+    productId?: true
+    discountPercent?: true
+    stockLimit?: true
+    stockSold?: true
+    originalPrice?: true
+    startedAt?: true
+    expiresAt?: true
+    isActive?: true
+  }
+
+  export type HotShotMaxAggregateInputType = {
+    id?: true
+    productId?: true
+    discountPercent?: true
+    stockLimit?: true
+    stockSold?: true
+    originalPrice?: true
+    startedAt?: true
+    expiresAt?: true
+    isActive?: true
+  }
+
+  export type HotShotCountAggregateInputType = {
+    id?: true
+    productId?: true
+    discountPercent?: true
+    stockLimit?: true
+    stockSold?: true
+    originalPrice?: true
+    startedAt?: true
+    expiresAt?: true
+    isActive?: true
+    _all?: true
+  }
+
+  export type HotShotAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HotShot to aggregate.
+     */
+    where?: HotShotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HotShots to fetch.
+     */
+    orderBy?: HotShotOrderByWithRelationInput | HotShotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HotShotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HotShots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HotShots.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HotShots
+    **/
+    _count?: true | HotShotCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HotShotAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HotShotSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HotShotMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HotShotMaxAggregateInputType
+  }
+
+  export type GetHotShotAggregateType<T extends HotShotAggregateArgs> = {
+        [P in keyof T & keyof AggregateHotShot]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHotShot[P]>
+      : GetScalarType<T[P], AggregateHotShot[P]>
+  }
+
+
+
+
+  export type HotShotGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HotShotWhereInput
+    orderBy?: HotShotOrderByWithAggregationInput | HotShotOrderByWithAggregationInput[]
+    by: HotShotScalarFieldEnum[] | HotShotScalarFieldEnum
+    having?: HotShotScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HotShotCountAggregateInputType | true
+    _avg?: HotShotAvgAggregateInputType
+    _sum?: HotShotSumAggregateInputType
+    _min?: HotShotMinAggregateInputType
+    _max?: HotShotMaxAggregateInputType
+  }
+
+  export type HotShotGroupByOutputType = {
+    id: number
+    productId: number
+    discountPercent: number
+    stockLimit: number
+    stockSold: number
+    originalPrice: number
+    startedAt: Date
+    expiresAt: Date
+    isActive: boolean
+    _count: HotShotCountAggregateOutputType | null
+    _avg: HotShotAvgAggregateOutputType | null
+    _sum: HotShotSumAggregateOutputType | null
+    _min: HotShotMinAggregateOutputType | null
+    _max: HotShotMaxAggregateOutputType | null
+  }
+
+  type GetHotShotGroupByPayload<T extends HotShotGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HotShotGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HotShotGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HotShotGroupByOutputType[P]>
+            : GetScalarType<T[P], HotShotGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HotShotSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    productId?: boolean
+    discountPercent?: boolean
+    stockLimit?: boolean
+    stockSold?: boolean
+    originalPrice?: boolean
+    startedAt?: boolean
+    expiresAt?: boolean
+    isActive?: boolean
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hotShot"]>
+
+  export type HotShotSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    productId?: boolean
+    discountPercent?: boolean
+    stockLimit?: boolean
+    stockSold?: boolean
+    originalPrice?: boolean
+    startedAt?: boolean
+    expiresAt?: boolean
+    isActive?: boolean
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hotShot"]>
+
+  export type HotShotSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    productId?: boolean
+    discountPercent?: boolean
+    stockLimit?: boolean
+    stockSold?: boolean
+    originalPrice?: boolean
+    startedAt?: boolean
+    expiresAt?: boolean
+    isActive?: boolean
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hotShot"]>
+
+  export type HotShotSelectScalar = {
+    id?: boolean
+    productId?: boolean
+    discountPercent?: boolean
+    stockLimit?: boolean
+    stockSold?: boolean
+    originalPrice?: boolean
+    startedAt?: boolean
+    expiresAt?: boolean
+    isActive?: boolean
+  }
+
+  export type HotShotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "discountPercent" | "stockLimit" | "stockSold" | "originalPrice" | "startedAt" | "expiresAt" | "isActive", ExtArgs["result"]["hotShot"]>
+  export type HotShotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type HotShotIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type HotShotIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+
+  export type $HotShotPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HotShot"
+    objects: {
+      product: Prisma.$ProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      productId: number
+      discountPercent: number
+      stockLimit: number
+      stockSold: number
+      originalPrice: number
+      startedAt: Date
+      expiresAt: Date
+      isActive: boolean
+    }, ExtArgs["result"]["hotShot"]>
+    composites: {}
+  }
+
+  type HotShotGetPayload<S extends boolean | null | undefined | HotShotDefaultArgs> = $Result.GetResult<Prisma.$HotShotPayload, S>
+
+  type HotShotCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HotShotFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HotShotCountAggregateInputType | true
+    }
+
+  export interface HotShotDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HotShot'], meta: { name: 'HotShot' } }
+    /**
+     * Find zero or one HotShot that matches the filter.
+     * @param {HotShotFindUniqueArgs} args - Arguments to find a HotShot
+     * @example
+     * // Get one HotShot
+     * const hotShot = await prisma.hotShot.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HotShotFindUniqueArgs>(args: SelectSubset<T, HotShotFindUniqueArgs<ExtArgs>>): Prisma__HotShotClient<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HotShot that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HotShotFindUniqueOrThrowArgs} args - Arguments to find a HotShot
+     * @example
+     * // Get one HotShot
+     * const hotShot = await prisma.hotShot.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HotShotFindUniqueOrThrowArgs>(args: SelectSubset<T, HotShotFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HotShotClient<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HotShot that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HotShotFindFirstArgs} args - Arguments to find a HotShot
+     * @example
+     * // Get one HotShot
+     * const hotShot = await prisma.hotShot.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HotShotFindFirstArgs>(args?: SelectSubset<T, HotShotFindFirstArgs<ExtArgs>>): Prisma__HotShotClient<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HotShot that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HotShotFindFirstOrThrowArgs} args - Arguments to find a HotShot
+     * @example
+     * // Get one HotShot
+     * const hotShot = await prisma.hotShot.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HotShotFindFirstOrThrowArgs>(args?: SelectSubset<T, HotShotFindFirstOrThrowArgs<ExtArgs>>): Prisma__HotShotClient<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HotShots that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HotShotFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HotShots
+     * const hotShots = await prisma.hotShot.findMany()
+     * 
+     * // Get first 10 HotShots
+     * const hotShots = await prisma.hotShot.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const hotShotWithIdOnly = await prisma.hotShot.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HotShotFindManyArgs>(args?: SelectSubset<T, HotShotFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HotShot.
+     * @param {HotShotCreateArgs} args - Arguments to create a HotShot.
+     * @example
+     * // Create one HotShot
+     * const HotShot = await prisma.hotShot.create({
+     *   data: {
+     *     // ... data to create a HotShot
+     *   }
+     * })
+     * 
+     */
+    create<T extends HotShotCreateArgs>(args: SelectSubset<T, HotShotCreateArgs<ExtArgs>>): Prisma__HotShotClient<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HotShots.
+     * @param {HotShotCreateManyArgs} args - Arguments to create many HotShots.
+     * @example
+     * // Create many HotShots
+     * const hotShot = await prisma.hotShot.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HotShotCreateManyArgs>(args?: SelectSubset<T, HotShotCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many HotShots and returns the data saved in the database.
+     * @param {HotShotCreateManyAndReturnArgs} args - Arguments to create many HotShots.
+     * @example
+     * // Create many HotShots
+     * const hotShot = await prisma.hotShot.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many HotShots and only return the `id`
+     * const hotShotWithIdOnly = await prisma.hotShot.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HotShotCreateManyAndReturnArgs>(args?: SelectSubset<T, HotShotCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a HotShot.
+     * @param {HotShotDeleteArgs} args - Arguments to delete one HotShot.
+     * @example
+     * // Delete one HotShot
+     * const HotShot = await prisma.hotShot.delete({
+     *   where: {
+     *     // ... filter to delete one HotShot
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HotShotDeleteArgs>(args: SelectSubset<T, HotShotDeleteArgs<ExtArgs>>): Prisma__HotShotClient<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HotShot.
+     * @param {HotShotUpdateArgs} args - Arguments to update one HotShot.
+     * @example
+     * // Update one HotShot
+     * const hotShot = await prisma.hotShot.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HotShotUpdateArgs>(args: SelectSubset<T, HotShotUpdateArgs<ExtArgs>>): Prisma__HotShotClient<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HotShots.
+     * @param {HotShotDeleteManyArgs} args - Arguments to filter HotShots to delete.
+     * @example
+     * // Delete a few HotShots
+     * const { count } = await prisma.hotShot.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HotShotDeleteManyArgs>(args?: SelectSubset<T, HotShotDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HotShots.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HotShotUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HotShots
+     * const hotShot = await prisma.hotShot.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HotShotUpdateManyArgs>(args: SelectSubset<T, HotShotUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HotShots and returns the data updated in the database.
+     * @param {HotShotUpdateManyAndReturnArgs} args - Arguments to update many HotShots.
+     * @example
+     * // Update many HotShots
+     * const hotShot = await prisma.hotShot.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more HotShots and only return the `id`
+     * const hotShotWithIdOnly = await prisma.hotShot.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HotShotUpdateManyAndReturnArgs>(args: SelectSubset<T, HotShotUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one HotShot.
+     * @param {HotShotUpsertArgs} args - Arguments to update or create a HotShot.
+     * @example
+     * // Update or create a HotShot
+     * const hotShot = await prisma.hotShot.upsert({
+     *   create: {
+     *     // ... data to create a HotShot
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HotShot we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HotShotUpsertArgs>(args: SelectSubset<T, HotShotUpsertArgs<ExtArgs>>): Prisma__HotShotClient<$Result.GetResult<Prisma.$HotShotPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HotShots.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HotShotCountArgs} args - Arguments to filter HotShots to count.
+     * @example
+     * // Count the number of HotShots
+     * const count = await prisma.hotShot.count({
+     *   where: {
+     *     // ... the filter for the HotShots we want to count
+     *   }
+     * })
+    **/
+    count<T extends HotShotCountArgs>(
+      args?: Subset<T, HotShotCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HotShotCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HotShot.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HotShotAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HotShotAggregateArgs>(args: Subset<T, HotShotAggregateArgs>): Prisma.PrismaPromise<GetHotShotAggregateType<T>>
+
+    /**
+     * Group by HotShot.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HotShotGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HotShotGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HotShotGroupByArgs['orderBy'] }
+        : { orderBy?: HotShotGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HotShotGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHotShotGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HotShot model
+   */
+  readonly fields: HotShotFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HotShot.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HotShotClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HotShot model
+   */
+  interface HotShotFieldRefs {
+    readonly id: FieldRef<"HotShot", 'Int'>
+    readonly productId: FieldRef<"HotShot", 'Int'>
+    readonly discountPercent: FieldRef<"HotShot", 'Int'>
+    readonly stockLimit: FieldRef<"HotShot", 'Int'>
+    readonly stockSold: FieldRef<"HotShot", 'Int'>
+    readonly originalPrice: FieldRef<"HotShot", 'Int'>
+    readonly startedAt: FieldRef<"HotShot", 'DateTime'>
+    readonly expiresAt: FieldRef<"HotShot", 'DateTime'>
+    readonly isActive: FieldRef<"HotShot", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HotShot findUnique
+   */
+  export type HotShotFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    /**
+     * Filter, which HotShot to fetch.
+     */
+    where: HotShotWhereUniqueInput
+  }
+
+  /**
+   * HotShot findUniqueOrThrow
+   */
+  export type HotShotFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    /**
+     * Filter, which HotShot to fetch.
+     */
+    where: HotShotWhereUniqueInput
+  }
+
+  /**
+   * HotShot findFirst
+   */
+  export type HotShotFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    /**
+     * Filter, which HotShot to fetch.
+     */
+    where?: HotShotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HotShots to fetch.
+     */
+    orderBy?: HotShotOrderByWithRelationInput | HotShotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HotShots.
+     */
+    cursor?: HotShotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HotShots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HotShots.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HotShots.
+     */
+    distinct?: HotShotScalarFieldEnum | HotShotScalarFieldEnum[]
+  }
+
+  /**
+   * HotShot findFirstOrThrow
+   */
+  export type HotShotFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    /**
+     * Filter, which HotShot to fetch.
+     */
+    where?: HotShotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HotShots to fetch.
+     */
+    orderBy?: HotShotOrderByWithRelationInput | HotShotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HotShots.
+     */
+    cursor?: HotShotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HotShots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HotShots.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HotShots.
+     */
+    distinct?: HotShotScalarFieldEnum | HotShotScalarFieldEnum[]
+  }
+
+  /**
+   * HotShot findMany
+   */
+  export type HotShotFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    /**
+     * Filter, which HotShots to fetch.
+     */
+    where?: HotShotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HotShots to fetch.
+     */
+    orderBy?: HotShotOrderByWithRelationInput | HotShotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HotShots.
+     */
+    cursor?: HotShotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HotShots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HotShots.
+     */
+    skip?: number
+    distinct?: HotShotScalarFieldEnum | HotShotScalarFieldEnum[]
+  }
+
+  /**
+   * HotShot create
+   */
+  export type HotShotCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    /**
+     * The data needed to create a HotShot.
+     */
+    data: XOR<HotShotCreateInput, HotShotUncheckedCreateInput>
+  }
+
+  /**
+   * HotShot createMany
+   */
+  export type HotShotCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HotShots.
+     */
+    data: HotShotCreateManyInput | HotShotCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HotShot createManyAndReturn
+   */
+  export type HotShotCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * The data used to create many HotShots.
+     */
+    data: HotShotCreateManyInput | HotShotCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HotShot update
+   */
+  export type HotShotUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    /**
+     * The data needed to update a HotShot.
+     */
+    data: XOR<HotShotUpdateInput, HotShotUncheckedUpdateInput>
+    /**
+     * Choose, which HotShot to update.
+     */
+    where: HotShotWhereUniqueInput
+  }
+
+  /**
+   * HotShot updateMany
+   */
+  export type HotShotUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HotShots.
+     */
+    data: XOR<HotShotUpdateManyMutationInput, HotShotUncheckedUpdateManyInput>
+    /**
+     * Filter which HotShots to update
+     */
+    where?: HotShotWhereInput
+    /**
+     * Limit how many HotShots to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HotShot updateManyAndReturn
+   */
+  export type HotShotUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * The data used to update HotShots.
+     */
+    data: XOR<HotShotUpdateManyMutationInput, HotShotUncheckedUpdateManyInput>
+    /**
+     * Filter which HotShots to update
+     */
+    where?: HotShotWhereInput
+    /**
+     * Limit how many HotShots to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HotShot upsert
+   */
+  export type HotShotUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    /**
+     * The filter to search for the HotShot to update in case it exists.
+     */
+    where: HotShotWhereUniqueInput
+    /**
+     * In case the HotShot found by the `where` argument doesn't exist, create a new HotShot with this data.
+     */
+    create: XOR<HotShotCreateInput, HotShotUncheckedCreateInput>
+    /**
+     * In case the HotShot was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HotShotUpdateInput, HotShotUncheckedUpdateInput>
+  }
+
+  /**
+   * HotShot delete
+   */
+  export type HotShotDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+    /**
+     * Filter which HotShot to delete.
+     */
+    where: HotShotWhereUniqueInput
+  }
+
+  /**
+   * HotShot deleteMany
+   */
+  export type HotShotDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HotShots to delete
+     */
+    where?: HotShotWhereInput
+    /**
+     * Limit how many HotShots to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HotShot without action
+   */
+  export type HotShotDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HotShot
+     */
+    select?: HotShotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HotShot
+     */
+    omit?: HotShotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HotShotInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserFavorite
+   */
+
+  export type AggregateUserFavorite = {
+    _count: UserFavoriteCountAggregateOutputType | null
+    _avg: UserFavoriteAvgAggregateOutputType | null
+    _sum: UserFavoriteSumAggregateOutputType | null
+    _min: UserFavoriteMinAggregateOutputType | null
+    _max: UserFavoriteMaxAggregateOutputType | null
+  }
+
+  export type UserFavoriteAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+  }
+
+  export type UserFavoriteSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+  }
+
+  export type UserFavoriteMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+    createdAt: Date | null
+  }
+
+  export type UserFavoriteMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+    createdAt: Date | null
+  }
+
+  export type UserFavoriteCountAggregateOutputType = {
+    id: number
+    userId: number
+    productId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type UserFavoriteAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+  }
+
+  export type UserFavoriteSumAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+  }
+
+  export type UserFavoriteMinAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+    createdAt?: true
+  }
+
+  export type UserFavoriteMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+    createdAt?: true
+  }
+
+  export type UserFavoriteCountAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type UserFavoriteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserFavorite to aggregate.
+     */
+    where?: UserFavoriteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserFavorites to fetch.
+     */
+    orderBy?: UserFavoriteOrderByWithRelationInput | UserFavoriteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserFavoriteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserFavorites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserFavorites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserFavorites
+    **/
+    _count?: true | UserFavoriteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserFavoriteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserFavoriteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserFavoriteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserFavoriteMaxAggregateInputType
+  }
+
+  export type GetUserFavoriteAggregateType<T extends UserFavoriteAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserFavorite]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserFavorite[P]>
+      : GetScalarType<T[P], AggregateUserFavorite[P]>
+  }
+
+
+
+
+  export type UserFavoriteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserFavoriteWhereInput
+    orderBy?: UserFavoriteOrderByWithAggregationInput | UserFavoriteOrderByWithAggregationInput[]
+    by: UserFavoriteScalarFieldEnum[] | UserFavoriteScalarFieldEnum
+    having?: UserFavoriteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserFavoriteCountAggregateInputType | true
+    _avg?: UserFavoriteAvgAggregateInputType
+    _sum?: UserFavoriteSumAggregateInputType
+    _min?: UserFavoriteMinAggregateInputType
+    _max?: UserFavoriteMaxAggregateInputType
+  }
+
+  export type UserFavoriteGroupByOutputType = {
+    id: number
+    userId: number
+    productId: number
+    createdAt: Date
+    _count: UserFavoriteCountAggregateOutputType | null
+    _avg: UserFavoriteAvgAggregateOutputType | null
+    _sum: UserFavoriteSumAggregateOutputType | null
+    _min: UserFavoriteMinAggregateOutputType | null
+    _max: UserFavoriteMaxAggregateOutputType | null
+  }
+
+  type GetUserFavoriteGroupByPayload<T extends UserFavoriteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserFavoriteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserFavoriteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserFavoriteGroupByOutputType[P]>
+            : GetScalarType<T[P], UserFavoriteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserFavoriteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userFavorite"]>
+
+  export type UserFavoriteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userFavorite"]>
+
+  export type UserFavoriteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userFavorite"]>
+
+  export type UserFavoriteSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+    createdAt?: boolean
+  }
+
+  export type UserFavoriteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "productId" | "createdAt", ExtArgs["result"]["userFavorite"]>
+  export type UserFavoriteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type UserFavoriteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type UserFavoriteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+
+  export type $UserFavoritePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserFavorite"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      product: Prisma.$ProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      productId: number
+      createdAt: Date
+    }, ExtArgs["result"]["userFavorite"]>
+    composites: {}
+  }
+
+  type UserFavoriteGetPayload<S extends boolean | null | undefined | UserFavoriteDefaultArgs> = $Result.GetResult<Prisma.$UserFavoritePayload, S>
+
+  type UserFavoriteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserFavoriteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserFavoriteCountAggregateInputType | true
+    }
+
+  export interface UserFavoriteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserFavorite'], meta: { name: 'UserFavorite' } }
+    /**
+     * Find zero or one UserFavorite that matches the filter.
+     * @param {UserFavoriteFindUniqueArgs} args - Arguments to find a UserFavorite
+     * @example
+     * // Get one UserFavorite
+     * const userFavorite = await prisma.userFavorite.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserFavoriteFindUniqueArgs>(args: SelectSubset<T, UserFavoriteFindUniqueArgs<ExtArgs>>): Prisma__UserFavoriteClient<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserFavorite that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserFavoriteFindUniqueOrThrowArgs} args - Arguments to find a UserFavorite
+     * @example
+     * // Get one UserFavorite
+     * const userFavorite = await prisma.userFavorite.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserFavoriteFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFavoriteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserFavoriteClient<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserFavorite that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavoriteFindFirstArgs} args - Arguments to find a UserFavorite
+     * @example
+     * // Get one UserFavorite
+     * const userFavorite = await prisma.userFavorite.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserFavoriteFindFirstArgs>(args?: SelectSubset<T, UserFavoriteFindFirstArgs<ExtArgs>>): Prisma__UserFavoriteClient<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserFavorite that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavoriteFindFirstOrThrowArgs} args - Arguments to find a UserFavorite
+     * @example
+     * // Get one UserFavorite
+     * const userFavorite = await prisma.userFavorite.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserFavoriteFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFavoriteFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserFavoriteClient<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserFavorites that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavoriteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserFavorites
+     * const userFavorites = await prisma.userFavorite.findMany()
+     * 
+     * // Get first 10 UserFavorites
+     * const userFavorites = await prisma.userFavorite.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userFavoriteWithIdOnly = await prisma.userFavorite.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserFavoriteFindManyArgs>(args?: SelectSubset<T, UserFavoriteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserFavorite.
+     * @param {UserFavoriteCreateArgs} args - Arguments to create a UserFavorite.
+     * @example
+     * // Create one UserFavorite
+     * const UserFavorite = await prisma.userFavorite.create({
+     *   data: {
+     *     // ... data to create a UserFavorite
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserFavoriteCreateArgs>(args: SelectSubset<T, UserFavoriteCreateArgs<ExtArgs>>): Prisma__UserFavoriteClient<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserFavorites.
+     * @param {UserFavoriteCreateManyArgs} args - Arguments to create many UserFavorites.
+     * @example
+     * // Create many UserFavorites
+     * const userFavorite = await prisma.userFavorite.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserFavoriteCreateManyArgs>(args?: SelectSubset<T, UserFavoriteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserFavorites and returns the data saved in the database.
+     * @param {UserFavoriteCreateManyAndReturnArgs} args - Arguments to create many UserFavorites.
+     * @example
+     * // Create many UserFavorites
+     * const userFavorite = await prisma.userFavorite.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserFavorites and only return the `id`
+     * const userFavoriteWithIdOnly = await prisma.userFavorite.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserFavoriteCreateManyAndReturnArgs>(args?: SelectSubset<T, UserFavoriteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserFavorite.
+     * @param {UserFavoriteDeleteArgs} args - Arguments to delete one UserFavorite.
+     * @example
+     * // Delete one UserFavorite
+     * const UserFavorite = await prisma.userFavorite.delete({
+     *   where: {
+     *     // ... filter to delete one UserFavorite
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserFavoriteDeleteArgs>(args: SelectSubset<T, UserFavoriteDeleteArgs<ExtArgs>>): Prisma__UserFavoriteClient<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserFavorite.
+     * @param {UserFavoriteUpdateArgs} args - Arguments to update one UserFavorite.
+     * @example
+     * // Update one UserFavorite
+     * const userFavorite = await prisma.userFavorite.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserFavoriteUpdateArgs>(args: SelectSubset<T, UserFavoriteUpdateArgs<ExtArgs>>): Prisma__UserFavoriteClient<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserFavorites.
+     * @param {UserFavoriteDeleteManyArgs} args - Arguments to filter UserFavorites to delete.
+     * @example
+     * // Delete a few UserFavorites
+     * const { count } = await prisma.userFavorite.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserFavoriteDeleteManyArgs>(args?: SelectSubset<T, UserFavoriteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserFavorites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavoriteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserFavorites
+     * const userFavorite = await prisma.userFavorite.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserFavoriteUpdateManyArgs>(args: SelectSubset<T, UserFavoriteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserFavorites and returns the data updated in the database.
+     * @param {UserFavoriteUpdateManyAndReturnArgs} args - Arguments to update many UserFavorites.
+     * @example
+     * // Update many UserFavorites
+     * const userFavorite = await prisma.userFavorite.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserFavorites and only return the `id`
+     * const userFavoriteWithIdOnly = await prisma.userFavorite.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserFavoriteUpdateManyAndReturnArgs>(args: SelectSubset<T, UserFavoriteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserFavorite.
+     * @param {UserFavoriteUpsertArgs} args - Arguments to update or create a UserFavorite.
+     * @example
+     * // Update or create a UserFavorite
+     * const userFavorite = await prisma.userFavorite.upsert({
+     *   create: {
+     *     // ... data to create a UserFavorite
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserFavorite we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserFavoriteUpsertArgs>(args: SelectSubset<T, UserFavoriteUpsertArgs<ExtArgs>>): Prisma__UserFavoriteClient<$Result.GetResult<Prisma.$UserFavoritePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserFavorites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavoriteCountArgs} args - Arguments to filter UserFavorites to count.
+     * @example
+     * // Count the number of UserFavorites
+     * const count = await prisma.userFavorite.count({
+     *   where: {
+     *     // ... the filter for the UserFavorites we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserFavoriteCountArgs>(
+      args?: Subset<T, UserFavoriteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserFavoriteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserFavorite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavoriteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserFavoriteAggregateArgs>(args: Subset<T, UserFavoriteAggregateArgs>): Prisma.PrismaPromise<GetUserFavoriteAggregateType<T>>
+
+    /**
+     * Group by UserFavorite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavoriteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserFavoriteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserFavoriteGroupByArgs['orderBy'] }
+        : { orderBy?: UserFavoriteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserFavoriteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserFavoriteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserFavorite model
+   */
+  readonly fields: UserFavoriteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserFavorite.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserFavoriteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserFavorite model
+   */
+  interface UserFavoriteFieldRefs {
+    readonly id: FieldRef<"UserFavorite", 'Int'>
+    readonly userId: FieldRef<"UserFavorite", 'Int'>
+    readonly productId: FieldRef<"UserFavorite", 'Int'>
+    readonly createdAt: FieldRef<"UserFavorite", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserFavorite findUnique
+   */
+  export type UserFavoriteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorite to fetch.
+     */
+    where: UserFavoriteWhereUniqueInput
+  }
+
+  /**
+   * UserFavorite findUniqueOrThrow
+   */
+  export type UserFavoriteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorite to fetch.
+     */
+    where: UserFavoriteWhereUniqueInput
+  }
+
+  /**
+   * UserFavorite findFirst
+   */
+  export type UserFavoriteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorite to fetch.
+     */
+    where?: UserFavoriteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserFavorites to fetch.
+     */
+    orderBy?: UserFavoriteOrderByWithRelationInput | UserFavoriteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserFavorites.
+     */
+    cursor?: UserFavoriteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserFavorites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserFavorites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserFavorites.
+     */
+    distinct?: UserFavoriteScalarFieldEnum | UserFavoriteScalarFieldEnum[]
+  }
+
+  /**
+   * UserFavorite findFirstOrThrow
+   */
+  export type UserFavoriteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorite to fetch.
+     */
+    where?: UserFavoriteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserFavorites to fetch.
+     */
+    orderBy?: UserFavoriteOrderByWithRelationInput | UserFavoriteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserFavorites.
+     */
+    cursor?: UserFavoriteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserFavorites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserFavorites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserFavorites.
+     */
+    distinct?: UserFavoriteScalarFieldEnum | UserFavoriteScalarFieldEnum[]
+  }
+
+  /**
+   * UserFavorite findMany
+   */
+  export type UserFavoriteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorites to fetch.
+     */
+    where?: UserFavoriteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserFavorites to fetch.
+     */
+    orderBy?: UserFavoriteOrderByWithRelationInput | UserFavoriteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserFavorites.
+     */
+    cursor?: UserFavoriteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserFavorites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserFavorites.
+     */
+    skip?: number
+    distinct?: UserFavoriteScalarFieldEnum | UserFavoriteScalarFieldEnum[]
+  }
+
+  /**
+   * UserFavorite create
+   */
+  export type UserFavoriteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserFavorite.
+     */
+    data: XOR<UserFavoriteCreateInput, UserFavoriteUncheckedCreateInput>
+  }
+
+  /**
+   * UserFavorite createMany
+   */
+  export type UserFavoriteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserFavorites.
+     */
+    data: UserFavoriteCreateManyInput | UserFavoriteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserFavorite createManyAndReturn
+   */
+  export type UserFavoriteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserFavorites.
+     */
+    data: UserFavoriteCreateManyInput | UserFavoriteCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserFavorite update
+   */
+  export type UserFavoriteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserFavorite.
+     */
+    data: XOR<UserFavoriteUpdateInput, UserFavoriteUncheckedUpdateInput>
+    /**
+     * Choose, which UserFavorite to update.
+     */
+    where: UserFavoriteWhereUniqueInput
+  }
+
+  /**
+   * UserFavorite updateMany
+   */
+  export type UserFavoriteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserFavorites.
+     */
+    data: XOR<UserFavoriteUpdateManyMutationInput, UserFavoriteUncheckedUpdateManyInput>
+    /**
+     * Filter which UserFavorites to update
+     */
+    where?: UserFavoriteWhereInput
+    /**
+     * Limit how many UserFavorites to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserFavorite updateManyAndReturn
+   */
+  export type UserFavoriteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * The data used to update UserFavorites.
+     */
+    data: XOR<UserFavoriteUpdateManyMutationInput, UserFavoriteUncheckedUpdateManyInput>
+    /**
+     * Filter which UserFavorites to update
+     */
+    where?: UserFavoriteWhereInput
+    /**
+     * Limit how many UserFavorites to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserFavorite upsert
+   */
+  export type UserFavoriteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserFavorite to update in case it exists.
+     */
+    where: UserFavoriteWhereUniqueInput
+    /**
+     * In case the UserFavorite found by the `where` argument doesn't exist, create a new UserFavorite with this data.
+     */
+    create: XOR<UserFavoriteCreateInput, UserFavoriteUncheckedCreateInput>
+    /**
+     * In case the UserFavorite was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserFavoriteUpdateInput, UserFavoriteUncheckedUpdateInput>
+  }
+
+  /**
+   * UserFavorite delete
+   */
+  export type UserFavoriteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+    /**
+     * Filter which UserFavorite to delete.
+     */
+    where: UserFavoriteWhereUniqueInput
+  }
+
+  /**
+   * UserFavorite deleteMany
+   */
+  export type UserFavoriteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserFavorites to delete
+     */
+    where?: UserFavoriteWhereInput
+    /**
+     * Limit how many UserFavorites to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserFavorite without action
+   */
+  export type UserFavoriteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorite
+     */
+    select?: UserFavoriteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorite
+     */
+    omit?: UserFavoriteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavoriteInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8288,6 +12089,17 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const UserRewardScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    productId: 'productId',
+    discountPercent: 'discountPercent',
+    generatedAt: 'generatedAt'
+  };
+
+  export type UserRewardScalarFieldEnum = (typeof UserRewardScalarFieldEnum)[keyof typeof UserRewardScalarFieldEnum]
 
 
   export const ProductScalarFieldEnum: {
@@ -8345,6 +12157,31 @@ export namespace Prisma {
   };
 
   export type PromotionScalarFieldEnum = (typeof PromotionScalarFieldEnum)[keyof typeof PromotionScalarFieldEnum]
+
+
+  export const HotShotScalarFieldEnum: {
+    id: 'id',
+    productId: 'productId',
+    discountPercent: 'discountPercent',
+    stockLimit: 'stockLimit',
+    stockSold: 'stockSold',
+    originalPrice: 'originalPrice',
+    startedAt: 'startedAt',
+    expiresAt: 'expiresAt',
+    isActive: 'isActive'
+  };
+
+  export type HotShotScalarFieldEnum = (typeof HotShotScalarFieldEnum)[keyof typeof HotShotScalarFieldEnum]
+
+
+  export const UserFavoriteScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    productId: 'productId',
+    createdAt: 'createdAt'
+  };
+
+  export type UserFavoriteScalarFieldEnum = (typeof UserFavoriteScalarFieldEnum)[keyof typeof UserFavoriteScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8483,6 +12320,8 @@ export namespace Prisma {
     totpSecret?: StringNullableFilter<"User"> | string | null
     totpEnabled?: BoolFilter<"User"> | boolean
     orders?: OrderListRelationFilter
+    reward?: XOR<UserRewardNullableScalarRelationFilter, UserRewardWhereInput> | null
+    favorites?: UserFavoriteListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8495,6 +12334,8 @@ export namespace Prisma {
     totpSecret?: SortOrderInput | SortOrder
     totpEnabled?: SortOrder
     orders?: OrderOrderByRelationAggregateInput
+    reward?: UserRewardOrderByWithRelationInput
+    favorites?: UserFavoriteOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8510,6 +12351,8 @@ export namespace Prisma {
     totpSecret?: StringNullableFilter<"User"> | string | null
     totpEnabled?: BoolFilter<"User"> | boolean
     orders?: OrderListRelationFilter
+    reward?: XOR<UserRewardNullableScalarRelationFilter, UserRewardWhereInput> | null
+    favorites?: UserFavoriteListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -8542,6 +12385,66 @@ export namespace Prisma {
     totpEnabled?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
+  export type UserRewardWhereInput = {
+    AND?: UserRewardWhereInput | UserRewardWhereInput[]
+    OR?: UserRewardWhereInput[]
+    NOT?: UserRewardWhereInput | UserRewardWhereInput[]
+    id?: IntFilter<"UserReward"> | number
+    userId?: IntFilter<"UserReward"> | number
+    productId?: IntFilter<"UserReward"> | number
+    discountPercent?: IntFilter<"UserReward"> | number
+    generatedAt?: DateTimeFilter<"UserReward"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }
+
+  export type UserRewardOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    generatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    product?: ProductOrderByWithRelationInput
+  }
+
+  export type UserRewardWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId?: number
+    AND?: UserRewardWhereInput | UserRewardWhereInput[]
+    OR?: UserRewardWhereInput[]
+    NOT?: UserRewardWhereInput | UserRewardWhereInput[]
+    productId?: IntFilter<"UserReward"> | number
+    discountPercent?: IntFilter<"UserReward"> | number
+    generatedAt?: DateTimeFilter<"UserReward"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }, "id" | "userId">
+
+  export type UserRewardOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    generatedAt?: SortOrder
+    _count?: UserRewardCountOrderByAggregateInput
+    _avg?: UserRewardAvgOrderByAggregateInput
+    _max?: UserRewardMaxOrderByAggregateInput
+    _min?: UserRewardMinOrderByAggregateInput
+    _sum?: UserRewardSumOrderByAggregateInput
+  }
+
+  export type UserRewardScalarWhereWithAggregatesInput = {
+    AND?: UserRewardScalarWhereWithAggregatesInput | UserRewardScalarWhereWithAggregatesInput[]
+    OR?: UserRewardScalarWhereWithAggregatesInput[]
+    NOT?: UserRewardScalarWhereWithAggregatesInput | UserRewardScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UserReward"> | number
+    userId?: IntWithAggregatesFilter<"UserReward"> | number
+    productId?: IntWithAggregatesFilter<"UserReward"> | number
+    discountPercent?: IntWithAggregatesFilter<"UserReward"> | number
+    generatedAt?: DateTimeWithAggregatesFilter<"UserReward"> | Date | string
+  }
+
   export type ProductWhereInput = {
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
@@ -8558,6 +12461,9 @@ export namespace Prisma {
     categoryId?: IntFilter<"Product"> | number
     orderItems?: OrderItemListRelationFilter
     promotion?: PromotionListRelationFilter
+    hotShot?: XOR<HotShotNullableScalarRelationFilter, HotShotWhereInput> | null
+    userRewards?: UserRewardListRelationFilter
+    userFavorites?: UserFavoriteListRelationFilter
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }
 
@@ -8574,6 +12480,9 @@ export namespace Prisma {
     categoryId?: SortOrder
     orderItems?: OrderItemOrderByRelationAggregateInput
     promotion?: PromotionOrderByRelationAggregateInput
+    hotShot?: HotShotOrderByWithRelationInput
+    userRewards?: UserRewardOrderByRelationAggregateInput
+    userFavorites?: UserFavoriteOrderByRelationAggregateInput
     category?: CategoryOrderByWithRelationInput
   }
 
@@ -8593,6 +12502,9 @@ export namespace Prisma {
     categoryId?: IntFilter<"Product"> | number
     orderItems?: OrderItemListRelationFilter
     promotion?: PromotionListRelationFilter
+    hotShot?: XOR<HotShotNullableScalarRelationFilter, HotShotWhereInput> | null
+    userRewards?: UserRewardListRelationFilter
+    userFavorites?: UserFavoriteListRelationFilter
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }, "id" | "slug">
 
@@ -8849,6 +12761,139 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
   }
 
+  export type HotShotWhereInput = {
+    AND?: HotShotWhereInput | HotShotWhereInput[]
+    OR?: HotShotWhereInput[]
+    NOT?: HotShotWhereInput | HotShotWhereInput[]
+    id?: IntFilter<"HotShot"> | number
+    productId?: IntFilter<"HotShot"> | number
+    discountPercent?: IntFilter<"HotShot"> | number
+    stockLimit?: IntFilter<"HotShot"> | number
+    stockSold?: IntFilter<"HotShot"> | number
+    originalPrice?: IntFilter<"HotShot"> | number
+    startedAt?: DateTimeFilter<"HotShot"> | Date | string
+    expiresAt?: DateTimeFilter<"HotShot"> | Date | string
+    isActive?: BoolFilter<"HotShot"> | boolean
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }
+
+  export type HotShotOrderByWithRelationInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    stockLimit?: SortOrder
+    stockSold?: SortOrder
+    originalPrice?: SortOrder
+    startedAt?: SortOrder
+    expiresAt?: SortOrder
+    isActive?: SortOrder
+    product?: ProductOrderByWithRelationInput
+  }
+
+  export type HotShotWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    productId?: number
+    AND?: HotShotWhereInput | HotShotWhereInput[]
+    OR?: HotShotWhereInput[]
+    NOT?: HotShotWhereInput | HotShotWhereInput[]
+    discountPercent?: IntFilter<"HotShot"> | number
+    stockLimit?: IntFilter<"HotShot"> | number
+    stockSold?: IntFilter<"HotShot"> | number
+    originalPrice?: IntFilter<"HotShot"> | number
+    startedAt?: DateTimeFilter<"HotShot"> | Date | string
+    expiresAt?: DateTimeFilter<"HotShot"> | Date | string
+    isActive?: BoolFilter<"HotShot"> | boolean
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }, "id" | "productId">
+
+  export type HotShotOrderByWithAggregationInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    stockLimit?: SortOrder
+    stockSold?: SortOrder
+    originalPrice?: SortOrder
+    startedAt?: SortOrder
+    expiresAt?: SortOrder
+    isActive?: SortOrder
+    _count?: HotShotCountOrderByAggregateInput
+    _avg?: HotShotAvgOrderByAggregateInput
+    _max?: HotShotMaxOrderByAggregateInput
+    _min?: HotShotMinOrderByAggregateInput
+    _sum?: HotShotSumOrderByAggregateInput
+  }
+
+  export type HotShotScalarWhereWithAggregatesInput = {
+    AND?: HotShotScalarWhereWithAggregatesInput | HotShotScalarWhereWithAggregatesInput[]
+    OR?: HotShotScalarWhereWithAggregatesInput[]
+    NOT?: HotShotScalarWhereWithAggregatesInput | HotShotScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"HotShot"> | number
+    productId?: IntWithAggregatesFilter<"HotShot"> | number
+    discountPercent?: IntWithAggregatesFilter<"HotShot"> | number
+    stockLimit?: IntWithAggregatesFilter<"HotShot"> | number
+    stockSold?: IntWithAggregatesFilter<"HotShot"> | number
+    originalPrice?: IntWithAggregatesFilter<"HotShot"> | number
+    startedAt?: DateTimeWithAggregatesFilter<"HotShot"> | Date | string
+    expiresAt?: DateTimeWithAggregatesFilter<"HotShot"> | Date | string
+    isActive?: BoolWithAggregatesFilter<"HotShot"> | boolean
+  }
+
+  export type UserFavoriteWhereInput = {
+    AND?: UserFavoriteWhereInput | UserFavoriteWhereInput[]
+    OR?: UserFavoriteWhereInput[]
+    NOT?: UserFavoriteWhereInput | UserFavoriteWhereInput[]
+    id?: IntFilter<"UserFavorite"> | number
+    userId?: IntFilter<"UserFavorite"> | number
+    productId?: IntFilter<"UserFavorite"> | number
+    createdAt?: DateTimeFilter<"UserFavorite"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }
+
+  export type UserFavoriteOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    product?: ProductOrderByWithRelationInput
+  }
+
+  export type UserFavoriteWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId_productId?: UserFavoriteUserIdProductIdCompoundUniqueInput
+    AND?: UserFavoriteWhereInput | UserFavoriteWhereInput[]
+    OR?: UserFavoriteWhereInput[]
+    NOT?: UserFavoriteWhereInput | UserFavoriteWhereInput[]
+    userId?: IntFilter<"UserFavorite"> | number
+    productId?: IntFilter<"UserFavorite"> | number
+    createdAt?: DateTimeFilter<"UserFavorite"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }, "id" | "userId_productId">
+
+  export type UserFavoriteOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+    _count?: UserFavoriteCountOrderByAggregateInput
+    _avg?: UserFavoriteAvgOrderByAggregateInput
+    _max?: UserFavoriteMaxOrderByAggregateInput
+    _min?: UserFavoriteMinOrderByAggregateInput
+    _sum?: UserFavoriteSumOrderByAggregateInput
+  }
+
+  export type UserFavoriteScalarWhereWithAggregatesInput = {
+    AND?: UserFavoriteScalarWhereWithAggregatesInput | UserFavoriteScalarWhereWithAggregatesInput[]
+    OR?: UserFavoriteScalarWhereWithAggregatesInput[]
+    NOT?: UserFavoriteScalarWhereWithAggregatesInput | UserFavoriteScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UserFavorite"> | number
+    userId?: IntWithAggregatesFilter<"UserFavorite"> | number
+    productId?: IntWithAggregatesFilter<"UserFavorite"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"UserFavorite"> | Date | string
+  }
+
   export type UserCreateInput = {
     name: string
     email: string
@@ -8858,6 +12903,8 @@ export namespace Prisma {
     totpSecret?: string | null
     totpEnabled?: boolean
     orders?: OrderCreateNestedManyWithoutUserInput
+    reward?: UserRewardCreateNestedOneWithoutUserInput
+    favorites?: UserFavoriteCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8870,6 +12917,8 @@ export namespace Prisma {
     totpSecret?: string | null
     totpEnabled?: boolean
     orders?: OrderUncheckedCreateNestedManyWithoutUserInput
+    reward?: UserRewardUncheckedCreateNestedOneWithoutUserInput
+    favorites?: UserFavoriteUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -8881,6 +12930,8 @@ export namespace Prisma {
     totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     totpEnabled?: BoolFieldUpdateOperationsInput | boolean
     orders?: OrderUpdateManyWithoutUserNestedInput
+    reward?: UserRewardUpdateOneWithoutUserNestedInput
+    favorites?: UserFavoriteUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8893,6 +12944,8 @@ export namespace Prisma {
     totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     totpEnabled?: BoolFieldUpdateOperationsInput | boolean
     orders?: OrderUncheckedUpdateManyWithoutUserNestedInput
+    reward?: UserRewardUncheckedUpdateOneWithoutUserNestedInput
+    favorites?: UserFavoriteUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -8927,17 +12980,71 @@ export namespace Prisma {
     totpEnabled?: BoolFieldUpdateOperationsInput | boolean
   }
 
+  export type UserRewardCreateInput = {
+    discountPercent: number
+    generatedAt?: Date | string
+    user: UserCreateNestedOneWithoutRewardInput
+    product: ProductCreateNestedOneWithoutUserRewardsInput
+  }
+
+  export type UserRewardUncheckedCreateInput = {
+    id?: number
+    userId: number
+    productId: number
+    discountPercent: number
+    generatedAt?: Date | string
+  }
+
+  export type UserRewardUpdateInput = {
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRewardNestedInput
+    product?: ProductUpdateOneRequiredWithoutUserRewardsNestedInput
+  }
+
+  export type UserRewardUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserRewardCreateManyInput = {
+    id?: number
+    userId: number
+    productId: number
+    discountPercent: number
+    generatedAt?: Date | string
+  }
+
+  export type UserRewardUpdateManyMutationInput = {
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserRewardUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ProductCreateInput = {
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
     isAvailable?: boolean
     orderItems?: OrderItemCreateNestedManyWithoutProductInput
     promotion?: PromotionCreateNestedManyWithoutProductInput
+    hotShot?: HotShotCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteCreateNestedManyWithoutProductInput
     category: CategoryCreateNestedOneWithoutProductsInput
   }
 
@@ -8946,7 +13053,7 @@ export namespace Prisma {
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
@@ -8954,6 +13061,9 @@ export namespace Prisma {
     categoryId: number
     orderItems?: OrderItemUncheckedCreateNestedManyWithoutProductInput
     promotion?: PromotionUncheckedCreateNestedManyWithoutProductInput
+    hotShot?: HotShotUncheckedCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardUncheckedCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductUpdateInput = {
@@ -8967,6 +13077,9 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     orderItems?: OrderItemUpdateManyWithoutProductNestedInput
     promotion?: PromotionUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUpdateManyWithoutProductNestedInput
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
   }
 
@@ -8983,6 +13096,9 @@ export namespace Prisma {
     categoryId?: IntFieldUpdateOperationsInput | number
     orderItems?: OrderItemUncheckedUpdateManyWithoutProductNestedInput
     promotion?: PromotionUncheckedUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUncheckedUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUncheckedUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
@@ -8990,7 +13106,7 @@ export namespace Prisma {
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
@@ -9217,6 +13333,130 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type HotShotCreateInput = {
+    discountPercent: number
+    stockLimit: number
+    stockSold?: number
+    originalPrice: number
+    startedAt?: Date | string
+    expiresAt: Date | string
+    isActive?: boolean
+    product: ProductCreateNestedOneWithoutHotShotInput
+  }
+
+  export type HotShotUncheckedCreateInput = {
+    id?: number
+    productId: number
+    discountPercent: number
+    stockLimit: number
+    stockSold?: number
+    originalPrice: number
+    startedAt?: Date | string
+    expiresAt: Date | string
+    isActive?: boolean
+  }
+
+  export type HotShotUpdateInput = {
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    stockLimit?: IntFieldUpdateOperationsInput | number
+    stockSold?: IntFieldUpdateOperationsInput | number
+    originalPrice?: IntFieldUpdateOperationsInput | number
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    product?: ProductUpdateOneRequiredWithoutHotShotNestedInput
+  }
+
+  export type HotShotUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    stockLimit?: IntFieldUpdateOperationsInput | number
+    stockSold?: IntFieldUpdateOperationsInput | number
+    originalPrice?: IntFieldUpdateOperationsInput | number
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type HotShotCreateManyInput = {
+    id?: number
+    productId: number
+    discountPercent: number
+    stockLimit: number
+    stockSold?: number
+    originalPrice: number
+    startedAt?: Date | string
+    expiresAt: Date | string
+    isActive?: boolean
+  }
+
+  export type HotShotUpdateManyMutationInput = {
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    stockLimit?: IntFieldUpdateOperationsInput | number
+    stockSold?: IntFieldUpdateOperationsInput | number
+    originalPrice?: IntFieldUpdateOperationsInput | number
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type HotShotUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    stockLimit?: IntFieldUpdateOperationsInput | number
+    stockSold?: IntFieldUpdateOperationsInput | number
+    originalPrice?: IntFieldUpdateOperationsInput | number
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type UserFavoriteCreateInput = {
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutFavoritesInput
+    product: ProductCreateNestedOneWithoutUserFavoritesInput
+  }
+
+  export type UserFavoriteUncheckedCreateInput = {
+    id?: number
+    userId: number
+    productId: number
+    createdAt?: Date | string
+  }
+
+  export type UserFavoriteUpdateInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutFavoritesNestedInput
+    product?: ProductUpdateOneRequiredWithoutUserFavoritesNestedInput
+  }
+
+  export type UserFavoriteUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserFavoriteCreateManyInput = {
+    id?: number
+    userId: number
+    productId: number
+    createdAt?: Date | string
+  }
+
+  export type UserFavoriteUpdateManyMutationInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserFavoriteUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -9287,12 +13527,27 @@ export namespace Prisma {
     none?: OrderWhereInput
   }
 
+  export type UserRewardNullableScalarRelationFilter = {
+    is?: UserRewardWhereInput | null
+    isNot?: UserRewardWhereInput | null
+  }
+
+  export type UserFavoriteListRelationFilter = {
+    every?: UserFavoriteWhereInput
+    some?: UserFavoriteWhereInput
+    none?: UserFavoriteWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type OrderOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserFavoriteOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9421,6 +13676,54 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type ProductScalarRelationFilter = {
+    is?: ProductWhereInput
+    isNot?: ProductWhereInput
+  }
+
+  export type UserRewardCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    generatedAt?: SortOrder
+  }
+
+  export type UserRewardAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+  }
+
+  export type UserRewardMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    generatedAt?: SortOrder
+  }
+
+  export type UserRewardMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    generatedAt?: SortOrder
+  }
+
+  export type UserRewardSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+  }
+
   export type OrderItemListRelationFilter = {
     every?: OrderItemWhereInput
     some?: OrderItemWhereInput
@@ -9433,6 +13736,17 @@ export namespace Prisma {
     none?: PromotionWhereInput
   }
 
+  export type HotShotNullableScalarRelationFilter = {
+    is?: HotShotWhereInput | null
+    isNot?: HotShotWhereInput | null
+  }
+
+  export type UserRewardListRelationFilter = {
+    every?: UserRewardWhereInput
+    some?: UserRewardWhereInput
+    none?: UserRewardWhereInput
+  }
+
   export type CategoryScalarRelationFilter = {
     is?: CategoryWhereInput
     isNot?: CategoryWhereInput
@@ -9443,6 +13757,10 @@ export namespace Prisma {
   }
 
   export type PromotionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserRewardOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9544,11 +13862,6 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusFilter<$PrismaModel> | $Enums.OrderStatus
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
   export type OrderCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -9601,11 +13914,6 @@ export namespace Prisma {
   export type OrderScalarRelationFilter = {
     is?: OrderWhereInput
     isNot?: OrderWhereInput
-  }
-
-  export type ProductScalarRelationFilter = {
-    is?: ProductWhereInput
-    isNot?: ProductWhereInput
   }
 
   export type OrderItemCountOrderByAggregateInput = {
@@ -9676,6 +13984,98 @@ export namespace Prisma {
     productId?: SortOrder
   }
 
+  export type HotShotCountOrderByAggregateInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    stockLimit?: SortOrder
+    stockSold?: SortOrder
+    originalPrice?: SortOrder
+    startedAt?: SortOrder
+    expiresAt?: SortOrder
+    isActive?: SortOrder
+  }
+
+  export type HotShotAvgOrderByAggregateInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    stockLimit?: SortOrder
+    stockSold?: SortOrder
+    originalPrice?: SortOrder
+  }
+
+  export type HotShotMaxOrderByAggregateInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    stockLimit?: SortOrder
+    stockSold?: SortOrder
+    originalPrice?: SortOrder
+    startedAt?: SortOrder
+    expiresAt?: SortOrder
+    isActive?: SortOrder
+  }
+
+  export type HotShotMinOrderByAggregateInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    stockLimit?: SortOrder
+    stockSold?: SortOrder
+    originalPrice?: SortOrder
+    startedAt?: SortOrder
+    expiresAt?: SortOrder
+    isActive?: SortOrder
+  }
+
+  export type HotShotSumOrderByAggregateInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    discountPercent?: SortOrder
+    stockLimit?: SortOrder
+    stockSold?: SortOrder
+    originalPrice?: SortOrder
+  }
+
+  export type UserFavoriteUserIdProductIdCompoundUniqueInput = {
+    userId: number
+    productId: number
+  }
+
+  export type UserFavoriteCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type UserFavoriteAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type UserFavoriteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type UserFavoriteMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type UserFavoriteSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+  }
+
   export type OrderCreateNestedManyWithoutUserInput = {
     create?: XOR<OrderCreateWithoutUserInput, OrderUncheckedCreateWithoutUserInput> | OrderCreateWithoutUserInput[] | OrderUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutUserInput | OrderCreateOrConnectWithoutUserInput[]
@@ -9683,11 +14083,37 @@ export namespace Prisma {
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
   }
 
+  export type UserRewardCreateNestedOneWithoutUserInput = {
+    create?: XOR<UserRewardCreateWithoutUserInput, UserRewardUncheckedCreateWithoutUserInput>
+    connectOrCreate?: UserRewardCreateOrConnectWithoutUserInput
+    connect?: UserRewardWhereUniqueInput
+  }
+
+  export type UserFavoriteCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserFavoriteCreateWithoutUserInput, UserFavoriteUncheckedCreateWithoutUserInput> | UserFavoriteCreateWithoutUserInput[] | UserFavoriteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserFavoriteCreateOrConnectWithoutUserInput | UserFavoriteCreateOrConnectWithoutUserInput[]
+    createMany?: UserFavoriteCreateManyUserInputEnvelope
+    connect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+  }
+
   export type OrderUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<OrderCreateWithoutUserInput, OrderUncheckedCreateWithoutUserInput> | OrderCreateWithoutUserInput[] | OrderUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutUserInput | OrderCreateOrConnectWithoutUserInput[]
     createMany?: OrderCreateManyUserInputEnvelope
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+  }
+
+  export type UserRewardUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<UserRewardCreateWithoutUserInput, UserRewardUncheckedCreateWithoutUserInput>
+    connectOrCreate?: UserRewardCreateOrConnectWithoutUserInput
+    connect?: UserRewardWhereUniqueInput
+  }
+
+  export type UserFavoriteUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserFavoriteCreateWithoutUserInput, UserFavoriteUncheckedCreateWithoutUserInput> | UserFavoriteCreateWithoutUserInput[] | UserFavoriteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserFavoriteCreateOrConnectWithoutUserInput | UserFavoriteCreateOrConnectWithoutUserInput[]
+    createMany?: UserFavoriteCreateManyUserInputEnvelope
+    connect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -9724,6 +14150,30 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
+  export type UserRewardUpdateOneWithoutUserNestedInput = {
+    create?: XOR<UserRewardCreateWithoutUserInput, UserRewardUncheckedCreateWithoutUserInput>
+    connectOrCreate?: UserRewardCreateOrConnectWithoutUserInput
+    upsert?: UserRewardUpsertWithoutUserInput
+    disconnect?: UserRewardWhereInput | boolean
+    delete?: UserRewardWhereInput | boolean
+    connect?: UserRewardWhereUniqueInput
+    update?: XOR<XOR<UserRewardUpdateToOneWithWhereWithoutUserInput, UserRewardUpdateWithoutUserInput>, UserRewardUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserFavoriteUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserFavoriteCreateWithoutUserInput, UserFavoriteUncheckedCreateWithoutUserInput> | UserFavoriteCreateWithoutUserInput[] | UserFavoriteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserFavoriteCreateOrConnectWithoutUserInput | UserFavoriteCreateOrConnectWithoutUserInput[]
+    upsert?: UserFavoriteUpsertWithWhereUniqueWithoutUserInput | UserFavoriteUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserFavoriteCreateManyUserInputEnvelope
+    set?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    disconnect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    delete?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    connect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    update?: UserFavoriteUpdateWithWhereUniqueWithoutUserInput | UserFavoriteUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserFavoriteUpdateManyWithWhereWithoutUserInput | UserFavoriteUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserFavoriteScalarWhereInput | UserFavoriteScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -9746,6 +14196,58 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
+  export type UserRewardUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<UserRewardCreateWithoutUserInput, UserRewardUncheckedCreateWithoutUserInput>
+    connectOrCreate?: UserRewardCreateOrConnectWithoutUserInput
+    upsert?: UserRewardUpsertWithoutUserInput
+    disconnect?: UserRewardWhereInput | boolean
+    delete?: UserRewardWhereInput | boolean
+    connect?: UserRewardWhereUniqueInput
+    update?: XOR<XOR<UserRewardUpdateToOneWithWhereWithoutUserInput, UserRewardUpdateWithoutUserInput>, UserRewardUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserFavoriteUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserFavoriteCreateWithoutUserInput, UserFavoriteUncheckedCreateWithoutUserInput> | UserFavoriteCreateWithoutUserInput[] | UserFavoriteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserFavoriteCreateOrConnectWithoutUserInput | UserFavoriteCreateOrConnectWithoutUserInput[]
+    upsert?: UserFavoriteUpsertWithWhereUniqueWithoutUserInput | UserFavoriteUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserFavoriteCreateManyUserInputEnvelope
+    set?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    disconnect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    delete?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    connect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    update?: UserFavoriteUpdateWithWhereUniqueWithoutUserInput | UserFavoriteUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserFavoriteUpdateManyWithWhereWithoutUserInput | UserFavoriteUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserFavoriteScalarWhereInput | UserFavoriteScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutRewardInput = {
+    create?: XOR<UserCreateWithoutRewardInput, UserUncheckedCreateWithoutRewardInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRewardInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProductCreateNestedOneWithoutUserRewardsInput = {
+    create?: XOR<ProductCreateWithoutUserRewardsInput, ProductUncheckedCreateWithoutUserRewardsInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutUserRewardsInput
+    connect?: ProductWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutRewardNestedInput = {
+    create?: XOR<UserCreateWithoutRewardInput, UserUncheckedCreateWithoutRewardInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRewardInput
+    upsert?: UserUpsertWithoutRewardInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRewardInput, UserUpdateWithoutRewardInput>, UserUncheckedUpdateWithoutRewardInput>
+  }
+
+  export type ProductUpdateOneRequiredWithoutUserRewardsNestedInput = {
+    create?: XOR<ProductCreateWithoutUserRewardsInput, ProductUncheckedCreateWithoutUserRewardsInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutUserRewardsInput
+    upsert?: ProductUpsertWithoutUserRewardsInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutUserRewardsInput, ProductUpdateWithoutUserRewardsInput>, ProductUncheckedUpdateWithoutUserRewardsInput>
+  }
+
   export type OrderItemCreateNestedManyWithoutProductInput = {
     create?: XOR<OrderItemCreateWithoutProductInput, OrderItemUncheckedCreateWithoutProductInput> | OrderItemCreateWithoutProductInput[] | OrderItemUncheckedCreateWithoutProductInput[]
     connectOrCreate?: OrderItemCreateOrConnectWithoutProductInput | OrderItemCreateOrConnectWithoutProductInput[]
@@ -9758,6 +14260,26 @@ export namespace Prisma {
     connectOrCreate?: PromotionCreateOrConnectWithoutProductInput | PromotionCreateOrConnectWithoutProductInput[]
     createMany?: PromotionCreateManyProductInputEnvelope
     connect?: PromotionWhereUniqueInput | PromotionWhereUniqueInput[]
+  }
+
+  export type HotShotCreateNestedOneWithoutProductInput = {
+    create?: XOR<HotShotCreateWithoutProductInput, HotShotUncheckedCreateWithoutProductInput>
+    connectOrCreate?: HotShotCreateOrConnectWithoutProductInput
+    connect?: HotShotWhereUniqueInput
+  }
+
+  export type UserRewardCreateNestedManyWithoutProductInput = {
+    create?: XOR<UserRewardCreateWithoutProductInput, UserRewardUncheckedCreateWithoutProductInput> | UserRewardCreateWithoutProductInput[] | UserRewardUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserRewardCreateOrConnectWithoutProductInput | UserRewardCreateOrConnectWithoutProductInput[]
+    createMany?: UserRewardCreateManyProductInputEnvelope
+    connect?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+  }
+
+  export type UserFavoriteCreateNestedManyWithoutProductInput = {
+    create?: XOR<UserFavoriteCreateWithoutProductInput, UserFavoriteUncheckedCreateWithoutProductInput> | UserFavoriteCreateWithoutProductInput[] | UserFavoriteUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserFavoriteCreateOrConnectWithoutProductInput | UserFavoriteCreateOrConnectWithoutProductInput[]
+    createMany?: UserFavoriteCreateManyProductInputEnvelope
+    connect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
   }
 
   export type CategoryCreateNestedOneWithoutProductsInput = {
@@ -9778,6 +14300,26 @@ export namespace Prisma {
     connectOrCreate?: PromotionCreateOrConnectWithoutProductInput | PromotionCreateOrConnectWithoutProductInput[]
     createMany?: PromotionCreateManyProductInputEnvelope
     connect?: PromotionWhereUniqueInput | PromotionWhereUniqueInput[]
+  }
+
+  export type HotShotUncheckedCreateNestedOneWithoutProductInput = {
+    create?: XOR<HotShotCreateWithoutProductInput, HotShotUncheckedCreateWithoutProductInput>
+    connectOrCreate?: HotShotCreateOrConnectWithoutProductInput
+    connect?: HotShotWhereUniqueInput
+  }
+
+  export type UserRewardUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<UserRewardCreateWithoutProductInput, UserRewardUncheckedCreateWithoutProductInput> | UserRewardCreateWithoutProductInput[] | UserRewardUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserRewardCreateOrConnectWithoutProductInput | UserRewardCreateOrConnectWithoutProductInput[]
+    createMany?: UserRewardCreateManyProductInputEnvelope
+    connect?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+  }
+
+  export type UserFavoriteUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<UserFavoriteCreateWithoutProductInput, UserFavoriteUncheckedCreateWithoutProductInput> | UserFavoriteCreateWithoutProductInput[] | UserFavoriteUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserFavoriteCreateOrConnectWithoutProductInput | UserFavoriteCreateOrConnectWithoutProductInput[]
+    createMany?: UserFavoriteCreateManyProductInputEnvelope
+    connect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
   }
 
   export type OrderItemUpdateManyWithoutProductNestedInput = {
@@ -9806,6 +14348,44 @@ export namespace Prisma {
     update?: PromotionUpdateWithWhereUniqueWithoutProductInput | PromotionUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: PromotionUpdateManyWithWhereWithoutProductInput | PromotionUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: PromotionScalarWhereInput | PromotionScalarWhereInput[]
+  }
+
+  export type HotShotUpdateOneWithoutProductNestedInput = {
+    create?: XOR<HotShotCreateWithoutProductInput, HotShotUncheckedCreateWithoutProductInput>
+    connectOrCreate?: HotShotCreateOrConnectWithoutProductInput
+    upsert?: HotShotUpsertWithoutProductInput
+    disconnect?: HotShotWhereInput | boolean
+    delete?: HotShotWhereInput | boolean
+    connect?: HotShotWhereUniqueInput
+    update?: XOR<XOR<HotShotUpdateToOneWithWhereWithoutProductInput, HotShotUpdateWithoutProductInput>, HotShotUncheckedUpdateWithoutProductInput>
+  }
+
+  export type UserRewardUpdateManyWithoutProductNestedInput = {
+    create?: XOR<UserRewardCreateWithoutProductInput, UserRewardUncheckedCreateWithoutProductInput> | UserRewardCreateWithoutProductInput[] | UserRewardUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserRewardCreateOrConnectWithoutProductInput | UserRewardCreateOrConnectWithoutProductInput[]
+    upsert?: UserRewardUpsertWithWhereUniqueWithoutProductInput | UserRewardUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: UserRewardCreateManyProductInputEnvelope
+    set?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+    disconnect?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+    delete?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+    connect?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+    update?: UserRewardUpdateWithWhereUniqueWithoutProductInput | UserRewardUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: UserRewardUpdateManyWithWhereWithoutProductInput | UserRewardUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: UserRewardScalarWhereInput | UserRewardScalarWhereInput[]
+  }
+
+  export type UserFavoriteUpdateManyWithoutProductNestedInput = {
+    create?: XOR<UserFavoriteCreateWithoutProductInput, UserFavoriteUncheckedCreateWithoutProductInput> | UserFavoriteCreateWithoutProductInput[] | UserFavoriteUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserFavoriteCreateOrConnectWithoutProductInput | UserFavoriteCreateOrConnectWithoutProductInput[]
+    upsert?: UserFavoriteUpsertWithWhereUniqueWithoutProductInput | UserFavoriteUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: UserFavoriteCreateManyProductInputEnvelope
+    set?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    disconnect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    delete?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    connect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    update?: UserFavoriteUpdateWithWhereUniqueWithoutProductInput | UserFavoriteUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: UserFavoriteUpdateManyWithWhereWithoutProductInput | UserFavoriteUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: UserFavoriteScalarWhereInput | UserFavoriteScalarWhereInput[]
   }
 
   export type CategoryUpdateOneRequiredWithoutProductsNestedInput = {
@@ -9842,6 +14422,44 @@ export namespace Prisma {
     update?: PromotionUpdateWithWhereUniqueWithoutProductInput | PromotionUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: PromotionUpdateManyWithWhereWithoutProductInput | PromotionUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: PromotionScalarWhereInput | PromotionScalarWhereInput[]
+  }
+
+  export type HotShotUncheckedUpdateOneWithoutProductNestedInput = {
+    create?: XOR<HotShotCreateWithoutProductInput, HotShotUncheckedCreateWithoutProductInput>
+    connectOrCreate?: HotShotCreateOrConnectWithoutProductInput
+    upsert?: HotShotUpsertWithoutProductInput
+    disconnect?: HotShotWhereInput | boolean
+    delete?: HotShotWhereInput | boolean
+    connect?: HotShotWhereUniqueInput
+    update?: XOR<XOR<HotShotUpdateToOneWithWhereWithoutProductInput, HotShotUpdateWithoutProductInput>, HotShotUncheckedUpdateWithoutProductInput>
+  }
+
+  export type UserRewardUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<UserRewardCreateWithoutProductInput, UserRewardUncheckedCreateWithoutProductInput> | UserRewardCreateWithoutProductInput[] | UserRewardUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserRewardCreateOrConnectWithoutProductInput | UserRewardCreateOrConnectWithoutProductInput[]
+    upsert?: UserRewardUpsertWithWhereUniqueWithoutProductInput | UserRewardUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: UserRewardCreateManyProductInputEnvelope
+    set?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+    disconnect?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+    delete?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+    connect?: UserRewardWhereUniqueInput | UserRewardWhereUniqueInput[]
+    update?: UserRewardUpdateWithWhereUniqueWithoutProductInput | UserRewardUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: UserRewardUpdateManyWithWhereWithoutProductInput | UserRewardUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: UserRewardScalarWhereInput | UserRewardScalarWhereInput[]
+  }
+
+  export type UserFavoriteUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<UserFavoriteCreateWithoutProductInput, UserFavoriteUncheckedCreateWithoutProductInput> | UserFavoriteCreateWithoutProductInput[] | UserFavoriteUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserFavoriteCreateOrConnectWithoutProductInput | UserFavoriteCreateOrConnectWithoutProductInput[]
+    upsert?: UserFavoriteUpsertWithWhereUniqueWithoutProductInput | UserFavoriteUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: UserFavoriteCreateManyProductInputEnvelope
+    set?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    disconnect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    delete?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    connect?: UserFavoriteWhereUniqueInput | UserFavoriteWhereUniqueInput[]
+    update?: UserFavoriteUpdateWithWhereUniqueWithoutProductInput | UserFavoriteUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: UserFavoriteUpdateManyWithWhereWithoutProductInput | UserFavoriteUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: UserFavoriteScalarWhereInput | UserFavoriteScalarWhereInput[]
   }
 
   export type ProductCreateNestedManyWithoutCategoryInput = {
@@ -9986,6 +14604,48 @@ export namespace Prisma {
     upsert?: ProductUpsertWithoutPromotionInput
     connect?: ProductWhereUniqueInput
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutPromotionInput, ProductUpdateWithoutPromotionInput>, ProductUncheckedUpdateWithoutPromotionInput>
+  }
+
+  export type ProductCreateNestedOneWithoutHotShotInput = {
+    create?: XOR<ProductCreateWithoutHotShotInput, ProductUncheckedCreateWithoutHotShotInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutHotShotInput
+    connect?: ProductWhereUniqueInput
+  }
+
+  export type ProductUpdateOneRequiredWithoutHotShotNestedInput = {
+    create?: XOR<ProductCreateWithoutHotShotInput, ProductUncheckedCreateWithoutHotShotInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutHotShotInput
+    upsert?: ProductUpsertWithoutHotShotInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutHotShotInput, ProductUpdateWithoutHotShotInput>, ProductUncheckedUpdateWithoutHotShotInput>
+  }
+
+  export type UserCreateNestedOneWithoutFavoritesInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProductCreateNestedOneWithoutUserFavoritesInput = {
+    create?: XOR<ProductCreateWithoutUserFavoritesInput, ProductUncheckedCreateWithoutUserFavoritesInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutUserFavoritesInput
+    connect?: ProductWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutFavoritesNestedInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput
+    upsert?: UserUpsertWithoutFavoritesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFavoritesInput, UserUpdateWithoutFavoritesInput>, UserUncheckedUpdateWithoutFavoritesInput>
+  }
+
+  export type ProductUpdateOneRequiredWithoutUserFavoritesNestedInput = {
+    create?: XOR<ProductCreateWithoutUserFavoritesInput, ProductUncheckedCreateWithoutUserFavoritesInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutUserFavoritesInput
+    upsert?: ProductUpsertWithoutUserFavoritesInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutUserFavoritesInput, ProductUpdateWithoutUserFavoritesInput>, ProductUncheckedUpdateWithoutUserFavoritesInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10198,6 +14858,45 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserRewardCreateWithoutUserInput = {
+    discountPercent: number
+    generatedAt?: Date | string
+    product: ProductCreateNestedOneWithoutUserRewardsInput
+  }
+
+  export type UserRewardUncheckedCreateWithoutUserInput = {
+    id?: number
+    productId: number
+    discountPercent: number
+    generatedAt?: Date | string
+  }
+
+  export type UserRewardCreateOrConnectWithoutUserInput = {
+    where: UserRewardWhereUniqueInput
+    create: XOR<UserRewardCreateWithoutUserInput, UserRewardUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserFavoriteCreateWithoutUserInput = {
+    createdAt?: Date | string
+    product: ProductCreateNestedOneWithoutUserFavoritesInput
+  }
+
+  export type UserFavoriteUncheckedCreateWithoutUserInput = {
+    id?: number
+    productId: number
+    createdAt?: Date | string
+  }
+
+  export type UserFavoriteCreateOrConnectWithoutUserInput = {
+    where: UserFavoriteWhereUniqueInput
+    create: XOR<UserFavoriteCreateWithoutUserInput, UserFavoriteUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserFavoriteCreateManyUserInputEnvelope = {
+    data: UserFavoriteCreateManyUserInput | UserFavoriteCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type OrderUpsertWithWhereUniqueWithoutUserInput = {
     where: OrderWhereUniqueInput
     update: XOR<OrderUpdateWithoutUserInput, OrderUncheckedUpdateWithoutUserInput>
@@ -10224,6 +14923,204 @@ export namespace Prisma {
     stripeSession?: StringNullableFilter<"Order"> | string | null
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
     createdAt?: DateTimeFilter<"Order"> | Date | string
+  }
+
+  export type UserRewardUpsertWithoutUserInput = {
+    update: XOR<UserRewardUpdateWithoutUserInput, UserRewardUncheckedUpdateWithoutUserInput>
+    create: XOR<UserRewardCreateWithoutUserInput, UserRewardUncheckedCreateWithoutUserInput>
+    where?: UserRewardWhereInput
+  }
+
+  export type UserRewardUpdateToOneWithWhereWithoutUserInput = {
+    where?: UserRewardWhereInput
+    data: XOR<UserRewardUpdateWithoutUserInput, UserRewardUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserRewardUpdateWithoutUserInput = {
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneRequiredWithoutUserRewardsNestedInput
+  }
+
+  export type UserRewardUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserFavoriteUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserFavoriteWhereUniqueInput
+    update: XOR<UserFavoriteUpdateWithoutUserInput, UserFavoriteUncheckedUpdateWithoutUserInput>
+    create: XOR<UserFavoriteCreateWithoutUserInput, UserFavoriteUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserFavoriteUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserFavoriteWhereUniqueInput
+    data: XOR<UserFavoriteUpdateWithoutUserInput, UserFavoriteUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserFavoriteUpdateManyWithWhereWithoutUserInput = {
+    where: UserFavoriteScalarWhereInput
+    data: XOR<UserFavoriteUpdateManyMutationInput, UserFavoriteUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserFavoriteScalarWhereInput = {
+    AND?: UserFavoriteScalarWhereInput | UserFavoriteScalarWhereInput[]
+    OR?: UserFavoriteScalarWhereInput[]
+    NOT?: UserFavoriteScalarWhereInput | UserFavoriteScalarWhereInput[]
+    id?: IntFilter<"UserFavorite"> | number
+    userId?: IntFilter<"UserFavorite"> | number
+    productId?: IntFilter<"UserFavorite"> | number
+    createdAt?: DateTimeFilter<"UserFavorite"> | Date | string
+  }
+
+  export type UserCreateWithoutRewardInput = {
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    role?: $Enums.UserRole
+    totpSecret?: string | null
+    totpEnabled?: boolean
+    orders?: OrderCreateNestedManyWithoutUserInput
+    favorites?: UserFavoriteCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRewardInput = {
+    id?: number
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    role?: $Enums.UserRole
+    totpSecret?: string | null
+    totpEnabled?: boolean
+    orders?: OrderUncheckedCreateNestedManyWithoutUserInput
+    favorites?: UserFavoriteUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRewardInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRewardInput, UserUncheckedCreateWithoutRewardInput>
+  }
+
+  export type ProductCreateWithoutUserRewardsInput = {
+    name: string
+    slug: string
+    price: number
+    description?: string
+    discount?: number
+    imageUrl: string
+    stock?: number
+    isAvailable?: boolean
+    orderItems?: OrderItemCreateNestedManyWithoutProductInput
+    promotion?: PromotionCreateNestedManyWithoutProductInput
+    hotShot?: HotShotCreateNestedOneWithoutProductInput
+    userFavorites?: UserFavoriteCreateNestedManyWithoutProductInput
+    category: CategoryCreateNestedOneWithoutProductsInput
+  }
+
+  export type ProductUncheckedCreateWithoutUserRewardsInput = {
+    id?: number
+    name: string
+    slug: string
+    price: number
+    description?: string
+    discount?: number
+    imageUrl: string
+    stock?: number
+    isAvailable?: boolean
+    categoryId: number
+    orderItems?: OrderItemUncheckedCreateNestedManyWithoutProductInput
+    promotion?: PromotionUncheckedCreateNestedManyWithoutProductInput
+    hotShot?: HotShotUncheckedCreateNestedOneWithoutProductInput
+    userFavorites?: UserFavoriteUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutUserRewardsInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutUserRewardsInput, ProductUncheckedCreateWithoutUserRewardsInput>
+  }
+
+  export type UserUpsertWithoutRewardInput = {
+    update: XOR<UserUpdateWithoutRewardInput, UserUncheckedUpdateWithoutRewardInput>
+    create: XOR<UserCreateWithoutRewardInput, UserUncheckedCreateWithoutRewardInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRewardInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRewardInput, UserUncheckedUpdateWithoutRewardInput>
+  }
+
+  export type UserUpdateWithoutRewardInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    totpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    orders?: OrderUpdateManyWithoutUserNestedInput
+    favorites?: UserFavoriteUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRewardInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    totpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    orders?: OrderUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: UserFavoriteUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ProductUpsertWithoutUserRewardsInput = {
+    update: XOR<ProductUpdateWithoutUserRewardsInput, ProductUncheckedUpdateWithoutUserRewardsInput>
+    create: XOR<ProductCreateWithoutUserRewardsInput, ProductUncheckedCreateWithoutUserRewardsInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutUserRewardsInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutUserRewardsInput, ProductUncheckedUpdateWithoutUserRewardsInput>
+  }
+
+  export type ProductUpdateWithoutUserRewardsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    discount?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    orderItems?: OrderItemUpdateManyWithoutProductNestedInput
+    promotion?: PromotionUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUpdateOneWithoutProductNestedInput
+    userFavorites?: UserFavoriteUpdateManyWithoutProductNestedInput
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutUserRewardsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    discount?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    categoryId?: IntFieldUpdateOperationsInput | number
+    orderItems?: OrderItemUncheckedUpdateManyWithoutProductNestedInput
+    promotion?: PromotionUncheckedUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUncheckedUpdateOneWithoutProductNestedInput
+    userFavorites?: UserFavoriteUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type OrderItemCreateWithoutProductInput = {
@@ -10265,6 +15162,76 @@ export namespace Prisma {
 
   export type PromotionCreateManyProductInputEnvelope = {
     data: PromotionCreateManyProductInput | PromotionCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HotShotCreateWithoutProductInput = {
+    discountPercent: number
+    stockLimit: number
+    stockSold?: number
+    originalPrice: number
+    startedAt?: Date | string
+    expiresAt: Date | string
+    isActive?: boolean
+  }
+
+  export type HotShotUncheckedCreateWithoutProductInput = {
+    id?: number
+    discountPercent: number
+    stockLimit: number
+    stockSold?: number
+    originalPrice: number
+    startedAt?: Date | string
+    expiresAt: Date | string
+    isActive?: boolean
+  }
+
+  export type HotShotCreateOrConnectWithoutProductInput = {
+    where: HotShotWhereUniqueInput
+    create: XOR<HotShotCreateWithoutProductInput, HotShotUncheckedCreateWithoutProductInput>
+  }
+
+  export type UserRewardCreateWithoutProductInput = {
+    discountPercent: number
+    generatedAt?: Date | string
+    user: UserCreateNestedOneWithoutRewardInput
+  }
+
+  export type UserRewardUncheckedCreateWithoutProductInput = {
+    id?: number
+    userId: number
+    discountPercent: number
+    generatedAt?: Date | string
+  }
+
+  export type UserRewardCreateOrConnectWithoutProductInput = {
+    where: UserRewardWhereUniqueInput
+    create: XOR<UserRewardCreateWithoutProductInput, UserRewardUncheckedCreateWithoutProductInput>
+  }
+
+  export type UserRewardCreateManyProductInputEnvelope = {
+    data: UserRewardCreateManyProductInput | UserRewardCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserFavoriteCreateWithoutProductInput = {
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutFavoritesInput
+  }
+
+  export type UserFavoriteUncheckedCreateWithoutProductInput = {
+    id?: number
+    userId: number
+    createdAt?: Date | string
+  }
+
+  export type UserFavoriteCreateOrConnectWithoutProductInput = {
+    where: UserFavoriteWhereUniqueInput
+    create: XOR<UserFavoriteCreateWithoutProductInput, UserFavoriteUncheckedCreateWithoutProductInput>
+  }
+
+  export type UserFavoriteCreateManyProductInputEnvelope = {
+    data: UserFavoriteCreateManyProductInput | UserFavoriteCreateManyProductInput[]
     skipDuplicates?: boolean
   }
 
@@ -10336,6 +15303,81 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Promotion"> | Date | string
   }
 
+  export type HotShotUpsertWithoutProductInput = {
+    update: XOR<HotShotUpdateWithoutProductInput, HotShotUncheckedUpdateWithoutProductInput>
+    create: XOR<HotShotCreateWithoutProductInput, HotShotUncheckedCreateWithoutProductInput>
+    where?: HotShotWhereInput
+  }
+
+  export type HotShotUpdateToOneWithWhereWithoutProductInput = {
+    where?: HotShotWhereInput
+    data: XOR<HotShotUpdateWithoutProductInput, HotShotUncheckedUpdateWithoutProductInput>
+  }
+
+  export type HotShotUpdateWithoutProductInput = {
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    stockLimit?: IntFieldUpdateOperationsInput | number
+    stockSold?: IntFieldUpdateOperationsInput | number
+    originalPrice?: IntFieldUpdateOperationsInput | number
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type HotShotUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    stockLimit?: IntFieldUpdateOperationsInput | number
+    stockSold?: IntFieldUpdateOperationsInput | number
+    originalPrice?: IntFieldUpdateOperationsInput | number
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type UserRewardUpsertWithWhereUniqueWithoutProductInput = {
+    where: UserRewardWhereUniqueInput
+    update: XOR<UserRewardUpdateWithoutProductInput, UserRewardUncheckedUpdateWithoutProductInput>
+    create: XOR<UserRewardCreateWithoutProductInput, UserRewardUncheckedCreateWithoutProductInput>
+  }
+
+  export type UserRewardUpdateWithWhereUniqueWithoutProductInput = {
+    where: UserRewardWhereUniqueInput
+    data: XOR<UserRewardUpdateWithoutProductInput, UserRewardUncheckedUpdateWithoutProductInput>
+  }
+
+  export type UserRewardUpdateManyWithWhereWithoutProductInput = {
+    where: UserRewardScalarWhereInput
+    data: XOR<UserRewardUpdateManyMutationInput, UserRewardUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type UserRewardScalarWhereInput = {
+    AND?: UserRewardScalarWhereInput | UserRewardScalarWhereInput[]
+    OR?: UserRewardScalarWhereInput[]
+    NOT?: UserRewardScalarWhereInput | UserRewardScalarWhereInput[]
+    id?: IntFilter<"UserReward"> | number
+    userId?: IntFilter<"UserReward"> | number
+    productId?: IntFilter<"UserReward"> | number
+    discountPercent?: IntFilter<"UserReward"> | number
+    generatedAt?: DateTimeFilter<"UserReward"> | Date | string
+  }
+
+  export type UserFavoriteUpsertWithWhereUniqueWithoutProductInput = {
+    where: UserFavoriteWhereUniqueInput
+    update: XOR<UserFavoriteUpdateWithoutProductInput, UserFavoriteUncheckedUpdateWithoutProductInput>
+    create: XOR<UserFavoriteCreateWithoutProductInput, UserFavoriteUncheckedCreateWithoutProductInput>
+  }
+
+  export type UserFavoriteUpdateWithWhereUniqueWithoutProductInput = {
+    where: UserFavoriteWhereUniqueInput
+    data: XOR<UserFavoriteUpdateWithoutProductInput, UserFavoriteUncheckedUpdateWithoutProductInput>
+  }
+
+  export type UserFavoriteUpdateManyWithWhereWithoutProductInput = {
+    where: UserFavoriteScalarWhereInput
+    data: XOR<UserFavoriteUpdateManyMutationInput, UserFavoriteUncheckedUpdateManyWithoutProductInput>
+  }
+
   export type CategoryUpsertWithoutProductsInput = {
     update: XOR<CategoryUpdateWithoutProductsInput, CategoryUncheckedUpdateWithoutProductsInput>
     create: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
@@ -10362,13 +15404,16 @@ export namespace Prisma {
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
     isAvailable?: boolean
     orderItems?: OrderItemCreateNestedManyWithoutProductInput
     promotion?: PromotionCreateNestedManyWithoutProductInput
+    hotShot?: HotShotCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutCategoryInput = {
@@ -10376,13 +15421,16 @@ export namespace Prisma {
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
     isAvailable?: boolean
     orderItems?: OrderItemUncheckedCreateNestedManyWithoutProductInput
     promotion?: PromotionUncheckedCreateNestedManyWithoutProductInput
+    hotShot?: HotShotUncheckedCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardUncheckedCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutCategoryInput = {
@@ -10435,6 +15483,8 @@ export namespace Prisma {
     role?: $Enums.UserRole
     totpSecret?: string | null
     totpEnabled?: boolean
+    reward?: UserRewardCreateNestedOneWithoutUserInput
+    favorites?: UserFavoriteCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutOrdersInput = {
@@ -10446,6 +15496,8 @@ export namespace Prisma {
     role?: $Enums.UserRole
     totpSecret?: string | null
     totpEnabled?: boolean
+    reward?: UserRewardUncheckedCreateNestedOneWithoutUserInput
+    favorites?: UserFavoriteUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutOrdersInput = {
@@ -10495,6 +15547,8 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     totpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    reward?: UserRewardUpdateOneWithoutUserNestedInput
+    favorites?: UserFavoriteUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutOrdersInput = {
@@ -10506,6 +15560,8 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     totpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    reward?: UserRewardUncheckedUpdateOneWithoutUserNestedInput
+    favorites?: UserFavoriteUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type OrderItemUpsertWithWhereUniqueWithoutOrderInput = {
@@ -10550,12 +15606,15 @@ export namespace Prisma {
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
     isAvailable?: boolean
     promotion?: PromotionCreateNestedManyWithoutProductInput
+    hotShot?: HotShotCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteCreateNestedManyWithoutProductInput
     category: CategoryCreateNestedOneWithoutProductsInput
   }
 
@@ -10564,13 +15623,16 @@ export namespace Prisma {
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
     isAvailable?: boolean
     categoryId: number
     promotion?: PromotionUncheckedCreateNestedManyWithoutProductInput
+    hotShot?: HotShotUncheckedCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardUncheckedCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutOrderItemsInput = {
@@ -10627,6 +15689,9 @@ export namespace Prisma {
     stock?: IntFieldUpdateOperationsInput | number
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     promotion?: PromotionUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUpdateManyWithoutProductNestedInput
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
   }
 
@@ -10642,18 +15707,24 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     categoryId?: IntFieldUpdateOperationsInput | number
     promotion?: PromotionUncheckedUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUncheckedUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUncheckedUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateWithoutPromotionInput = {
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
     isAvailable?: boolean
     orderItems?: OrderItemCreateNestedManyWithoutProductInput
+    hotShot?: HotShotCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteCreateNestedManyWithoutProductInput
     category: CategoryCreateNestedOneWithoutProductsInput
   }
 
@@ -10662,13 +15733,16 @@ export namespace Prisma {
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
     isAvailable?: boolean
     categoryId: number
     orderItems?: OrderItemUncheckedCreateNestedManyWithoutProductInput
+    hotShot?: HotShotUncheckedCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardUncheckedCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutPromotionInput = {
@@ -10697,6 +15771,9 @@ export namespace Prisma {
     stock?: IntFieldUpdateOperationsInput | number
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     orderItems?: OrderItemUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUpdateManyWithoutProductNestedInput
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
   }
 
@@ -10712,6 +15789,239 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     categoryId?: IntFieldUpdateOperationsInput | number
     orderItems?: OrderItemUncheckedUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUncheckedUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUncheckedUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductCreateWithoutHotShotInput = {
+    name: string
+    slug: string
+    price: number
+    description?: string
+    discount?: number
+    imageUrl: string
+    stock?: number
+    isAvailable?: boolean
+    orderItems?: OrderItemCreateNestedManyWithoutProductInput
+    promotion?: PromotionCreateNestedManyWithoutProductInput
+    userRewards?: UserRewardCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteCreateNestedManyWithoutProductInput
+    category: CategoryCreateNestedOneWithoutProductsInput
+  }
+
+  export type ProductUncheckedCreateWithoutHotShotInput = {
+    id?: number
+    name: string
+    slug: string
+    price: number
+    description?: string
+    discount?: number
+    imageUrl: string
+    stock?: number
+    isAvailable?: boolean
+    categoryId: number
+    orderItems?: OrderItemUncheckedCreateNestedManyWithoutProductInput
+    promotion?: PromotionUncheckedCreateNestedManyWithoutProductInput
+    userRewards?: UserRewardUncheckedCreateNestedManyWithoutProductInput
+    userFavorites?: UserFavoriteUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutHotShotInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutHotShotInput, ProductUncheckedCreateWithoutHotShotInput>
+  }
+
+  export type ProductUpsertWithoutHotShotInput = {
+    update: XOR<ProductUpdateWithoutHotShotInput, ProductUncheckedUpdateWithoutHotShotInput>
+    create: XOR<ProductCreateWithoutHotShotInput, ProductUncheckedCreateWithoutHotShotInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutHotShotInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutHotShotInput, ProductUncheckedUpdateWithoutHotShotInput>
+  }
+
+  export type ProductUpdateWithoutHotShotInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    discount?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    orderItems?: OrderItemUpdateManyWithoutProductNestedInput
+    promotion?: PromotionUpdateManyWithoutProductNestedInput
+    userRewards?: UserRewardUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUpdateManyWithoutProductNestedInput
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutHotShotInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    discount?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    categoryId?: IntFieldUpdateOperationsInput | number
+    orderItems?: OrderItemUncheckedUpdateManyWithoutProductNestedInput
+    promotion?: PromotionUncheckedUpdateManyWithoutProductNestedInput
+    userRewards?: UserRewardUncheckedUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type UserCreateWithoutFavoritesInput = {
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    role?: $Enums.UserRole
+    totpSecret?: string | null
+    totpEnabled?: boolean
+    orders?: OrderCreateNestedManyWithoutUserInput
+    reward?: UserRewardCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutFavoritesInput = {
+    id?: number
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    role?: $Enums.UserRole
+    totpSecret?: string | null
+    totpEnabled?: boolean
+    orders?: OrderUncheckedCreateNestedManyWithoutUserInput
+    reward?: UserRewardUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutFavoritesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
+  }
+
+  export type ProductCreateWithoutUserFavoritesInput = {
+    name: string
+    slug: string
+    price: number
+    description?: string
+    discount?: number
+    imageUrl: string
+    stock?: number
+    isAvailable?: boolean
+    orderItems?: OrderItemCreateNestedManyWithoutProductInput
+    promotion?: PromotionCreateNestedManyWithoutProductInput
+    hotShot?: HotShotCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardCreateNestedManyWithoutProductInput
+    category: CategoryCreateNestedOneWithoutProductsInput
+  }
+
+  export type ProductUncheckedCreateWithoutUserFavoritesInput = {
+    id?: number
+    name: string
+    slug: string
+    price: number
+    description?: string
+    discount?: number
+    imageUrl: string
+    stock?: number
+    isAvailable?: boolean
+    categoryId: number
+    orderItems?: OrderItemUncheckedCreateNestedManyWithoutProductInput
+    promotion?: PromotionUncheckedCreateNestedManyWithoutProductInput
+    hotShot?: HotShotUncheckedCreateNestedOneWithoutProductInput
+    userRewards?: UserRewardUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutUserFavoritesInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutUserFavoritesInput, ProductUncheckedCreateWithoutUserFavoritesInput>
+  }
+
+  export type UserUpsertWithoutFavoritesInput = {
+    update: XOR<UserUpdateWithoutFavoritesInput, UserUncheckedUpdateWithoutFavoritesInput>
+    create: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutFavoritesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutFavoritesInput, UserUncheckedUpdateWithoutFavoritesInput>
+  }
+
+  export type UserUpdateWithoutFavoritesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    totpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    orders?: OrderUpdateManyWithoutUserNestedInput
+    reward?: UserRewardUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFavoritesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    totpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    orders?: OrderUncheckedUpdateManyWithoutUserNestedInput
+    reward?: UserRewardUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type ProductUpsertWithoutUserFavoritesInput = {
+    update: XOR<ProductUpdateWithoutUserFavoritesInput, ProductUncheckedUpdateWithoutUserFavoritesInput>
+    create: XOR<ProductCreateWithoutUserFavoritesInput, ProductUncheckedCreateWithoutUserFavoritesInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutUserFavoritesInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutUserFavoritesInput, ProductUncheckedUpdateWithoutUserFavoritesInput>
+  }
+
+  export type ProductUpdateWithoutUserFavoritesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    discount?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    orderItems?: OrderItemUpdateManyWithoutProductNestedInput
+    promotion?: PromotionUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUpdateManyWithoutProductNestedInput
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutUserFavoritesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    discount?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    categoryId?: IntFieldUpdateOperationsInput | number
+    orderItems?: OrderItemUncheckedUpdateManyWithoutProductNestedInput
+    promotion?: PromotionUncheckedUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUncheckedUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type OrderCreateManyUserInput = {
@@ -10719,6 +16029,12 @@ export namespace Prisma {
     totalAmount: number
     stripeSession?: string | null
     status?: $Enums.OrderStatus
+    createdAt?: Date | string
+  }
+
+  export type UserFavoriteCreateManyUserInput = {
+    id?: number
+    productId: number
     createdAt?: Date | string
   }
 
@@ -10747,6 +16063,23 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type UserFavoriteUpdateWithoutUserInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneRequiredWithoutUserFavoritesNestedInput
+  }
+
+  export type UserFavoriteUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserFavoriteUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type OrderItemCreateManyProductInput = {
     id?: number
     orderId: number
@@ -10756,6 +16089,19 @@ export namespace Prisma {
 
   export type PromotionCreateManyProductInput = {
     id?: number
+    createdAt?: Date | string
+  }
+
+  export type UserRewardCreateManyProductInput = {
+    id?: number
+    userId: number
+    discountPercent: number
+    generatedAt?: Date | string
+  }
+
+  export type UserFavoriteCreateManyProductInput = {
+    id?: number
+    userId: number
     createdAt?: Date | string
   }
 
@@ -10793,12 +16139,49 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type UserRewardUpdateWithoutProductInput = {
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRewardNestedInput
+  }
+
+  export type UserRewardUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserRewardUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserFavoriteUpdateWithoutProductInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutFavoritesNestedInput
+  }
+
+  export type UserFavoriteUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserFavoriteUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ProductCreateManyCategoryInput = {
     id?: number
     name: string
     slug: string
     price: number
-    description: string
+    description?: string
     discount?: number
     imageUrl: string
     stock?: number
@@ -10816,6 +16199,9 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     orderItems?: OrderItemUpdateManyWithoutProductNestedInput
     promotion?: PromotionUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutCategoryInput = {
@@ -10830,6 +16216,9 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     orderItems?: OrderItemUncheckedUpdateManyWithoutProductNestedInput
     promotion?: PromotionUncheckedUpdateManyWithoutProductNestedInput
+    hotShot?: HotShotUncheckedUpdateOneWithoutProductNestedInput
+    userRewards?: UserRewardUncheckedUpdateManyWithoutProductNestedInput
+    userFavorites?: UserFavoriteUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutCategoryInput = {

@@ -57,7 +57,8 @@ async function main() {
         price: p.price as number,
         stock: p.stock,
         categoryId: createdCategories[p.category],
-        description: `Świetny produkt z kategorii ${p.category}`,
+        description:
+          p.description || `Świetny produkt z kategorii ${p.category}`,
         imageUrl: p.imageUrl,
       },
     });

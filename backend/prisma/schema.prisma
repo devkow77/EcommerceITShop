@@ -17,6 +17,18 @@ model User {
   totpSecret      String?
   totpEnabled     Boolean     @default(false)
   orders          Order[]
+  reward          UserReward?
+  favorites       UserFavorite[]
+}
+
+model UserReward {
+  id              Int         @id @default(autoincrement())
+  userId          Int         @unique
+  productId       Int
+  discountPercent Int         // 10-99
+  generatedAt     DateTime    @default(now())
+  user            User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product         Product     @relation("UserReward", fields: [productId], references: [id])
 }
 
 model Product {
@@ -32,6 +44,8 @@ model Product {
   orderItems      OrderItem[]
   promotion       Promotion[]
   hotShot         HotShot?    @relation("hotShotProduct")
+  userRewards     UserReward[] @relation("UserReward")
+  userFavorites   UserFavorite[]
   categoryId      Int
   category        Category    @relation(fields: [categoryId], references: [id])
 }
@@ -82,6 +96,16 @@ model HotShot {
   startedAt             DateTime  @default(now())
   expiresAt             DateTime  // Kiedy promocja się skończy (teraz + 12h)
   isActive              Boolean   @default(true)
+}
+
+model UserFavorite {
+  id              Int       @id @default(autoincrement())
+  userId          Int
+  productId       Int
+  createdAt       DateTime  @default(now())
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product         Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  @@unique([userId, productId])
 }
 
 enum OrderStatus {
