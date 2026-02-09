@@ -13,6 +13,7 @@ import DisableTotpForm from "./DisableTotpForm";
 import OrdersList from "./OrdersList";
 import OrderCard from "./OrderCard";
 import CancelOrderDialog from "./CancelOrderDialog";
+import HotShot from "./HotShot";
 
 import ProductCard from "./ProductCard";
 import LoadingProductsView from "./LoadingProductsView";
@@ -35,4 +36,5 @@ export {
   CancelOrderDialog,
   ProductCard,
   LoadingProductsView,
+  HotShot,
 };

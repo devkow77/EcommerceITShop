@@ -31,6 +31,7 @@ model Product {
   isAvailable     Boolean     @default(true)
   orderItems      OrderItem[]
   promotion       Promotion[]
+  hotShot         HotShot?    @relation("hotShotProduct")
   categoryId      Int
   category        Category    @relation(fields: [categoryId], references: [id])
 }
@@ -68,6 +69,19 @@ model Promotion {
   productId       Int
   createdAt       DateTime    @default(now())
   product         Product     @relation(fields: [productId], references: [id])
+}
+
+model HotShot {
+  id                    Int       @id @default(autoincrement())
+  productId             Int       @unique
+  product               Product   @relation("hotShotProduct", fields: [productId], references: [id])
+  discountPercent       Int       // Np. 60 dla 60% zniżki
+  stockLimit            Int       // Ile sztuk dostępne po promocyjnej cenie
+  stockSold             Int       @default(0) // Ile już sprzedano
+  originalPrice         Int       // Oryginalna cena przed promocją
+  startedAt             DateTime  @default(now())
+  expiresAt             DateTime  // Kiedy promocja się skończy (teraz + 12h)
+  isActive              Boolean   @default(true)
 }
 
 enum OrderStatus {

@@ -697,70 +697,77 @@ export const getStatistics = async (req: Request, res: Response) => {
         .json({ message: 'Miesiąc musi być między 1 a 12' });
     }
 
-    // Oblicz pierwszy i ostatni dzień miesiąca
+    // Oblicz pierwszj i ostatni dzień miesiąca
     const firstDay = new Date(queryYear, queryMonth - 1, 1);
     const lastDay = new Date(queryYear, queryMonth, 0);
 
-    let orders: any[] = [];
     let dailyRevenue: Record<string, number> = {};
     let dailyOrders: Record<string, number> = {};
     let categoryRevenue: Record<string, number> = {};
-    let createdAtExists = false;
 
-    // Pobierz wszystkie zamówienia ze statusem PAID, SHIPPED, COMPLETED (bez filtru daty - createdAt nie istnieje w bazie)
-    try {
-      orders = (await prisma.order.findMany({
-        where: {
-          status: {
-            in: ['PAID', 'SHIPPED', 'COMPLETED'],
-          },
+    // Pobierz zamówienia ze statusem PAID, SHIPPED, COMPLETED w danym miesiącu
+    const orders = await prisma.order.findMany({
+      where: {
+        status: {
+          in: ['PAID', 'SHIPPED', 'COMPLETED'],
         },
-        include: {
-          items: { include: { product: { include: { category: true } } } },
+        createdAt: {
+          gte: firstDay,
+          lte: lastDay,
         },
-      })) as any[];
+      },
+      include: {
+        items: { include: { product: { include: { category: true } } } },
+      },
+    });
 
-      // Agreguj przychód po kategoriach (bez podziału na dni)
-      orders.forEach((order: any) => {
-        (order.items || []).forEach((item: any) => {
-          const categoryName = item.product?.category?.name || 'Uncategorized';
+    // Agreguj dane po dniach i kategoriach
+    orders.forEach((order: any) => {
+      const date = new Date(order.createdAt);
+      const dateStr = date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
 
-          if (!categoryRevenue[categoryName]) categoryRevenue[categoryName] = 0;
-          categoryRevenue[categoryName] += item.price * item.quantity;
-        });
+      // Przychód i liczba zamówień po dniach
+      if (!dailyRevenue[dateStr]) {
+        dailyRevenue[dateStr] = 0;
+        dailyOrders[dateStr] = 0;
+      }
+      dailyRevenue[dateStr] += order.totalAmount;
+      dailyOrders[dateStr]++;
+
+      // Przychód po kategoriach
+      (order.items || []).forEach((item: any) => {
+        const categoryName = item.product?.category?.name || 'Bez kategorii';
+
+        if (!categoryRevenue[categoryName]) categoryRevenue[categoryName] = 0;
+        categoryRevenue[categoryName] += item.price * item.quantity;
       });
-    } catch (err) {
-      console.error('Błąd pobierania zamówień:', err);
-    }
+    });
 
     // Statystyki ogólne
-    const totalRevenueFromDaily = Object.values(dailyRevenue).reduce(
+    const totalRevenue = Object.values(dailyRevenue).reduce(
       (a, b) => a + b,
       0,
     );
-    const totalRevenueFromCategory = Object.values(categoryRevenue).reduce(
-      (a, b) => a + b,
-      0,
-    );
-    const finalTotalRevenue =
-      totalRevenueFromDaily > 0
-        ? totalRevenueFromDaily
-        : totalRevenueFromCategory;
-
     const totalOrders = orders.length;
     const avgOrderValue =
       totalOrders > 0
-        ? Number((finalTotalRevenue / totalOrders / 100).toFixed(2))
+        ? Number(((totalRevenue / 100) / totalOrders).toFixed(2))
         : 0;
 
+    // Przygotuj dane do wykresu (posortowane po datach)
     const chartData = Object.entries(dailyRevenue)
       .sort(([dateA], [dateB]) => dateA.localeCompare(dateB))
       .map(([date, revenue]) => ({
-        date,
+        date: date, // Keep as YYYY-MM-DD
+        dateFormatted: new Date(date).toLocaleDateString('pl-PL', {
+          day: '2-digit',
+          month: '2-digit',
+        }),
         revenue: Number((revenue / 100).toFixed(2)),
-        orders: dailyOrders[date],
+        orders: dailyOrders[date] || 0,
       }));
 
+    // Top 5 kategorii
     const topCategories = Object.entries(categoryRevenue)
       .sort(([, a], [, b]) => b - a)
       .slice(0, 5)
@@ -773,13 +780,12 @@ export const getStatistics = async (req: Request, res: Response) => {
       month: queryMonth,
       year: queryYear,
       stats: {
-        totalRevenue: Number((finalTotalRevenue / 100).toFixed(2)),
+        totalRevenue: Number(((totalRevenue / 100).toFixed(2))),
         totalOrders,
         avgOrderValue,
       },
       chartData,
       topCategories,
-      dateStatsAvailable: !!createdAtExists,
     });
   } catch (err) {
     console.error(err);

@@ -111,7 +111,8 @@ const ShoppingCard = () => {
                       <h2 className="font-bold">{item.name}</h2>
                       <p className="my-2 text-sm text-slate-100 dark:text-slate-300">{`${item.introduction?.substring(0, 75)}...`}</p>
                       <h2 className="font-semibold">
-                        {item.price.toPrecision(5)} {item.currency} |{" "}
+                        {(Number(item.price) / 100).toFixed(2)} {item.currency}{" "}
+                        |{" "}
                         <span className="text-blue-600">
                           Ilość sztuk: {item.quantity}
                         </span>
@@ -146,7 +147,10 @@ const ShoppingCard = () => {
             <br />
             Kwota:{" "}
             <span className="font-semibold">
-              {totalPrice !== 0 ? Number(totalPrice).toPrecision(5) : 0} PLN
+              {Number(totalPrice) !== 0
+                ? (Number(totalPrice) / 100).toFixed(2)
+                : "0.00"}{" "}
+              PLN
             </span>
           </h2>
           <div className="mt-6 flex items-center gap-4">

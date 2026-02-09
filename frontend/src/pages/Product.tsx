@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Container } from "@/components";
+import { useShoppingCart } from "use-shopping-cart";
+import { toast } from "sonner";
 
 interface Product {
   id: number;
@@ -22,6 +24,7 @@ const Product = () => {
   const { product } = useParams<{ product: string }>();
   const [productData, setProductData] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
+  const { addItem } = useShoppingCart();
 
   useEffect(() => {
     if (!product) return;
@@ -47,6 +50,26 @@ const Product = () => {
       currency: "PLN",
     });
 
+  const handleAddToCart = () => {
+    if (!productData) return;
+
+    try {
+      addItem({
+        id: String(productData.id),
+        name: productData.name,
+        price: productData.discountedPrice,
+        image: productData.imageUrl,
+        currency: "PLN",
+      });
+      toast.success(`${productData.name} dodany do koszyka!`, {
+        position: "top-center",
+      });
+    } catch (err) {
+      console.error("Błąd przy dodawaniu do koszyka:", err);
+      toast.error("Nie udało się dodać do koszyka", { position: "top-center" });
+    }
+  };
+
   if (loading) return <p className="py-10 text-center">Ładowanie...</p>;
   if (!productData)
     return <p className="py-10 text-center">Produkt nie znaleziony</p>;
@@ -60,7 +83,6 @@ const Product = () => {
             alt={productData.name}
             className="max-w-md"
           />
-          {/* <div className="h-80 w-80 bg-black/20"></div> */}
         </div>
 
         <div className="space-y-4">
@@ -90,6 +112,7 @@ const Product = () => {
 
           <button
             disabled={productData.stock === 0}
+            onClick={handleAddToCart}
             className="mt-4 w-full rounded-lg bg-gray-900 py-2 text-white transition-colors hover:bg-gray-700 disabled:opacity-40"
           >
             Do koszyka
