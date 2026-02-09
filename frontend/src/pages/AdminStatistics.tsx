@@ -98,47 +98,35 @@ const AdminStatistics = () => {
   return (
     <section className="py-12">
       <Container className="space-y-8">
-        {/* HEADER */}
-        <div className="flex items-center justify-between border-b pb-4">
-          <h2 className="text-3xl font-bold">Panel Administratora</h2>
-          <div className="flex items-center gap-2">
-            <Link to="/admin" className="bg-black px-4 py-2 text-sm text-white">
+        <div className="space-y-4 border-b pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-2xl font-bold md:text-3xl">
+              Panel Administratora
+            </h2>
+            <span className="text-sm text-gray-500">
+              Zalogowany jako <b>{user.name}</b>
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 font-semibold md:gap-4">
+            <Link className="hover:text-blue-500" to="/admin">
               Moje konto
             </Link>
-            <Link
-              to="/admin/products"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/products">
               Produkty
             </Link>
-            <Link
-              to="/admin/categories"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/categories">
               Kategorie
             </Link>
-            <Link
-              to="/admin/users"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/users">
               Użytkownicy
             </Link>
-            <Link
-              to="/admin/orders"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/orders">
               Zamówienia
             </Link>
-            <Link
-              to="/admin/statistics"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/statistics">
               Statystyki
             </Link>
           </div>
-          <span className="text-sm text-gray-500">
-            Zalogowany jako <b>{user.name}</b>
-          </span>
         </div>
 
         {/* TYTUŁ I FILTRY */}
@@ -180,21 +168,21 @@ const AdminStatistics = () => {
           <div className="space-y-8">
             {/* KARTY OGÓLNYCH STATYSTYK */}
             <div className="grid grid-cols-3 gap-4">
-              <div className="rounded-lg border bg-white p-6 shadow-sm">
+              <div className="rounded-lg border p-6 shadow-sm">
                 <p className="text-sm text-gray-600">Całkowity przychód</p>
                 <p className="mt-2 text-3xl font-bold">
                   {statistics.stats.totalRevenue.toFixed(2)} zł
                 </p>
               </div>
 
-              <div className="rounded-lg border bg-white p-6 shadow-sm">
+              <div className="rounded-lg border p-6 shadow-sm">
                 <p className="text-sm text-gray-600">Liczba zamówień</p>
                 <p className="mt-2 text-3xl font-bold">
                   {statistics.stats.totalOrders}
                 </p>
               </div>
 
-              <div className="rounded-lg border bg-white p-6 shadow-sm">
+              <div className="rounded-lg border p-6 shadow-sm">
                 <p className="text-sm text-gray-600">
                   Średnia wartość zamówienia
                 </p>
@@ -205,7 +193,7 @@ const AdminStatistics = () => {
             </div>
 
             {/* WYKRES PRZYCHODU */}
-            <div className="rounded-lg border bg-white p-6 shadow-sm">
+            <div className="rounded-lg border p-6 shadow-sm">
               <h4 className="mb-4 text-lg font-bold">Przychód dziennie</h4>
               <div className="space-y-3">
                 {statistics.chartData.length === 0 ? (
@@ -283,7 +271,7 @@ const AdminStatistics = () => {
             </div>
 
             {/* TOP KATEGORIE */}
-            <div className="rounded-lg border bg-white p-6 shadow-sm">
+            <div className="rounded-lg border p-6 shadow-sm">
               <h4 className="mb-4 text-lg font-bold">Top 5 kategorii</h4>
               {statistics.topCategories.length === 0 ? (
                 <p className="text-center text-gray-500">Brak danych</p>

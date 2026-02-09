@@ -24,7 +24,7 @@ model Product {
   name            String
   slug            String      @unique // Np. "iphone-15-pro-max"
   price           Int
-  description     String
+  description     String      @default("")
   discount        Int         @default(0) // Rabat procentowy, np. 10 dla 10%
   imageUrl        String    
   stock           Int         @default(0)

@@ -103,17 +103,17 @@ const EditOrderDialog = ({ order, onSuccess }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>Edytuj</DialogTrigger>
+      <DialogTrigger asChild>
+        <Button variant="yellow">Edytuj</Button>
+      </DialogTrigger>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>Edytuj zamówienie #{order.id}</DialogTitle>
-          <DialogDescription>
-            Edytuj status zamówienia
-          </DialogDescription>
+          <DialogDescription>Edytuj status zamówienia</DialogDescription>
         </DialogHeader>
 
         {/* Informacje o zamówieniu */}
-        <div className="space-y-4 bg-gray-50 p-4 rounded">
+        <div className="space-y-4 rounded bg-gray-50 p-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <p className="text-sm text-gray-600">Klient</p>
@@ -122,13 +122,15 @@ const EditOrderDialog = ({ order, onSuccess }: Props) => {
             </div>
             <div>
               <p className="text-sm text-gray-600">Kwota całkowita</p>
-              <p className="font-medium text-lg">{(order.totalAmount / 100).toFixed(2)} zł</p>
+              <p className="text-lg font-medium">
+                {(order.totalAmount / 100).toFixed(2)} zł
+              </p>
             </div>
           </div>
 
           {/* Pozycje zamówienia */}
           <div>
-            <p className="text-sm font-medium mb-2">Pozycje zamówienia:</p>
+            <p className="mb-2 text-sm font-medium">Pozycje zamówienia:</p>
             <div className="space-y-2">
               {order.items.map((item) => (
                 <div key={item.id} className="flex justify-between text-sm">
@@ -146,10 +148,7 @@ const EditOrderDialog = ({ order, onSuccess }: Props) => {
 
         {/* Formularz */}
         <Form<OrderFormValues> {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="status"

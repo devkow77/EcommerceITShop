@@ -174,48 +174,36 @@ const AdminOrders = () => {
     <section className="py-12">
       <Container className="space-y-8">
         {/* HEADER */}
-        <div className="flex items-center justify-between border-b pb-4">
-          <h2 className="text-3xl font-bold">Panel Administratora</h2>
-          <div className="flex items-center gap-2">
-            <Link to="/admin" className="bg-black px-4 py-2 text-sm text-white">
+        <div className="space-y-4 border-b pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-2xl font-bold md:text-3xl">
+              Panel Administratora
+            </h2>
+            <span className="text-sm text-gray-500">
+              Zalogowany jako <b>{user.name}</b>
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 font-semibold md:gap-4">
+            <Link className="hover:text-blue-500" to="/admin">
               Moje konto
             </Link>
-            <Link
-              to="/admin/products"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/products">
               Produkty
             </Link>
-            <Link
-              to="/admin/categories"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/categories">
               Kategorie
             </Link>
-            <Link
-              to="/admin/users"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/users">
               Użytkownicy
             </Link>
-            <Link
-              to="/admin/orders"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/orders">
               Zamówienia
             </Link>
-            <Link
-              to="/admin/statistics"
-              className="bg-black px-4 py-2 text-sm text-white"
-            >
+            <Link className="hover:text-blue-500" to="/admin/statistics">
               Statystyki
             </Link>
           </div>
-          <span className="text-sm text-gray-500">
-            Zalogowany jako <b>{user.name}</b>
-          </span>
         </div>
-
         {/* AKCJE */}
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-semibold">Zamówienia</h3>
@@ -247,30 +235,54 @@ const AdminOrders = () => {
               }}
               className="rounded border px-3 py-2 text-sm"
             >
-              <option value="">Wszystkie statusy</option>
-              <option value="PENDING">Oczekujące</option>
-              <option value="PAID">Opłacone</option>
-              <option value="SHIPPED">Wysłane</option>
-              <option value="COMPLETED">Ukończone</option>
-              <option value="CANCELED">Anulowane</option>
+              <option className="dark:bg-[#222]" value="">
+                Wszystkie statusy
+              </option>
+              <option className="dark:bg-[#222]" value="PENDING">
+                Oczekujące
+              </option>
+              <option className="dark:bg-[#222]" value="PAID">
+                Opłacone
+              </option>
+              <option className="dark:bg-[#222]" value="SHIPPED">
+                Wysłane
+              </option>
+              <option className="dark:bg-[#222]" value="COMPLETED">
+                Ukończone
+              </option>
+              <option className="dark:bg-[#222]" value="CANCELED">
+                Anulowane
+              </option>
             </select>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className="rounded border px-3 py-2 text-sm"
             >
-              <option value="id">ID</option>
-              <option value="createdAt">Data</option>
-              <option value="totalAmount">Kwota</option>
-              <option value="status">Status</option>
+              <option className="dark:bg-[#222]" value="id">
+                ID
+              </option>
+              <option className="dark:bg-[#222]" value="createdAt">
+                Data
+              </option>
+              <option className="dark:bg-[#222]" value="totalAmount">
+                Kwota
+              </option>
+              <option className="dark:bg-[#222]" value="status">
+                Status
+              </option>
             </select>
             <select
               value={order}
               onChange={(e) => setOrder(e.target.value as "asc" | "desc")}
               className="rounded border px-3 py-2 text-sm"
             >
-              <option value="asc">Rosnąco</option>
-              <option value="desc">Malejąco</option>
+              <option className="dark:bg-[#222]" value="asc">
+                Rosnąco
+              </option>
+              <option className="dark:bg-[#222]" value="desc">
+                Malejąco
+              </option>
             </select>
           </div>
         </section>
@@ -278,7 +290,7 @@ const AdminOrders = () => {
         {/* TABELA */}
         <div className="overflow-x-auto rounded-lg border">
           <table className="w-full text-sm">
-            <thead className="bg-gray-50 text-xs text-gray-600 uppercase">
+            <thead className="bg-gray-50 text-xs uppercase dark:bg-[#222]">
               <tr>
                 <th className="px-4 py-3">ID</th>
                 <th className="px-4 py-3">Klient</th>
@@ -304,7 +316,10 @@ const AdminOrders = () => {
                 </tr>
               ) : (
                 orders.map((o) => (
-                  <tr key={o.id} className="hover:bg-gray-50">
+                  <tr
+                    key={o.id}
+                    className="hover:bg-gray-50 dark:hover:bg-[#222]"
+                  >
                     <td className="px-4 py-3 font-medium">{o.id}</td>
                     <td className="px-4 py-3">
                       <div className="text-sm">
@@ -324,11 +339,11 @@ const AdminOrders = () => {
                       {o.status}
                     </td>
                     <td className="px-4 py-3">
-                      <span className="inline-block rounded bg-gray-100 px-2 py-1 text-xs">
+                      <span className="inline-block rounded bg-gray-100 px-2 py-1 text-xs dark:bg-[#222]">
                         {o.items.length} szt.
                       </span>
                     </td>
-                    <td className="space-x-3 px-4 py-3 text-right">
+                    <td className="w-1/8 space-y-3 px-4 py-3 text-right">
                       <EditOrderDialog order={o} onSuccess={fetchOrders} />
                       <DeleteOrderDialog
                         orderId={o.id}

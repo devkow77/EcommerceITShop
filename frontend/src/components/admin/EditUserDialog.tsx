@@ -86,7 +86,9 @@ const EditUserDialog = ({ user, onSuccess }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>Edytuj</DialogTrigger>
+      <DialogTrigger asChild>
+        <Button variant="yellow">Edytuj</Button>
+      </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Edytuj użytkownika</DialogTitle>

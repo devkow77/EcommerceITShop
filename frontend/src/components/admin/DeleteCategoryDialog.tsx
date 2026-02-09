@@ -44,7 +44,7 @@ const DeleteCategoryDialog = ({
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button variant="outline">Usuń</Button>
+          <Button variant="red">Usuń</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>

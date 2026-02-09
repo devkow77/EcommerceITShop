@@ -1,8 +1,9 @@
+"use client";
+
 import { Link } from "react-router-dom";
 import { Container, Profile } from "./index";
 import {
   Heart,
-  ShoppingBasket,
   LaptopMinimal,
   Store,
   Package,
@@ -13,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useEffect, useState } from "react";
+import { ShoppingBag } from "@/components/shopping/index";
 
 interface Category {
   id: number;
@@ -88,9 +90,7 @@ const MainContent = () => {
         <div className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5 dark:hover:bg-white/10">
           <Heart />
         </div>
-        <div className="cursor-pointer px-4 py-2 duration-200 hover:bg-black/5 dark:hover:bg-white/10">
-          <ShoppingBasket />
-        </div>
+        <ShoppingBag />
       </div>
     </div>
   );
