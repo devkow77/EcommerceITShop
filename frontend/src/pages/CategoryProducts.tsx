@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Container, LoadingProductsView, ProductCard } from "@/components";
 import { Button } from "@/components/ui/button";
 import { LayoutGrid } from "lucide-react";

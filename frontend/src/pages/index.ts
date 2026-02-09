@@ -14,6 +14,9 @@ import AdminOrders from "./AdminOrders";
 import AdminStatistics from "./AdminStatistics";
 import CategoryProducts from "./CategoryProducts";
 import Product from "./Product";
+import Reward from "./Reward";
+import SearchResults from "./SearchResults";
+import Favorites from "./Favorites";
 
 export {
   Home,
@@ -32,4 +35,7 @@ export {
   AdminStatistics,
   CategoryProducts,
   Product,
+  Reward,
+  SearchResults,
+  Favorites,
 };

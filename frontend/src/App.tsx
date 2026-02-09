@@ -17,6 +17,9 @@ import {
   CategoryProducts,
   AdminStatistics,
   Product,
+  Reward,
+  SearchResults,
+  Favorites,
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import { ShoppingCard } from "./components/shopping";
@@ -27,10 +30,13 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchResults />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
         <Route path="/account/orders" element={<AccountOrders />} />
+        <Route path="/reward" element={<Reward />} />
 
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/users" element={<AdminUsers />} />

@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import { ShoppingBasket } from "lucide-react";
+import { ShoppingBasket, Heart } from "lucide-react";
 import { useShoppingCart } from "use-shopping-cart";
+import { useFavorites } from "@/hooks/useFavorites";
 import { toast } from "sonner";
 
 interface Props {
   category?: {
     name: string;
+    slug?: string;
   };
   id?: number;
   slug: string;
@@ -16,6 +18,7 @@ interface Props {
   price: number;
   discountedPrice?: number;
   discountPercent?: number;
+  showFavorite?: boolean;
 }
 
 const formatPrice = (priceInCents: number) =>
@@ -34,9 +37,14 @@ const ProductCard = ({
   price,
   discountedPrice,
   discountPercent,
+  showFavorite = true,
 }: Props) => {
   const categoryName = category?.name || "Nieznana kategoria";
+  const categorySlug = category?.slug || "unknown";
   const { addItem } = useShoppingCart();
+  const { isFavorite, toggleFavorite } = useFavorites();
+
+  const isInFavorites = isFavorite(Number(id));
 
   // Obsługa zarówno starego formatu (discount %) jak i nowego (discountedPrice)
   const finalDiscountPercent = discountPercent ?? discount ?? 0;
@@ -64,9 +72,27 @@ const ProductCard = ({
     }
   };
 
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleFavorite({
+      id: Number(id || 0),
+      name,
+      slug,
+      price,
+      imageUrl,
+      category: {
+        name: categoryName,
+        slug: category?.slug || "",
+      },
+    });
+    const action = isInFavorites ? "usunięty z" : "dodany do";
+    toast.success(`${name} ${action} ulubionych!`, { position: "top-center" });
+  };
+
   return (
     <Link
-      to={`/products/${categoryName}/${slug}`}
+      to={`/products/${categorySlug}/${slug}`}
       className="text-sm lg:text-base"
     >
       <div className="relative aspect-square">
@@ -79,6 +105,22 @@ const ProductCard = ({
           <div className="absolute top-0 right-0 rounded-full bg-yellow-600 px-3 py-1 text-xs font-semibold text-white md:text-sm">
             -{finalDiscountPercent}%
           </div>
+        )}
+        {showFavorite && (
+          <button
+            onClick={handleToggleFavorite}
+            className={`absolute right-2 bottom-2 rounded-full p-2 transition-all ${
+              isInFavorites
+                ? "bg-red-500 text-white"
+                : "bg-white text-gray-400 hover:text-red-500 dark:bg-gray-800"
+            }`}
+            title={isInFavorites ? "Usuń z ulubionych" : "Dodaj do ulubionych"}
+          >
+            <Heart
+              className="h-5 w-5"
+              fill={isInFavorites ? "currentColor" : "none"}
+            />
+          </button>
         )}
       </div>
       <div className="space-y-2 py-2 lg:space-y-3">

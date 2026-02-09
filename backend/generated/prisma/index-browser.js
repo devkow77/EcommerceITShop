@@ -131,6 +131,14 @@ exports.Prisma.UserScalarFieldEnum = {
   totpEnabled: 'totpEnabled'
 };
 
+exports.Prisma.UserRewardScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  productId: 'productId',
+  discountPercent: 'discountPercent',
+  generatedAt: 'generatedAt'
+};
+
 exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -173,6 +181,25 @@ exports.Prisma.PromotionScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.HotShotScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  discountPercent: 'discountPercent',
+  stockLimit: 'stockLimit',
+  stockSold: 'stockSold',
+  originalPrice: 'originalPrice',
+  startedAt: 'startedAt',
+  expiresAt: 'expiresAt',
+  isActive: 'isActive'
+};
+
+exports.Prisma.UserFavoriteScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  productId: 'productId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -202,11 +229,14 @@ exports.OrderStatus = exports.$Enums.OrderStatus = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  UserReward: 'UserReward',
   Product: 'Product',
   Category: 'Category',
   Order: 'Order',
   OrderItem: 'OrderItem',
-  Promotion: 'Promotion'
+  Promotion: 'Promotion',
+  HotShot: 'HotShot',
+  UserFavorite: 'UserFavorite'
 };
 
 /**
