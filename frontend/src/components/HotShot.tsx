@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingBasket, Flame, Clock } from "lucide-react";
+import { ShoppingBasket } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import LoadingProductsView from "./LoadingProductsView";
 
 interface HotShotProduct {
   id: number;
@@ -85,11 +86,7 @@ const HotShot = () => {
   }, [hotShot]);
 
   if (loading) {
-    return (
-      <div className="py-10 text-center">
-        <p>Ładowanie Hot Shot...</p>
-      </div>
-    );
+    return <LoadingProductsView />;
   }
 
   if (!hotShot) {
@@ -100,92 +97,60 @@ const HotShot = () => {
   const isLowStock = hotShot.remainingStock <= 1;
 
   return (
-    <div className="mb-12 space-y-6">
-      <div className="flex items-center justify-center gap-3">
-        <Flame className="h-6 w-6 text-orange-500" />
-        <h2 className="text-center text-2xl font-bold md:text-3xl">
-          Hot Shot!
-        </h2>
-        <Flame className="h-6 w-6 text-orange-500" />
-      </div>
-
+    <main className="flex flex-col items-center">
+      <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">
+        Hot Shot!
+      </h2>
       <Link
         to={`/products/${hotShot.product.category.name}/${hotShot.product.slug}`}
-        className="block"
+        className="flex items-center gap-8"
       >
-        <article className="overflow-hidden rounded-lg border-2 border-orange-500 transition-shadow hover:shadow-lg">
-          {/* Zdjęcie */}
-          <div className="relative aspect-video overflow-hidden bg-gray-100 sm:aspect-square dark:bg-gray-800">
-            <img
-              src={hotShot.product.imageUrl}
-              alt={hotShot.product.name}
-              className="h-full w-full object-contain object-center p-4"
-            />
-            <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold text-white md:text-sm">
-              <Flame className="h-3 w-3" />-{hotShot.product.discountPercent}%
-            </div>
+        <div className="relative aspect-square max-w-80">
+          <img
+            src={hotShot.product.imageUrl}
+            alt={hotShot.product.name}
+            className="h-full w-full object-contain object-center p-4"
+          />
+          <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-purple-600 px-3 py-1 text-xs font-semibold text-white md:text-sm">
+            {hotShot.product.discountPercent}%
           </div>
-
-          {/* Info */}
-          <div className="space-y-4 p-4 lg:space-y-3">
-            <h3 className="line-clamp-2 font-bold">{hotShot.product.name}</h3>
-
-            {/* Ceny */}
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <p className="text-lg font-semibold text-orange-600">
-                  {formatPrice(hotShot.product.discountedPrice)}
-                </p>
-                <p className="text-sm line-through opacity-60">
-                  {formatPrice(hotShot.product.originalPrice)}
-                </p>
-              </div>
-              <p className="text-xs text-gray-600 dark:text-gray-400">
-                Oszczędzasz:{" "}
-                <strong>
-                  {formatPrice(
-                    hotShot.product.originalPrice -
-                      hotShot.product.discountedPrice,
-                  )}
-                </strong>
-              </p>
-            </div>
-
-            {/* Pasek zapasów */}
-            <div className="space-y-1">
-              <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold">
-                  {hotShot.remainingStock}/{hotShot.stockLimit} szt.
-                </span>
-                {isLowStock && (
-                  <span className="rounded bg-red-600 px-2 py-0.5 text-xs font-semibold text-white">
-                    OSTATNIE!
-                  </span>
-                )}
-              </div>
-              <div className="h-1.5 w-full rounded-full bg-gray-300 dark:bg-gray-600">
-                <div
-                  className="h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-red-500 transition-all"
-                  style={{ width: `${Math.min(stockPercentage, 100)}%` }}
-                ></div>
-              </div>
-            </div>
-
-            {/* Czas */}
-            <div className="flex items-center gap-1 rounded bg-orange-100 px-2 py-1.5 text-xs font-semibold text-orange-600 dark:bg-orange-950/40">
-              <Clock className="h-3 w-3" />
-              Kończy się za: <strong>{timeRemaining}</strong>
-            </div>
-
-            {/* Przycisk */}
-            <Button className="flex w-full items-center justify-center gap-x-2 bg-orange-600 text-white hover:bg-orange-700 dark:hover:bg-orange-700">
-              Do koszyka
-              <ShoppingBasket className="h-4 w-4" />
-            </Button>
+        </div>
+        <div className="space-y-1.5">
+          <h3 className="font-bold">{hotShot.product.name}</h3>
+          <div className="flex items-center gap-x-2">
+            <p className="text-lg font-semibold text-purple-600">
+              {formatPrice(hotShot.product.discountedPrice)}
+            </p>
+            <p className="text-sm line-through opacity-60">
+              {formatPrice(hotShot.product.originalPrice)}
+            </p>
           </div>
-        </article>
+          <div className="flex items-center gap-x-2">
+            <p>
+              Oszczędzasz:{" "}
+              {formatPrice(
+                hotShot.product.originalPrice - hotShot.product.discountedPrice,
+              )}
+            </p>
+            {isLowStock && (
+              <span className="rounded bg-red-600 px-2 py-0.5 text-xs font-semibold text-white">
+                OSTATNIE!
+              </span>
+            )}
+            <span className="font-semibold">
+              {hotShot.remainingStock}/{hotShot.stockLimit} szt.
+            </span>
+          </div>
+          <div>
+            Kończy się za: <strong>{timeRemaining}</strong>
+          </div>
+          <Button variant="green">
+            Do koszyka
+            <ShoppingBasket size={60} />
+          </Button>
+        </div>
       </Link>
-    </div>
+    </main>
   );
 };
 

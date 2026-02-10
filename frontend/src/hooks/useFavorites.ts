@@ -84,9 +84,9 @@ export const useFavorites = () => {
     return favorites.some((fav) => fav.id === productId);
   };
 
-  const toggleFavorite = (product: FavoriteProduct) => {
+  const toggleFavorite = (product: FavoriteProduct): boolean => {
     if (!isLoggedIn) {
-      return;
+      return false;
     }
 
     if (isFavorite(product.id)) {
@@ -94,6 +94,7 @@ export const useFavorites = () => {
     } else {
       addFavorite(product);
     }
+    return true;
   };
 
   const addFavorite = async (product: FavoriteProduct) => {

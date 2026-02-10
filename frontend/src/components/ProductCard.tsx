@@ -75,7 +75,7 @@ const ProductCard = ({
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toggleFavorite({
+    const success = toggleFavorite({
       id: Number(id || 0),
       name,
       slug,
@@ -86,6 +86,14 @@ const ProductCard = ({
         slug: category?.slug || "",
       },
     });
+
+    if (!success) {
+      toast.error("Musisz być zalogowany aby dodać do ulubionych", {
+        position: "top-center",
+      });
+      return;
+    }
+
     const action = isInFavorites ? "usunięty z" : "dodany do";
     toast.success(`${name} ${action} ulubionych!`, { position: "top-center" });
   };
@@ -125,9 +133,6 @@ const ProductCard = ({
       </div>
       <div className="space-y-2 py-2 lg:space-y-3">
         <h3 className="truncate font-bold">{name}</h3>
-        {isPromotion && (
-          <span className="text-sm text-gray-500">Promocja!</span>
-        )}
         <div className="flex items-center gap-x-2">
           <p className={`text-lg font-semibold ${priceColorClass}`}>
             {formatPrice(displayPrice)}

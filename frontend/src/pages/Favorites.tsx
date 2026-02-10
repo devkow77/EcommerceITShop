@@ -1,11 +1,43 @@
-import { Heart, Home } from "lucide-react";
+import { Heart, Home, LogIn } from "lucide-react";
 import { Container, ProductCard } from "@/components";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useFavorites } from "@/hooks/useFavorites";
+import { useAuth } from "@/context/AuthContext";
 
 const Favorites = () => {
   const { favorites, removeFavorite } = useFavorites();
+  const { user } = useAuth();
+
+  // Jeśli użytkownik nie jest zalogowany, pokaż komunikat
+  if (!user) {
+    return (
+      <section className="py-10">
+        <Container className="space-y-8">
+          <div className="flex flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 py-12 dark:border-gray-700">
+            <LogIn className="h-12 w-12 text-gray-400" />
+            <p className="text-lg text-gray-500">
+              Musisz być zalogowany aby zobaczyć ulubione produkty
+            </p>
+            <div className="mt-4 flex gap-4">
+              <Link to="/login">
+                <Button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700">
+                  <LogIn className="h-4 w-4" />
+                  Zaloguj się
+                </Button>
+              </Link>
+              <Link to="/">
+                <Button variant="outline" className="flex items-center gap-2">
+                  <Home className="h-4 w-4" />
+                  Powrót do sklepu
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+    );
+  }
 
   return (
     <section className="py-10">

@@ -13,7 +13,7 @@ createRoot(document.getElementById("root")!).render(
         mode="payment"
         cartMode="client-only"
         stripe={
-          "pk_test_51Syyo2BWVTX929etENuOYzTwJCy6ldAi9v86WYxwfe8T1CQzwFsAYHcehtUKd6VOQfX3Ync1RmWcl1zKV52n1yBa00QbhjmChv" as string
+          "pk_test_51Syyo2BWVTX929etENuOYzTwJCy6ldAi9v86WYxwfe8T1CQzwFsAYHcehtUKd6VOQfX3Ync1RmWcl1zKV52n1yBa00QbhjmChv"
         }
         successUrl="http://localhost:3000/payment/success"
         cancelUrl="http://localhost:3000/payment/cancel"
