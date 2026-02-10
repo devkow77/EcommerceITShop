@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Container } from "@/components";
 import { useShoppingCart } from "use-shopping-cart";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 interface Product {
   id: number;
@@ -84,13 +85,11 @@ const Product = () => {
             className="max-w-md"
           />
         </div>
-
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">{productData.name}</h1>
           <p className="text-gray-500">
             Kategoria: {productData.category.name}
           </p>
-
           <div className="flex items-baseline gap-4">
             {productData.discount > 0 && (
               <span className="text-gray-400 line-through">
@@ -101,22 +100,20 @@ const Product = () => {
               {formatPrice(productData.discountedPrice)}
             </span>
           </div>
-
-          <p className="text-gray-700">{productData.description}</p>
-
-          <p className="text-sm text-gray-500">
+          <p>{productData.description}</p>
+          <p className="text-sm">
             {productData.stock > 0
               ? `Dostępny: ${productData.stock} szt.`
               : "Brak w magazynie"}
           </p>
-
-          <button
+          <Button
+            variant="green"
             disabled={productData.stock === 0}
             onClick={handleAddToCart}
-            className="mt-4 w-full rounded-lg bg-gray-900 py-2 text-white transition-colors hover:bg-gray-700 disabled:opacity-40"
+            className="mt-4 w-full rounded-lg py-2 disabled:opacity-40"
           >
             Do koszyka
-          </button>
+          </Button>
         </div>
       </Container>
     </section>

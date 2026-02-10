@@ -172,7 +172,7 @@ const Reward = () => {
           </p>
         </div>
 
-        <div className="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-8 dark:border-gray-700 dark:bg-gray-800">
+        <div className="mx-auto max-w-2xl rounded-lg p-8 dark:border-gray-700">
           <div className="grid gap-8 md:grid-cols-2">
             {/* Zdjęcie produktu */}
             <div className="flex items-center justify-center">
@@ -205,7 +205,7 @@ const Reward = () => {
               </div>
 
               {/* Ceny */}
-              <div className="space-y-2 rounded-lg bg-gray-100 p-4 dark:bg-gray-700">
+              <div className="space-y-2 rounded-lg p-4">
                 <div className="flex items-baseline gap-3">
                   <p className={`text-4xl font-bold ${discountColor}`}>
                     {formatPrice(reward.discountedPrice)}

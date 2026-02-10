@@ -63,7 +63,7 @@ const TopBaner = () => {
   ];
 
   return (
-    <div className="hidden bg-black px-4 py-3 text-white/80 md:block xl:px-8 dark:bg-white/10">
+    <div className="hidden bg-purple-800 px-4 py-3 text-white/80 md:block xl:px-8">
       <ul className="flex items-center justify-between text-xs">
         {text.map((info: Info, i: number) => (
           <li key={i} className="flex items-center gap-2">

@@ -21,10 +21,8 @@ const ShoppingCard = () => {
     cartDetails,
     totalPrice = 0,
     removeItem,
-    redirectToCheckout,
     incrementItem,
     clearCart,
-    addItem,
   } = useShoppingCart();
 
   const handleCheckout = async () => {
@@ -32,40 +30,31 @@ const ShoppingCard = () => {
       const response = await fetch("/api/payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(cartDetails),
+        body: JSON.stringify({ cartDetails }), // Wysyłamy koszyk do Expressa
       });
 
-      const { sessionUrl } = await response.json();
+      const data = await response.json();
 
       if (!response.ok) {
-        console.log("Błąd w płatności");
-        toast.error("Nie udało się przejść do płatności", {
-          position: "top-center",
-        });
+        console.error("Błąd serwera:", data.error);
+        toast.error("Nie udało się przejść do płatności");
         return;
       }
 
-      await redirectToCheckout(sessionUrl);
+      if (data.sessionUrl) {
+        window.location.href = data.sessionUrl;
+      }
     } catch (err) {
       console.log(`Błąd w płatności: ${err}`);
-      toast.error("Błąd serwera", { position: "top-center" });
+      toast.error("Błąd połączenia z serwerem");
     }
-  };
-
-  const product = {
-    id: "banana_001",
-    name: "Bananas",
-    price: 400, // $4.00 in cents
-    currency: "PLN",
-    image:
-      "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=400&fit=crop&q=80",
   };
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={handleCartClick}>
       <SheetContent
         side={"right"}
-        className="flex h-full flex-col justify-between p-6"
+        className="flex h-full w-1/2 flex-col justify-between p-6"
       >
         <SheetHeader className="mb-6">
           <SheetTitle>Koszyk zakupowy</SheetTitle>
@@ -109,7 +98,13 @@ const ShoppingCard = () => {
                     </Link>
                     <div className="pr-8 text-sm">
                       <h2 className="font-bold">{item.name}</h2>
-                      <p className="my-2 text-sm text-slate-100 dark:text-slate-300">{`${item.introduction?.substring(0, 75)}...`}</p>
+                      {item.introduction && (
+                        <p className="my-2 text-sm text-slate-100 dark:text-slate-300">
+                          {item.introduction.length > 75
+                            ? `${item.introduction.substring(0, 75)}...`
+                            : item.introduction}
+                        </p>
+                      )}
                       <h2 className="font-semibold">
                         {(Number(item.price) / 100).toFixed(2)} {item.currency}{" "}
                         |{" "}
@@ -154,11 +149,20 @@ const ShoppingCard = () => {
             </span>
           </h2>
           <div className="mt-6 flex items-center gap-4">
-            <Button onClick={handleCheckout}>Zapłać teraz</Button>
-            <Button onClick={clearCart} disabled={cartCount === 0}>
+            <Button
+              onClick={handleCheckout}
+              disabled={cartCount === 0}
+              className={`${cartCount == 0 ? "" : "bg-green-500 hover:bg-green-700"}`}
+            >
+              Zapłać teraz
+            </Button>
+            <Button
+              onClick={clearCart}
+              disabled={cartCount === 0}
+              className={`${cartCount == 0 ? "" : "bg-red-500 hover:bg-red-700"}`}
+            >
               Wyczyść koszyk
             </Button>
-            <button onClick={() => addItem(product)}>Add to Cart</button>
           </div>
         </section>
       </SheetContent>

@@ -28,7 +28,7 @@ export let productsData: SeedProduct[] = [
     stock: 18,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -48,7 +48,7 @@ export let productsData: SeedProduct[] = [
     stock: 20,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -68,7 +68,7 @@ export let productsData: SeedProduct[] = [
     stock: 28,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -88,7 +88,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -108,7 +108,7 @@ export let productsData: SeedProduct[] = [
     stock: 17,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -128,7 +128,7 @@ export let productsData: SeedProduct[] = [
     stock: 16,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -148,7 +148,7 @@ export let productsData: SeedProduct[] = [
     stock: 19,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -168,7 +168,7 @@ export let productsData: SeedProduct[] = [
     stock: 25,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -188,7 +188,7 @@ export let productsData: SeedProduct[] = [
     stock: 27,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -208,7 +208,7 @@ export let productsData: SeedProduct[] = [
     stock: 28,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -228,7 +228,7 @@ export let productsData: SeedProduct[] = [
     stock: 30,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -248,7 +248,7 @@ export let productsData: SeedProduct[] = [
     stock: 40,
     category: 'Telefony',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770653651/jagmf9sf5x0acjavf4uc.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727894/f4rom4gaen5lwgtoqcp8.png',
     categoryId: '6',
   },
   {
@@ -270,7 +270,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -290,7 +290,7 @@ export let productsData: SeedProduct[] = [
     stock: 8,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -310,7 +310,7 @@ export let productsData: SeedProduct[] = [
     stock: 25,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -330,7 +330,7 @@ export let productsData: SeedProduct[] = [
     stock: 10,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -350,7 +350,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -370,7 +370,7 @@ export let productsData: SeedProduct[] = [
     stock: 10,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -390,7 +390,7 @@ export let productsData: SeedProduct[] = [
     stock: 16,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -410,7 +410,7 @@ export let productsData: SeedProduct[] = [
     stock: 6,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -430,7 +430,7 @@ export let productsData: SeedProduct[] = [
     stock: 10,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -450,7 +450,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -470,7 +470,7 @@ export let productsData: SeedProduct[] = [
     stock: 10,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -490,7 +490,7 @@ export let productsData: SeedProduct[] = [
     stock: 8,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
   {
@@ -510,7 +510,7 @@ export let productsData: SeedProduct[] = [
     stock: 10,
     category: 'Laptopy',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770497436/mgu7nxbxwke5jlqkru5u.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727685/ajpqzylenktzga4cvzyd.png',
     categoryId: 1,
   },
 
@@ -532,7 +532,7 @@ export let productsData: SeedProduct[] = [
     stock: 18,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -552,7 +552,7 @@ export let productsData: SeedProduct[] = [
     stock: 30,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -572,7 +572,7 @@ export let productsData: SeedProduct[] = [
     stock: 28,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -592,7 +592,7 @@ export let productsData: SeedProduct[] = [
     stock: 20,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -612,7 +612,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -632,7 +632,7 @@ export let productsData: SeedProduct[] = [
     stock: 14,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -652,7 +652,7 @@ export let productsData: SeedProduct[] = [
     stock: 22,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -672,7 +672,7 @@ export let productsData: SeedProduct[] = [
     stock: 20,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -692,7 +692,7 @@ export let productsData: SeedProduct[] = [
     stock: 30,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -712,7 +712,7 @@ export let productsData: SeedProduct[] = [
     stock: 28,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -732,7 +732,7 @@ export let productsData: SeedProduct[] = [
     stock: 18,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -752,7 +752,7 @@ export let productsData: SeedProduct[] = [
     stock: 25,
     category: 'Tablety',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654183/obpodfj51bpy0igvsy0h.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727928/rm6om4iayyqp4jflrbl5.png',
     categoryId: 5,
   },
   {
@@ -784,7 +784,7 @@ export let productsData: SeedProduct[] = [
     stock: 18,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -804,7 +804,7 @@ export let productsData: SeedProduct[] = [
     stock: 10,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -824,7 +824,7 @@ export let productsData: SeedProduct[] = [
     stock: 18,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -844,7 +844,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -864,7 +864,7 @@ export let productsData: SeedProduct[] = [
     stock: 25,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -884,7 +884,7 @@ export let productsData: SeedProduct[] = [
     stock: 22,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -904,7 +904,7 @@ export let productsData: SeedProduct[] = [
     stock: 28,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -924,7 +924,7 @@ export let productsData: SeedProduct[] = [
     stock: 20,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -944,7 +944,7 @@ export let productsData: SeedProduct[] = [
     stock: 25,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -964,7 +964,7 @@ export let productsData: SeedProduct[] = [
     stock: 20,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -984,7 +984,7 @@ export let productsData: SeedProduct[] = [
     stock: 10,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -1004,7 +1004,7 @@ export let productsData: SeedProduct[] = [
     stock: 22,
     category: 'Smartwatche',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770654177/veaufvidmpji8xxlcai7.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727904/aqguqm5npz51kwib0xdd.png',
     categoryId: 3,
   },
   {
@@ -1036,7 +1036,7 @@ export let productsData: SeedProduct[] = [
     stock: 25,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1056,7 +1056,7 @@ export let productsData: SeedProduct[] = [
     stock: 20,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1076,7 +1076,7 @@ export let productsData: SeedProduct[] = [
     stock: 18,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1096,7 +1096,7 @@ export let productsData: SeedProduct[] = [
     stock: 22,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1116,7 +1116,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1136,7 +1136,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1156,7 +1156,7 @@ export let productsData: SeedProduct[] = [
     stock: 15,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1176,7 +1176,7 @@ export let productsData: SeedProduct[] = [
     stock: 22,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1196,7 +1196,7 @@ export let productsData: SeedProduct[] = [
     stock: 25,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
   },
   {
     name: 'JBL Live Pro+',
@@ -1214,7 +1214,7 @@ export let productsData: SeedProduct[] = [
     stock: 28,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1234,7 +1234,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1254,7 +1254,7 @@ export let productsData: SeedProduct[] = [
     stock: 15,
     category: 'Słuchawki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656485/on0dwx19qzmhuz5ayvc0.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727672/mrbvflrkqmornzu61zml.png',
     categoryId: 4,
   },
   {
@@ -1286,7 +1286,7 @@ export let productsData: SeedProduct[] = [
     stock: 18,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1306,7 +1306,7 @@ export let productsData: SeedProduct[] = [
     stock: 16,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1326,7 +1326,7 @@ export let productsData: SeedProduct[] = [
     stock: 25,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1346,7 +1346,7 @@ export let productsData: SeedProduct[] = [
     stock: 20,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1366,7 +1366,7 @@ export let productsData: SeedProduct[] = [
     stock: 25,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1385,7 +1385,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1405,7 +1405,7 @@ export let productsData: SeedProduct[] = [
     stock: 20,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1425,7 +1425,7 @@ export let productsData: SeedProduct[] = [
     stock: 12,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1445,7 +1445,7 @@ export let productsData: SeedProduct[] = [
     stock: 18,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1465,7 +1465,7 @@ export let productsData: SeedProduct[] = [
     stock: 28,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1485,7 +1485,7 @@ export let productsData: SeedProduct[] = [
     stock: 40,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
@@ -1505,7 +1505,7 @@ export let productsData: SeedProduct[] = [
     stock: 10,
     category: 'Myszki',
     imageUrl:
-      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770656465/vkygwt0u1ivgeoh99s0e.png',
+      'https://res.cloudinary.com/dlub2bht7/image/upload/v1770727692/gl7jlpgmsqc7w6tu53s6.png',
     categoryId: 2,
   },
   {
